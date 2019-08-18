@@ -16,7 +16,6 @@ export default new Vuex.Store({
         let user = Vue.cookie.get('user');
 
         let currentUser = JSON.stringify(user);
-
         console.log("[STORE.STATE] --> user: " + (currentUser));
         console.log("[STORE.STATE] --> token: " + (userToken));
 

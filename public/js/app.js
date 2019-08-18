@@ -1779,10 +1779,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'animal',
@@ -1794,40 +1790,35 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       selectedAnimal: '',
       filterDogs: false,
       filterCats: false,
-      filterRabbits: false
+      filterRabbits: false,
+      dogs: []
     };
   },
   computed: _objectSpread({
     filteredAnimals: function filteredAnimals() {
       var self = this;
       var results = [];
-      var allAnimals = this.$store.state.animals;
+      var allDogs = this.dogs;
 
       if (this.filterDogs) {
-        allAnimals = this.$store.state.animals.filter(function (animal) {
+        allDogs = this.dogs.filter(function (animal) {
           return animal.species === 'dog';
         });
-      }
+      } // if (this.filterCats) {
+      //     allDogs = this.dogs.filter(animal => animal.species === 'cat')
+      // }
+      // if (this.filterRabbits) {
+      //     allAnimals = this.$store.state.animals.filter(animal => animal.species === 'rab')
+      // }
 
-      if (this.filterCats) {
-        allAnimals = this.$store.state.animals.filter(function (animal) {
-          return animal.species === 'cat';
-        });
-      }
-
-      if (this.filterRabbits) {
-        allAnimals = this.$store.state.animals.filter(function (animal) {
-          return animal.species === 'rab';
-        });
-      }
 
       if (this.search) {
-        return this.$store.state.animals.filter(function (animal) {
+        return this.dogs.filter(function (animal) {
           return animal.name.toLowerCase().indexOf(self.search.toLowerCase()) >= 0;
         });
       }
 
-      return allAnimals;
+      return allDogs;
     }
   }, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['isAuthenticated', 'currentUser', 'getAnimals'])),
   methods: {
@@ -1847,6 +1838,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.$router.push('dashboard');
     },
     deleteAnimal: function deleteAnimal() {}
+  },
+  created: function created() {
+    var _this = this;
+
+    axios.get('/api/dogs').then(function (dogs) {
+      _this.dogs = dogs.data.data;
+      console.log(dogs.data.data);
+    });
   }
 });
 
@@ -29235,7 +29234,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.body[data-v-6cd9df9e] {\n    padding: 20px;\n}\n.btn[data-v-6cd9df9e] {\n    text-align: center;\n    /* width: 24%; */\n}\n.center[data-v-6cd9df9e] {\n    text-align: center;\n}\n.search-bar[data-v-6cd9df9e] {\n    width: 100%;\n    text-align: center;\n}\n.select-button[data-v-6cd9df9e] {\n    width: 100%;\n    margin-bottom: 20px;\n}\n.filter-button[data-v-6cd9df9e] {\n    width: 24%;\n}\n.animal-card[data-v-6cd9df9e] {\n    margin-bottom: 20px;\n    padding: .6rem;\n}\n.card-img[data-v-6cd9df9e] {\n    height: 12rem;\n}\n", ""]);
+exports.push([module.i, "\n.body[data-v-6cd9df9e] {\n    padding: 20px;\n}\n.btn[data-v-6cd9df9e] {\n    text-align: center;\n    /* width: 24%; */\n}\n.center[data-v-6cd9df9e] {\n    text-align: center;\n}\n.search-bar[data-v-6cd9df9e] {\n    width: 100%;\n    text-align: center;\n}\n.select-button[data-v-6cd9df9e] {\n    width: 100%;\n    margin-bottom: 20px;\n    font-size: 10%;\n}\n.filter-button[data-v-6cd9df9e] {\n    width: 24%;\n}\n.animal-card[data-v-6cd9df9e] {\n    margin-bottom: 20px;\n    padding: .6rem;\n}\n.card-img[data-v-6cd9df9e] {\n    height: 12rem;\n}\n", ""]);
 
 // exports
 
@@ -51027,40 +51026,7 @@ var render = function() {
       _c(
         "b-row",
         [
-          _c(
-            "b-col",
-            { attrs: { cols: "12", md: "4" } },
-            [
-              _c(
-                "b-form-checkbox",
-                {
-                  model: {
-                    value: _vm.filterDogs,
-                    callback: function($$v) {
-                      _vm.filterDogs = $$v
-                    },
-                    expression: "filterDogs"
-                  }
-                },
-                [_vm._v("Dogs")]
-              ),
-              _vm._v(" "),
-              _c(
-                "b-form-checkbox",
-                {
-                  model: {
-                    value: _vm.filterCats,
-                    callback: function($$v) {
-                      _vm.filterCats = $$v
-                    },
-                    expression: "filterCats"
-                  }
-                },
-                [_vm._v("Cats")]
-              )
-            ],
-            1
-          ),
+          _c("b-col", { attrs: { cols: "12", md: "4" } }),
           _vm._v(" "),
           _c("b-col", { attrs: { cols: "12", md: "4" } }, [
             _c("div", { staticClass: "my-3" }, [
@@ -51086,9 +51052,7 @@ var render = function() {
                 }
               })
             ])
-          ]),
-          _vm._v(" "),
-          _c("b-col", { attrs: { cols: "4" } })
+          ])
         ],
         1
       ),
@@ -51098,17 +51062,16 @@ var render = function() {
         _vm._l(_vm.filteredAnimals, function(animal, index) {
           return _c(
             "b-col",
-            { key: index, attrs: { cols: "12", md: "2" } },
+            { key: index, attrs: { cols: "6", md: "4", lg: "2" } },
             [
-              animal.profile_photo
+              animal.profile
                 ? _c(
                     "b-card",
                     {
                       staticClass: "animal-card",
                       attrs: {
                         "img-src":
-                          "http://localhost:8000/storage/" +
-                          animal.profile_photo,
+                          "http://localhost:8000/storage/" + animal.image,
                         animal: "'animal.id'",
                         "img-alt": "Selected animal image"
                       },
@@ -51120,9 +51083,7 @@ var render = function() {
                     },
                     [
                       _c("b-btn", { staticClass: "select-button" }, [
-                        _vm._v(
-                          _vm._s(animal.name) + " | " + _vm._s(animal.breed)
-                        )
+                        _vm._v(_vm._s(animal.name))
                       ]),
                       _vm._v(" "),
                       _c(
@@ -51146,8 +51107,7 @@ var render = function() {
                     {
                       staticClass: "animal-card",
                       attrs: {
-                        "img-src":
-                          "http://localhost:8000/storage/images/dog_placeholder.jpg",
+                        "img-src": "https://source.unsplash.com/random",
                         "fluid-grow": "",
                         "img-alt": "No Selected animal image"
                       }
@@ -51164,25 +51124,7 @@ var render = function() {
                             }
                           }
                         },
-                        [
-                          _vm._v(
-                            _vm._s(animal.name) + " | " + _vm._s(animal.breed)
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "b-btn",
-                        {
-                          staticClass: "select-button",
-                          attrs: { animal: "'animal.id'" },
-                          on: {
-                            click: function($event) {
-                              return _vm.showUpdateAnimalModal(animal)
-                            }
-                          }
-                        },
-                        [_vm._v("Update")]
+                        [_vm._v(_vm._s(animal.name))]
                       )
                     ],
                     1
@@ -51214,14 +51156,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("li", { staticClass: "my-4" }, [
-                _vm._v(
-                  _vm._s(_vm.selectedAnimal.breed) +
-                    ", " +
-                    _vm._s(_vm.selectedAnimal.gender) +
-                    ", " +
-                    _vm._s(_vm.selectedAnimal.weight) +
-                    " pounds"
-                )
+                _vm._v(_vm._s(_vm.selectedAnimal.weight) + " pounds")
               ]),
               _vm._v(" "),
               _c("li", { staticClass: "my-4" }, [
@@ -51306,11 +51241,8 @@ var render = function() {
               _vm._v(" "),
               _c("div", { staticClass: "my-4" }, [
                 _vm._v(_vm._s(_vm.selectedAnimal.description))
-              ]),
-              _vm._v(" "),
-              _c("b-btn", { on: { click: _vm.showStuff } }, [_vm._v("Clickit")])
-            ],
-            1
+              ])
+            ]
           )
         ],
         1
