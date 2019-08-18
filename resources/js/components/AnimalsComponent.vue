@@ -79,11 +79,9 @@
                 
                 <li class="my-4">Flea & Tick Prevention: {{ selectedAnimal.flea_tick }}</li>
 
-                
-
-                <b-btn @click="deleteAnimal">Delete</b-btn>
             </b-modal>
         </div>
+
         <div>
             <!-- Update Animal Modal Component -->
             <b-modal ref="updateAnimalModal" :animal="'animal'" ok-only ok-title="Close" ok-variant="dark">
