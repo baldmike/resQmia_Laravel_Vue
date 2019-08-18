@@ -22,6 +22,8 @@ Route::post('/logout', 'Api\AuthController@logout');
 Route::middleware('auth:api')->group(function () {
     
     Route::get('/user', 'Api\UsersController@current');
+
+    Route::apiResource('dogs', 'DogController');
     
 });
 

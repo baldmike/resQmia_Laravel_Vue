@@ -84,7 +84,7 @@ export default {
             auth.setAuthToken(data.token)
             auth.login(data.token, data.user.email);
     
-			this.$router.push({path: 'dashboard'});
+			this.$router.push({path: 'animals'});
 			
 			self.$notify({
 				group: 'notifications',

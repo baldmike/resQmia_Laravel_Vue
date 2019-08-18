@@ -22,7 +22,7 @@
         methods: mapActions(['login']),
         mounted() {
             if (window.auth.check()) {
-                this.$router.push('dashboard');
+                this.$router.push('animals');
             }
         }
     }

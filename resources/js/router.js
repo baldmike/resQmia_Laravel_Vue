@@ -3,6 +3,7 @@ import store from './store'
 
 import mainApp from './mainApp'
 import DashboardComponent from './components/DashboardComponent'
+import AnimalsComponent from './components/AnimalsComponent'
 import LoginComponent from './components/LoginComponent'
 
 export const router = new VueRouter({ 
@@ -16,8 +17,8 @@ export const router = new VueRouter({
     
             children: [
                 {
-                    path: 'dashboard',
-                    component: DashboardComponent,
+                    path: 'animals',
+                    component: AnimalsComponent,
                     beforeEnter: (to, from, next) => {
                         if (!window.auth.check()) {
                             next({

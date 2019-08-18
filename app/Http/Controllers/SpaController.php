@@ -19,13 +19,12 @@ class SpaController extends Controller
 
     public function index()
     {
-        Log::debug('SpaController->index()');
         return view('spa');
     }
 
-    public function notFound()
-    {
-        Log::debug('SpaController->notFound()');
-        return view('spa');
-    }
+    // public function notFound()
+    // {
+    //     Log::debug('SpaController->notFound()');
+    //     return view('spa');
+    // }
 }
