@@ -5,6 +5,8 @@ use Faker\Generator as Faker;
 
 $factory->define(Dog::class, function (Faker $faker) {
     return [
+        'species' => "dog",
+        'status' => $faker->realText($maxNbChars = 10, $indexSize = 1),
         'name' => $faker->firstName,
         'date_of_birth' => $faker->date($format = 'Y-m-d', $max = 'now'),
         'weight' => $faker->numberBetween($min=1, $max=80),
@@ -22,6 +24,7 @@ $factory->define(Dog::class, function (Faker $faker) {
         'lepto_2' => $faker->realText($maxNbChars = 10, $indexSize = 1),
         'bord' => $faker->realText($maxNbChars = 10, $indexSize = 1),
         'civ' => $faker->realText($maxNbChars = 10, $indexSize = 1),
+        'civ_booster' => $faker->realText($maxNbChars = 10, $indexSize = 1),
         'rabies' => $faker->realText($maxNbChars = 10, $indexSize = 1),
         'rabies_number' => $faker->realText($maxNbChars = 10, $indexSize = 1),
         'vet' => $faker->realText($maxNbChars = 10, $indexSize = 1),

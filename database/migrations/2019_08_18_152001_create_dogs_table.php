@@ -15,6 +15,8 @@ class CreateDogsTable extends Migration
     {
         Schema::create('dogs', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('species');
+            $table->string('status');
             $table->string('name');
             $table->date('date_of_birth')->nullable()->default(null);
             $table->integer('weight')->nullable()->default(null);
@@ -32,6 +34,7 @@ class CreateDogsTable extends Migration
             $table->string('lepto_2')->nullable()->default(null);
             $table->string('bord')->nullable()->default(null);
             $table->string('civ')->nullable()->default(null);
+            $table->string('civ_booster')->nullable()->default(null);
             $table->string('rabies')->nullable()->default(null);
             $table->string('rabies_number')->nullable()->default(null);
             $table->string('vet')->nullable()->default(null);
