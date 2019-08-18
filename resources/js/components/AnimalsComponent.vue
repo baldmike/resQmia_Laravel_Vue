@@ -2,8 +2,8 @@
     <div class="body">
         <b-row>
             <b-col cols="12" md="4">
-                <!-- <b-form-checkbox v-model="filterDogs">Dogs</b-form-checkbox>
-                <b-form-checkbox v-model="filterCats">Cats</b-form-checkbox> -->
+                <b-form-checkbox v-model="filterDogs">Dogs</b-form-checkbox>
+                <b-form-checkbox v-model="filterCats">Cats</b-form-checkbox>
             </b-col>
             <b-col cols="12" md="4">
                 <div class="my-3">
@@ -29,10 +29,57 @@
         <div>
             <!-- Show Animal Modal Component -->
             <b-modal ref="selectedAnimalModal" :animal="'animal'" ok-only ok-title="Close" ok-variant="dark">
-                <h1 class="my-2">{{ selectedAnimal.name }}</h1>
-                <li class="my-4">{{ selectedAnimal.weight }} pounds</li>
-                <li class="my-4">From {{ selectedAnimal.source }} on {{ selectedAnimal.created_at | moment("dddd, MMMM Do YYYY")}}</li>
-                <div class="my-4">{{ selectedAnimal.description }}</div>
+                <h4 class="my-2">{{ selectedAnimal.name }}, {{ selectedAnimal.species }}, {{ selectedAnimal.weight }} pounds</h4>
+                
+                <li class="my-4">Added to Alive!: {{ selectedAnimal.created_at | moment("dddd, MMMM Do YYYY")}}</li>
+
+                <li class="my-4">Status: {{ selectedAnimal.status }}</li>
+                
+                <li class="my-4">Date of Birth: {{ selectedAnimal.date_of_birth }}</li>
+
+                <li class="my-4">Vet Exam Info: {{ selectedAnimal.exam }}</li>
+
+                <li class="my-4">Deworming 1: {{ selectedAnimal.deworming_1 }}</li>
+
+                <li class="my-4">Deworming 2: {{ selectedAnimal.deworming_2 }}</li>
+
+                <li class="my-4">Fecal Test: {{ selectedAnimal.fecal_test }}</li>
+
+                <li class="my-4">Heartworm Test: {{ selectedAnimal.heartworm_test }}</li>
+
+                <li class="my-4">Heartworm Result: {{ selectedAnimal.heartworm_result }}</li>
+
+                <li class="my-4">Spay/Neuter: {{ selectedAnimal.spay_neuter }}</li>
+
+                <li class="my-4">Distemper 1: {{ selectedAnimal.distemper_1 }}</li>
+
+                <li class="my-4">Distemper 2: {{ selectedAnimal.distemper_2 }}</li>
+
+                <li class="my-4">Distemper 3: {{ selectedAnimal.distemper_3 }}</li>
+
+                <li class="my-4">Lepto 1: {{ selectedAnimal.lepto_1 }}</li>
+
+                <li class="my-4">Lepto 2: {{ selectedAnimal.lepto_2 }}</li>
+
+                <li class="my-4">Bordatella: {{ selectedAnimal.bord }}</li>
+
+                <li class="my-4">Canine Flu: {{ selectedAnimal.civ }}</li>
+
+                <li class="my-4">Canine Flu Booster: {{ selectedAnimal.civ_booster }}</li>
+
+                <li class="my-4">Rabies: {{ selectedAnimal.rabies }}</li>
+
+                <li class="my-4">Rabies Number: {{ selectedAnimal.rabies_number }}</li>
+
+                <li class="my-4">Vet Info: {{ selectedAnimal.vet }}</li>
+
+                <li class="my-4">Microchip: {{ selectedAnimal.microchip }}</li>
+
+                <li class="my-4">Heartworm Prevention: {{ selectedAnimal.heartworm }}</li>
+                
+                <li class="my-4">Flea & Tick Prevention: {{ selectedAnimal.flea_tick }}</li>
+
+                
 
                 <b-btn @click="deleteAnimal">Delete</b-btn>
             </b-modal>
@@ -81,9 +128,9 @@
                     allDogs = this.dogs.filter(animal => animal.species === 'dog')
                 }
 
-                // if (this.filterCats) {
-                //     allDogs = this.dogs.filter(animal => animal.species === 'cat')
-                // }
+                if (this.filterCats) {
+                    allDogs = this.dogs.filter(animal => animal.species === 'cat')
+                }
             
                 // if (this.filterRabbits) {
                 //     allAnimals = this.$store.state.animals.filter(animal => animal.species === 'rab')
