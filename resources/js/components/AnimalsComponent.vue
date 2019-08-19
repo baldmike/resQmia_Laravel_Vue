@@ -7,7 +7,7 @@
             </b-col>
             <b-col cols="12" md="4">
                 <div class="my-3">
-                    <input class="search-bar" type="text" v-model="search" placeholder="Search">
+                    <input class="search-bar" type="text" v-model="search" placeholder="Search By Name">
                 </div>
             </b-col>
         </b-row>

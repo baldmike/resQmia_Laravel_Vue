@@ -1921,11 +1921,78 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      form: ['name', 'species', 'weight', 'status', 'date_of_birth', 'exam', 'deworming_1', 'deworming_2', 'fecal_test', 'heartworm_test', 'heartworm_result', 'spay/neuter', 'distemper_1', 'distemper_2', 'distemper_3', 'lepto_1', 'lepto_2', 'bord', 'civ', 'civ_booster', 'rabies', 'rabies_number', 'vet', 'microchip', 'heartworm', 'flea_tick']
+      form: {
+        name: 'Joe',
+        species: '',
+        weight: '',
+        status: '',
+        date_of_birth: '',
+        exam: '',
+        deworming_1: '',
+        deworming_2: '',
+        fecal_test: '',
+        heartworm_test: '',
+        heartworm_result: '',
+        spay_neuter: '',
+        distemper_1: '',
+        distemper_2: '',
+        distemper_3: '',
+        lepto_1: '',
+        lepto_2: '',
+        bord: '',
+        civ: '',
+        civ_booster: '',
+        rabies: '',
+        rabies_number: '',
+        vet: '',
+        microchip: '',
+        heartworm: '',
+        flea_tick: ''
+      }
     };
+  },
+  methods: {
+    createAnimal: function createAnimal() {
+      var _this = this;
+
+      var formData = new FormData();
+      console.log('BEFORE FORM DATA');
+      formData.append("name", this.form.name);
+      formData.append("species", this.form.species);
+      formData.append("status", this.form.status); // Object.keys(this.form).forEach(key => {
+      //     formData.append(key, this.form[key])
+      // })
+
+      console.log("FORM DATA ------->");
+      console.log(formData);
+      axios.post("/api/dogs", formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      }).then(function (_ref) {
+        var data = _ref.data;
+
+        _this.$notify({
+          group: 'notifications',
+          title: 'Success',
+          text: _this.form.name + ' added',
+          duration: '6000',
+          width: '100%'
+        });
+
+        console.log("CreateAnimalComponent -- createAnimal -- createAnimal()" + data.toString());
+      })["catch"](function (error) {
+        console.log(error);
+      });
+      this.$store.dispatch('getAllAnimals');
+      this.$router.push('/animals');
+    }
   }
 });
 
@@ -51152,7 +51219,7 @@ var render = function() {
                   }
                 ],
                 staticClass: "search-bar",
-                attrs: { type: "text", placeholder: "Search" },
+                attrs: { type: "text", placeholder: "Search By Name" },
                 domProps: { value: _vm.search },
                 on: {
                   input: function($event) {
@@ -51490,32 +51557,41 @@ var render = function() {
   return _c(
     "b-container",
     { attrs: { fluid: "" } },
-    _vm._l(_vm.form, function(type) {
-      return _c(
-        "b-row",
-        { key: type, staticClass: "my-1" },
-        [
-          _c("b-col", { attrs: { sm: "3" } }, [
-            _c("label", { attrs: { for: "type-" + type } }, [
-              _vm._v(_vm._s(type) + ":")
-            ])
-          ]),
-          _vm._v(" "),
-          _c(
-            "b-col",
-            { attrs: { sm: "9" } },
-            [
-              _c("b-form-input", {
-                attrs: { id: "type-" + type, type: _vm.text }
-              })
-            ],
-            1
-          )
-        ],
-        1
-      )
-    }),
-    1
+    [
+      _vm._l(_vm.form, function(value, key) {
+        return _c(
+          "b-row",
+          { key: key, staticClass: "my-1" },
+          [
+            _c("b-col", { attrs: { sm: "3" } }, [
+              _c("label", [_vm._v(_vm._s(key) + ":")])
+            ]),
+            _vm._v(" "),
+            _c(
+              "b-col",
+              { attrs: { sm: "9" } },
+              [
+                _c("b-form-input", {
+                  attrs: { type: "text" },
+                  model: {
+                    value: _vm.form[key],
+                    callback: function($$v) {
+                      _vm.$set(_vm.form, key, $$v)
+                    },
+                    expression: "form[key]"
+                  }
+                })
+              ],
+              1
+            )
+          ],
+          1
+        )
+      }),
+      _vm._v(" "),
+      _c("b-button", { on: { click: _vm.createAnimal } }, [_vm._v("Submit")])
+    ],
+    2
   )
 }
 var staticRenderFns = []
