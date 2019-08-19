@@ -32,12 +32,8 @@
                 <label>Status:</label>
             </b-col>
             <b-col sm="9">
-                <b-form-input 
-                        type="text"
-                        placeholder="Where is this animal?" 
-                        v-model="$v.form1.status.$model"
-                        :state="!$v.form1.status.$invalid"
-                        aria-describedby="species-live-feedback"></b-form-input>
+                <b-form-select :state="!$v.form1.status.$invalid" v-model="form1.status" :options="options"></b-form-select>
+            
             </b-col>
         </b-row>
 
@@ -121,7 +117,15 @@
                     microchip: '',
                     heartworm: '',
                     flea_tick: ''
-                }
+                },
+
+                statusOptions: [
+                    { value: null, text: 'Please select an option' },
+                    { value: 'foster', text: 'In foster' },
+                    { value: 'adoption_center', text: 'Adoption center' },
+                    { value: 'vet', text: 'Hospitalized' },
+                    { value: 'other', text: 'Somewhere else?' }
+                ]
             }
         },
         mixins: [
@@ -148,7 +152,7 @@
                 weight: {
                     required
                 },
-            }
+            },
         },
 
         methods: {

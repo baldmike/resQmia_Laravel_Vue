@@ -1991,10 +1991,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2029,7 +2025,23 @@ __webpack_require__.r(__webpack_exports__);
         microchip: '',
         heartworm: '',
         flea_tick: ''
-      }
+      },
+      statusOptions: [{
+        value: null,
+        text: 'Please select an option'
+      }, {
+        value: 'foster',
+        text: 'In foster'
+      }, {
+        value: 'adoption_center',
+        text: 'Adoption center'
+      }, {
+        value: 'vet',
+        text: 'Hospitalized'
+      }, {
+        value: 'other',
+        text: 'Somewhere else?'
+      }]
     };
   },
   mixins: [vuelidate__WEBPACK_IMPORTED_MODULE_0__["validationMixin"]],
@@ -51733,19 +51745,17 @@ var render = function() {
             "b-col",
             { attrs: { sm: "9" } },
             [
-              _c("b-form-input", {
+              _c("b-form-select", {
                 attrs: {
-                  type: "text",
-                  placeholder: "Where is this animal?",
                   state: !_vm.$v.form1.status.$invalid,
-                  "aria-describedby": "species-live-feedback"
+                  options: _vm.options
                 },
                 model: {
-                  value: _vm.$v.form1.status.$model,
+                  value: _vm.form1.status,
                   callback: function($$v) {
-                    _vm.$set(_vm.$v.form1.status, "$model", $$v)
+                    _vm.$set(_vm.form1, "status", $$v)
                   },
-                  expression: "$v.form1.status.$model"
+                  expression: "form1.status"
                 }
               })
             ],
