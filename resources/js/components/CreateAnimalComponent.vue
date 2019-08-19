@@ -1,90 +1,196 @@
 <template>
-  <b-container fluid>
-    <b-row class="my-1" v-for="(value, key) in form" :key="key">
-      <b-col sm="3">
-        <label>{{ key }}:</label>
-      </b-col>
-      <b-col sm="9">
-        <b-form-input type="text" v-model="form[key]"></b-form-input>
-      </b-col>  
-    </b-row>
+    <b-container fluid>
+        <!-- form 1 with required and diff data types -->
+        <b-row>
+            <b-col sm="2" offset="1">
+                <label>Name:</label>
+            </b-col>
+            <b-col sm="9">
+                <b-form-input 
+                        type="text" 
+                        v-model="$v.form1.name.$model"
+                        :state="!$v.form1.name.$invalid"
+                        aria-describedby="name-live-feedback"></b-form-input>
+            </b-col>
+        </b-row>
 
-    <b-button @click='createAnimal'>Submit</b-button>
-    
-  </b-container>
+        <b-row>
+            <b-col sm="2" offset="1">
+                <label>Species:</label>
+            </b-col>
+            <b-col sm="9">
+                <b-form-input 
+                        type="text" 
+                        v-model="$v.form1.species.$model"
+                        :state="!$v.form1.species.$invalid"
+                        aria-describedby="species-live-feedback"></b-form-input>
+            </b-col>
+        </b-row>
+
+        <b-row>
+            <b-col sm="2" offset="1">
+                <label>Status:</label>
+            </b-col>
+            <b-col sm="9">
+                <b-form-input 
+                        type="text"
+                        placeholder="Where is this animal?" 
+                        v-model="$v.form1.status.$model"
+                        :state="!$v.form1.status.$invalid"
+                        aria-describedby="species-live-feedback"></b-form-input>
+            </b-col>
+        </b-row>
+
+        <b-row>
+            <b-col sm="2" offset="1">
+                <label>Weight:</label>
+            </b-col>
+            <b-col sm="9">
+                <b-form-input 
+                        type="number"
+                        v-model="$v.form1.weight.$model"
+                        :state="!$v.form1.weight.$invalid"
+                        aria-describedby="species-live-feedback"></b-form-input>
+            </b-col>
+        </b-row>
+
+        <b-row>
+            <b-col sm="2" offset="1">
+                <label>Date of Birth:</label>
+            </b-col>
+            <b-col sm="9">
+                <b-form-input 
+                        type="date"
+                        v-model="$v.form1.date_of_birth.$model"
+                        :state="!$v.form1.date_of_birth.$invalid"
+                        aria-describedby="species-live-feedback"></b-form-input>
+            </b-col>
+        </b-row>
+
+        <!-- form 2 with everything else - combined in the createAnimal method -->
+        <b-row class="my-1" v-for="(value, key) in form2" :key="key">
+            <b-col sm="2" offset="1">
+                <label>{{ key }}:</label>
+            </b-col>
+            <b-col sm="9">
+                <b-form-input type="text" v-model="form2[key]"></b-form-input>
+            </b-col> 
+        </b-row>
+
+        <b-button @click='createAnimal'>Submit</b-button>
+    </b-container>
 </template>
 
 <script>
-  export default {
-    data() {
-      return {
-        form: {
-          name: 'Joe',
-          species: '',
-          weight: '',
-          status: '',
-          date_of_birth: '',
-          exam: '',
-          deworming_1: '',
-          deworming_2: '',
-          fecal_test: '',
-          heartworm_test: '',
-          heartworm_result: '',
-          spay_neuter: '',
-          distemper_1: '',
-          distemper_2: '',
-          distemper_3: '',
-          lepto_1: '',
-          lepto_2: '',
-          bord: '',
-          civ: '',
-          civ_booster: '',
-          rabies: '',
-          rabies_number: '',
-          vet: '',
-          microchip: '',
-          heartworm: '',
-          flea_tick: ''
-        }
-      }
-    },
 
-    methods: {
-         createAnimal() {
+    import { validationMixin } from "vuelidate";
+    import { helpers, required, minLength, maxLength, minValue, maxValue, email, between, sameAs } from "vuelidate/lib/validators";
 
-            let formData = new FormData();
-             
-            console.log('BEFORE FORM DATA');
-            
-            formData.append("name", this.form.name);
-            formData.append("species", this.form.species);
-            formData.append("status", this.form.status);
-            // Object.keys(this.form).forEach(key => {
-            //     formData.append(key, this.form[key])
-            // })
+    export default {
+        data() {
+            return {
 
-            console.log("FORM DATA ------->")
-            console.log(formData);
+                form1: {
+                    name: '',
+                    species: '',
+                    weight: '',
+                    status: '',
+                    date_of_birth: ''
+                },
 
-            axios.post("/api/dogs", formData, {headers: {'Content-Type': 'multipart/form-data'}}).then(({data}) => {
+                form2: {
                 
-                this.$notify({
-                    group: 'notifications',
-                    title: 'Success',
-                    text: this.form.name + ' added',
-                    duration: '6000',
-                    width: '100%'
-                });
-                    
-                    console.log("CreateAnimalComponent -- createAnimal -- createAnimal()" + data.toString());
-                }).catch((error) => {
-                    console.log(error);
+                    exam: '',
+                    deworming_1: '',
+                    deworming_2: '',
+                    fecal_test: '',
+                    heartworm_test: '',
+                    heartworm_result: '',
+                    spay_neuter: '',
+                    distemper_1: '',
+                    distemper_2: '',
+                    distemper_3: '',
+                    lepto_1: '',
+                    lepto_2: '',
+                    bord: '',
+                    civ: '',
+                    civ_booster: '',
+                    rabies: '',
+                    rabies_number: '',
+                    vet: '',
+                    microchip: '',
+                    heartworm: '',
+                    flea_tick: ''
+                }
+            }
+        },
+        mixins: [
+            validationMixin
+        ],
+         validations: {
+
+            form1: {
+                name: {
+                    required,
+                    minLength: minLength(3)
+                },
+                species: {
+                    required,
+                    minLength: minLength(3)
+                },
+                status: {
+                    required,
+                    minLength: minLength(3)
+                },
+                date_of_birth: {
+                    required,                    
+                },
+                weight: {
+                    required
+                },
+            }
+        },
+
+        methods: {
+            createAnimal() {
+                this.$v.form1.$touch();
+
+                if (this.$v.form1.$anyError) {
+                    return;
+                }
+
+                let formData = new FormData();
+                
+                Object.keys(this.form1).forEach(key => {
+                    formData.append(key, this.form1[key]);
+                })
+                
+                Object.keys(this.form2).forEach(key => {
+                    formData.append(key, this.form2[key]);
                 })
 
-                this.$store.dispatch('getAllAnimals');
+                axios.post("/api/dogs", formData, {headers: {'Content-Type': 'multipart/form-data'}}).then(({data}) => {
+                    
+                    this.$notify({
+                        group: 'notifications',
+                        title: 'Success',
+                        text: this.form.name + ' added',
+                        duration: '6000',
+                        width: '100%'
+                    });
+                        
+                        console.log("CreateAnimalComponent -- createAnimal -- createAnimal()" + data.toString());
+                }).catch((error) => {
+                        console.log(error);
+                })
+
                 this.$router.push('/animals');
-                
+                    
             },
+        }
     }
-  }
 </script>
+
+<style>
+   
+</style>

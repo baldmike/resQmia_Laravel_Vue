@@ -1908,6 +1908,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuelidate__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuelidate */ "./node_modules/vuelidate/lib/index.js");
+/* harmony import */ var vuelidate__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vuelidate__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__);
 //
 //
 //
@@ -1924,15 +1928,86 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      form: {
-        name: 'Joe',
+      form1: {
+        name: '',
         species: '',
         weight: '',
         status: '',
-        date_of_birth: '',
+        date_of_birth: ''
+      },
+      form2: {
         exam: '',
         deworming_1: '',
         deworming_2: '',
@@ -1957,20 +2032,46 @@ __webpack_require__.r(__webpack_exports__);
       }
     };
   },
+  mixins: [vuelidate__WEBPACK_IMPORTED_MODULE_0__["validationMixin"]],
+  validations: {
+    form1: {
+      name: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"],
+        minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["minLength"])(3)
+      },
+      species: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"],
+        minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["minLength"])(3)
+      },
+      status: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"],
+        minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["minLength"])(3)
+      },
+      date_of_birth: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"]
+      },
+      weight: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"]
+      }
+    }
+  },
   methods: {
     createAnimal: function createAnimal() {
       var _this = this;
 
-      var formData = new FormData();
-      console.log('BEFORE FORM DATA');
-      formData.append("name", this.form.name);
-      formData.append("species", this.form.species);
-      formData.append("status", this.form.status); // Object.keys(this.form).forEach(key => {
-      //     formData.append(key, this.form[key])
-      // })
+      this.$v.form1.$touch();
 
-      console.log("FORM DATA ------->");
-      console.log(formData);
+      if (this.$v.form1.$anyError) {
+        return;
+      }
+
+      var formData = new FormData();
+      Object.keys(this.form1).forEach(function (key) {
+        formData.append(key, _this.form1[key]);
+      });
+      Object.keys(this.form2).forEach(function (key) {
+        formData.append(key, _this.form2[key]);
+      });
       axios.post("/api/dogs", formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
@@ -1990,7 +2091,6 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (error) {
         console.log(error);
       });
-      this.$store.dispatch('getAllAnimals');
       this.$router.push('/animals');
     }
   }
@@ -51558,12 +51658,173 @@ var render = function() {
     "b-container",
     { attrs: { fluid: "" } },
     [
-      _vm._l(_vm.form, function(value, key) {
+      _c(
+        "b-row",
+        [
+          _c("b-col", { attrs: { sm: "2", offset: "1" } }, [
+            _c("label", [_vm._v("Name:")])
+          ]),
+          _vm._v(" "),
+          _c(
+            "b-col",
+            { attrs: { sm: "9" } },
+            [
+              _c("b-form-input", {
+                attrs: {
+                  type: "text",
+                  state: !_vm.$v.form1.name.$invalid,
+                  "aria-describedby": "name-live-feedback"
+                },
+                model: {
+                  value: _vm.$v.form1.name.$model,
+                  callback: function($$v) {
+                    _vm.$set(_vm.$v.form1.name, "$model", $$v)
+                  },
+                  expression: "$v.form1.name.$model"
+                }
+              })
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "b-row",
+        [
+          _c("b-col", { attrs: { sm: "2", offset: "1" } }, [
+            _c("label", [_vm._v("Species:")])
+          ]),
+          _vm._v(" "),
+          _c(
+            "b-col",
+            { attrs: { sm: "9" } },
+            [
+              _c("b-form-input", {
+                attrs: {
+                  type: "text",
+                  state: !_vm.$v.form1.species.$invalid,
+                  "aria-describedby": "species-live-feedback"
+                },
+                model: {
+                  value: _vm.$v.form1.species.$model,
+                  callback: function($$v) {
+                    _vm.$set(_vm.$v.form1.species, "$model", $$v)
+                  },
+                  expression: "$v.form1.species.$model"
+                }
+              })
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "b-row",
+        [
+          _c("b-col", { attrs: { sm: "2", offset: "1" } }, [
+            _c("label", [_vm._v("Status:")])
+          ]),
+          _vm._v(" "),
+          _c(
+            "b-col",
+            { attrs: { sm: "9" } },
+            [
+              _c("b-form-input", {
+                attrs: {
+                  type: "text",
+                  placeholder: "Where is this animal?",
+                  state: !_vm.$v.form1.status.$invalid,
+                  "aria-describedby": "species-live-feedback"
+                },
+                model: {
+                  value: _vm.$v.form1.status.$model,
+                  callback: function($$v) {
+                    _vm.$set(_vm.$v.form1.status, "$model", $$v)
+                  },
+                  expression: "$v.form1.status.$model"
+                }
+              })
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "b-row",
+        [
+          _c("b-col", { attrs: { sm: "2", offset: "1" } }, [
+            _c("label", [_vm._v("Weight:")])
+          ]),
+          _vm._v(" "),
+          _c(
+            "b-col",
+            { attrs: { sm: "9" } },
+            [
+              _c("b-form-input", {
+                attrs: {
+                  type: "number",
+                  state: !_vm.$v.form1.weight.$invalid,
+                  "aria-describedby": "species-live-feedback"
+                },
+                model: {
+                  value: _vm.$v.form1.weight.$model,
+                  callback: function($$v) {
+                    _vm.$set(_vm.$v.form1.weight, "$model", $$v)
+                  },
+                  expression: "$v.form1.weight.$model"
+                }
+              })
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "b-row",
+        [
+          _c("b-col", { attrs: { sm: "2", offset: "1" } }, [
+            _c("label", [_vm._v("Date of Birth:")])
+          ]),
+          _vm._v(" "),
+          _c(
+            "b-col",
+            { attrs: { sm: "9" } },
+            [
+              _c("b-form-input", {
+                attrs: {
+                  type: "date",
+                  state: !_vm.$v.form1.date_of_birth.$invalid,
+                  "aria-describedby": "species-live-feedback"
+                },
+                model: {
+                  value: _vm.$v.form1.date_of_birth.$model,
+                  callback: function($$v) {
+                    _vm.$set(_vm.$v.form1.date_of_birth, "$model", $$v)
+                  },
+                  expression: "$v.form1.date_of_birth.$model"
+                }
+              })
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _vm._l(_vm.form2, function(value, key) {
         return _c(
           "b-row",
           { key: key, staticClass: "my-1" },
           [
-            _c("b-col", { attrs: { sm: "3" } }, [
+            _c("b-col", { attrs: { sm: "2", offset: "1" } }, [
               _c("label", [_vm._v(_vm._s(key) + ":")])
             ]),
             _vm._v(" "),
@@ -51574,11 +51835,11 @@ var render = function() {
                 _c("b-form-input", {
                   attrs: { type: "text" },
                   model: {
-                    value: _vm.form[key],
+                    value: _vm.form2[key],
                     callback: function($$v) {
-                      _vm.$set(_vm.form, key, $$v)
+                      _vm.$set(_vm.form2, key, $$v)
                     },
-                    expression: "form[key]"
+                    expression: "form2[key]"
                   }
                 })
               ],
@@ -75572,9 +75833,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _auth_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./auth.js */ "./resources/js/auth.js");
 /* harmony import */ var vue_cookie__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue-cookie */ "./node_modules/vue-cookie/src/vue-cookie.js");
 /* harmony import */ var vue_cookie__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(vue_cookie__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var bootstrap_dist_css_bootstrap_css__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! bootstrap/dist/css/bootstrap.css */ "./node_modules/bootstrap/dist/css/bootstrap.css");
-/* harmony import */ var bootstrap_dist_css_bootstrap_css__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(bootstrap_dist_css_bootstrap_css__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./store */ "./resources/js/store.js");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./store */ "./resources/js/store.js");
+/* harmony import */ var vuelidate__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vuelidate */ "./node_modules/vuelidate/lib/index.js");
+/* harmony import */ var vuelidate__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(vuelidate__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var bootstrap_dist_css_bootstrap_css__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! bootstrap/dist/css/bootstrap.css */ "./node_modules/bootstrap/dist/css/bootstrap.css");
+/* harmony import */ var bootstrap_dist_css_bootstrap_css__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(bootstrap_dist_css_bootstrap_css__WEBPACK_IMPORTED_MODULE_9__);
+
 
 
 
@@ -75592,6 +75856,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(bootstrap_vue__WEBPACK_IMPORTED_M
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_cookie__WEBPACK_IMPORTED_MODULE_6___default.a);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_notification__WEBPACK_IMPORTED_MODULE_4___default.a);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(__webpack_require__(/*! vue-moment */ "./node_modules/vue-moment/dist/vue-moment.js"));
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuelidate__WEBPACK_IMPORTED_MODULE_8___default.a);
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 window.auth = new _auth_js__WEBPACK_IMPORTED_MODULE_5__["default"]();
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('main-app', __webpack_require__(/*! ./mainApp.vue */ "./resources/js/mainApp.vue"));
@@ -75603,7 +75868,7 @@ window.addEventListener('load', function () {
     el: "#app",
     template: '<router-view></router-view>',
     router: _router__WEBPACK_IMPORTED_MODULE_2__["router"],
-    store: _store__WEBPACK_IMPORTED_MODULE_8__["default"]
+    store: _store__WEBPACK_IMPORTED_MODULE_7__["default"]
   });
 });
 

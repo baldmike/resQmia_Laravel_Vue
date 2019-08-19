@@ -5,10 +5,13 @@ import BootstrapVue from 'bootstrap-vue'
 import Notifications from 'vue-notification'
 import Auth from './auth.js';
 import VueCookie from 'vue-cookie';
+import store from './store'
+
+import Vuelidate from "vuelidate";
 
 import 'bootstrap/dist/css/bootstrap.css'
 
-import store from './store'
+
 
 require('./bootstrap')
 
@@ -17,6 +20,7 @@ Vue.use(BootstrapVue)
 Vue.use(VueCookie)
 Vue.use(Notifications)
 Vue.use(require('vue-moment'));
+Vue.use(Vuelidate);
 
 window.Vue = require('vue')
 window.auth = new Auth();
