@@ -24,7 +24,7 @@
         <b-row>
             <b-col v-for="(animal, index) in filteredAnimals"
                     :key="index" cols="6" md="4" lg="2">
-                <b-card v-if="animal.image" :img-src="'http://localhost:8000/storage/' + animal.image"  @click="showSelectedAnimalModal(animal)" animal="'animal.id'" img-alt="Selected animal image" class="animal-card">
+                <b-card v-if="animal.image" :img-src="'images/' + animal.image"  @click="showSelectedAnimalModal(animal)" animal="'animal.id'" img-alt="Selected animal image" class="animal-card">
                     <b-btn class="select-button" >{{ animal.name }}</b-btn>
                 </b-card>
                 <b-card v-else :img-src="'https://source.unsplash.com/random'" fluid-grow img-alt="No Selected animal image" class="animal-card">

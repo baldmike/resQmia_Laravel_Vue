@@ -51784,8 +51784,7 @@ var render = function() {
                     {
                       staticClass: "animal-card",
                       attrs: {
-                        "img-src":
-                          "http://localhost:8000/storage/" + animal.image,
+                        "img-src": "images/" + animal.image,
                         animal: "'animal.id'",
                         "img-alt": "Selected animal image"
                       },
@@ -52616,7 +52615,7 @@ var render = function() {
     [
       _c(
         "b-col",
-        { attrs: { cols: "4" } },
+        { attrs: { cols: "12" } },
         [
           _c(
             "b-form",
