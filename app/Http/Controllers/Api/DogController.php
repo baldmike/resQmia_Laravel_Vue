@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
 
+use Illuminate\Support\Facades\Storage;
+
 use App\Http\Resources\DogResource;
 use App\Http\Requests\DogRequest;
 use App\Http\Requests\UpdateDogRequest;
@@ -77,15 +79,15 @@ class DogController extends Controller
 
             Log::debug('INSIDE DOGCONTROLLER');
             
-            // if($request->hasFile('image'))
-            // {
-            //     $path = Storage::putFile('public/images', $request->file('image'), 'public');
+            if($request->hasFile('image'))
+            {
+                $path = Storage::putFile('public/images', $request->file('image'), 'public');
 
-            //     // $path includes 'public/', and we don't want that in our URL, so we chop it off:
-            //     $path = substr($path, 6);
+                // $path includes 'public/', and we don't want that in our URL, so we chop it off:
+                $path = substr($path, 6);
 
-            //     $dog->image = $path;
-            // }
+                $dog->image = $path;
+            }
 
         }
 
@@ -155,15 +157,15 @@ class DogController extends Controller
 
             Log::debug('INSIDE DOGCONTROLLER');
             
-            // if($request->hasFile('image'))
-            // {
-            //     $path = Storage::putFile('public/images', $request->file('image'), 'public');
+            if($request->hasFile('image'))
+            {
+                $path = Storage::putFile('public/images', $request->file('image'), 'public');
 
-            //     // $path includes 'public/', and we don't want that in our URL, so we chop it off:
-            //     $path = substr($path, 6);
+                // $path includes 'public/', and we don't want that in our URL, so we chop it off:
+                $path = substr($path, 6);
 
-            //     $dog->image = $path;
-            // }
+                $dog->image = $path;
+            }
 
         // }
 

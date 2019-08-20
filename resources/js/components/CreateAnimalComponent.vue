@@ -1,6 +1,19 @@
 <template>
     <b-container fluid>
-        <!-- form 1 with required and diff data types -->
+        
+        <b-form-group id="imageGroup" label-for="animalImage">
+            <b-form-file
+                id="animalImage"
+                accept="image/*"
+                v-model="form1.image"
+                placeholder="Choose an image..."
+                @change="onImageChange"/>
+
+            <b-col cols="6" offset="3" style="margin-top: 1rem;">
+                <img v-if="url" :src="url" width="100" alt="uploaded image">
+            </b-col>
+        </b-form-group>
+        
         <b-row>
             <b-col sm="2" offset="1">
                 <label>Name:</label>
@@ -91,7 +104,8 @@
                     species: '',
                     weight: '',
                     status: '',
-                    date_of_birth: ''
+                    date_of_birth: '',
+                    image: '',
                 },
 
                 form2: {
@@ -118,6 +132,8 @@
                     heartworm: '',
                     flea_tick: ''
                 },
+                
+                url: '',
 
                 statusOptions: [
                     { value: null, text: 'Please select an option' },
@@ -178,7 +194,8 @@
                     this.$notify({
                         group: 'notifications',
                         title: 'Success',
-                        text: this.form.name + ' added',
+                        type: 'success',
+                        text: 'Success',
                         duration: '6000',
                         width: '100%'
                     });
@@ -190,6 +207,14 @@
 
                 this.$router.push('/animals');
                     
+            },
+
+            onImageChange(e) {
+                const file = e.target.files[0];
+                
+                this.url = URL.createObjectURL(file);
+                
+                this.image = file;
             },
         }
     }

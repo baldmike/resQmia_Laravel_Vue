@@ -24,7 +24,7 @@
         <b-row>
             <b-col v-for="(animal, index) in filteredAnimals"
                     :key="index" cols="6" md="4" lg="2">
-                <b-card v-if="animal.profile" :img-src="'http://localhost:8000/storage/' + animal.image"  @click="showSelectedAnimalModal(animal)" animal="'animal.id'" img-alt="Selected animal image" class="animal-card">
+                <b-card v-if="animal.image" :img-src="'http://localhost:8000/storage/' + animal.image"  @click="showSelectedAnimalModal(animal)" animal="'animal.id'" img-alt="Selected animal image" class="animal-card">
                     <b-btn class="select-button" >{{ animal.name }}</b-btn>
                 </b-card>
                 <b-card v-else :img-src="'https://source.unsplash.com/random'" fluid-grow img-alt="No Selected animal image" class="animal-card">
@@ -34,6 +34,8 @@
             </b-col>
         </b-row>
 
+
+
         <div>
             <!-- Show Animal Modal Component -->
             <b-modal ref="selectedAnimalModal" :animal="'animal'" ok-only ok-title="Close" ok-variant="dark">
@@ -42,7 +44,18 @@
                 </b-row>
                 
                 
+                <b-form-group id="imageGroup" label-for="animalImage">
+                    <b-form-file
+                        id="animalImage"
+                        accept="image/*"
+                        v-model="form3.image"
+                        placeholder="Choose an image..."
+                        @change="onImageChange"/>
 
+                    <b-col cols="6" offset="3" style="margin-top: 1rem;">
+                        <img v-if="url" :src="url" width="100" alt="uploaded image">
+                    </b-col>
+                </b-form-group>
                 <b-row>
                     <b-col sm="3">
                         <label>Name:</label>
@@ -124,8 +137,6 @@
                 </b-row>
                 
             </b-modal>
-
-            
         </div>
     </div>
 </template>
@@ -145,7 +156,8 @@
                     species: '',
                     weight: '',
                     status: '',
-                    date_of_birth: ''
+                    date_of_birth: '',
+                    image: ''
                 },
 
                 form4: {
@@ -172,6 +184,7 @@
                     heartworm: '',
                     flea_tick: ''
                 },
+                url: '',
 
                 statusOptions: [
                     { value: null, text: 'Please select an option' },
@@ -305,7 +318,6 @@
             },
             hideModal () {
                 this.$refs.selectedAnimalModal.hide()
-                this.$refs.updateAnimalModal.hide()
             },
             showAll() {
                 this.$router.push('animals')
@@ -391,7 +403,15 @@
 
 
                 
-            }
+            },
+
+            onImageChange(e) {
+                const file = e.target.files[0];
+                
+                this.url = URL.createObjectURL(file);
+                
+                this.form3.image = file;
+            },
         },
 
         created() {

@@ -1862,6 +1862,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -1874,7 +1885,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         species: '',
         weight: '',
         status: '',
-        date_of_birth: ''
+        date_of_birth: '',
+        image: ''
       },
       form4: {
         exam: '',
@@ -1899,6 +1911,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         heartworm: '',
         flea_tick: ''
       },
+      url: '',
       statusOptions: [{
         value: null,
         text: 'Please select an option'
@@ -2036,7 +2049,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     hideModal: function hideModal() {
       this.$refs.selectedAnimalModal.hide();
-      this.$refs.updateAnimalModal.hide();
     },
     showAll: function showAll() {
       this.$router.push('animals');
@@ -2119,6 +2131,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         _this2.dogs = dogs.data.data;
       });
       this.hideModal();
+    },
+    onImageChange: function onImageChange(e) {
+      var file = e.target.files[0];
+      this.url = URL.createObjectURL(file);
+      this.form3.image = file;
     }
   },
   created: function created() {
@@ -2224,6 +2241,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2234,7 +2264,8 @@ __webpack_require__.r(__webpack_exports__);
         species: '',
         weight: '',
         status: '',
-        date_of_birth: ''
+        date_of_birth: '',
+        image: ''
       },
       form2: {
         exam: '',
@@ -2259,6 +2290,7 @@ __webpack_require__.r(__webpack_exports__);
         heartworm: '',
         flea_tick: ''
       },
+      url: '',
       statusOptions: [{
         value: null,
         text: 'Please select an option'
@@ -2327,7 +2359,8 @@ __webpack_require__.r(__webpack_exports__);
         _this.$notify({
           group: 'notifications',
           title: 'Success',
-          text: _this.form.name + ' added',
+          type: 'success',
+          text: 'Success',
           duration: '6000',
           width: '100%'
         });
@@ -2337,6 +2370,11 @@ __webpack_require__.r(__webpack_exports__);
         console.log(error);
       });
       this.$router.push('/animals');
+    },
+    onImageChange: function onImageChange(e) {
+      var file = e.target.files[0];
+      this.url = URL.createObjectURL(file);
+      this.image = file;
     }
   }
 });
@@ -51669,7 +51707,7 @@ var render = function() {
             "b-col",
             { key: index, attrs: { cols: "6", md: "4", lg: "2" } },
             [
-              animal.profile
+              animal.image
                 ? _c(
                     "b-card",
                     {
@@ -51751,6 +51789,48 @@ var render = function() {
                   )
                 ])
               ]),
+              _vm._v(" "),
+              _c(
+                "b-form-group",
+                { attrs: { id: "imageGroup", "label-for": "animalImage" } },
+                [
+                  _c("b-form-file", {
+                    attrs: {
+                      id: "animalImage",
+                      accept: "image/*",
+                      placeholder: "Choose an image..."
+                    },
+                    on: { change: _vm.onImageChange },
+                    model: {
+                      value: _vm.form3.image,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form3, "image", $$v)
+                      },
+                      expression: "form3.image"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "b-col",
+                    {
+                      staticStyle: { "margin-top": "1rem" },
+                      attrs: { cols: "6", offset: "3" }
+                    },
+                    [
+                      _vm.url
+                        ? _c("img", {
+                            attrs: {
+                              src: _vm.url,
+                              width: "100",
+                              alt: "uploaded image"
+                            }
+                          })
+                        : _vm._e()
+                    ]
+                  )
+                ],
+                1
+              ),
               _vm._v(" "),
               _c(
                 "b-row",
@@ -52016,6 +52096,44 @@ var render = function() {
     "b-container",
     { attrs: { fluid: "" } },
     [
+      _c(
+        "b-form-group",
+        { attrs: { id: "imageGroup", "label-for": "animalImage" } },
+        [
+          _c("b-form-file", {
+            attrs: {
+              id: "animalImage",
+              accept: "image/*",
+              placeholder: "Choose an image..."
+            },
+            on: { change: _vm.onImageChange },
+            model: {
+              value: _vm.form1.image,
+              callback: function($$v) {
+                _vm.$set(_vm.form1, "image", $$v)
+              },
+              expression: "form1.image"
+            }
+          }),
+          _vm._v(" "),
+          _c(
+            "b-col",
+            {
+              staticStyle: { "margin-top": "1rem" },
+              attrs: { cols: "6", offset: "3" }
+            },
+            [
+              _vm.url
+                ? _c("img", {
+                    attrs: { src: _vm.url, width: "100", alt: "uploaded image" }
+                  })
+                : _vm._e()
+            ]
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
       _c(
         "b-row",
         [
