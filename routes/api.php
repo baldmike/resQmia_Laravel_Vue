@@ -17,7 +17,7 @@ Route::post('/login', 'Api\AuthController@login');
 Route::post('/register', 'Api\AuthController@register');
 Route::post('/logout', 'Api\AuthController@logout');
 
-Route::apiResource('dogs', 'Api\DogController');
+Route::resource('dogs', 'Api\DogController');
 
 Route::middleware('auth:api')->group(function () {
     

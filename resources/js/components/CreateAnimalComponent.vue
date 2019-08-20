@@ -73,7 +73,7 @@
             </b-col> 
         </b-row>
 
-        <b-button @click='createAnimal'>Submit</b-button>
+        <b-button @click='createAnimal'>Save</b-button>
     </b-container>
 </template>
 

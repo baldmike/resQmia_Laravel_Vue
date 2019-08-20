@@ -1842,62 +1842,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -1905,14 +1849,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   name: 'animal',
   data: function data() {
     return {
-      form1: {
+      form3: {
         name: '',
         species: '',
         weight: '',
         status: '',
         date_of_birth: ''
       },
-      form2: {
+      form4: {
         exam: '',
         deworming_1: '',
         deworming_2: '',
@@ -1957,12 +1901,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       selectedAnimal: '',
       filterDogs: false,
       filterCats: false,
-      dogs: []
+      dogs: [],
+      dogId: ''
     };
   },
   mixins: [vuelidate__WEBPACK_IMPORTED_MODULE_1__["validationMixin"]],
   validations: {
-    form1: {
+    form3: {
       name: {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["required"],
         minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["minLength"])(3)
@@ -2012,31 +1957,32 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   }, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['isAuthenticated', 'currentUser'])),
   methods: {
     showSelectedAnimalModal: function showSelectedAnimalModal(item) {
-      this.form1.name = item.name;
-      this.form1.species = item.species;
-      this.form1.weight = item.weight;
-      this.form1.status = item.status;
-      this.form1.date_of_birth = item.date_of_birth;
-      this.form2.exam = item.exam;
-      this.form2.deworming_1 = item.deworming_1;
-      this.form2.deworming_2 = item.deworming_2;
-      this.form2.fecal_test = item.fecal_test;
-      this.form2.heartworm_test = item.heartworm_test;
-      this.form2.heartworm_result = item.heartworm_result;
-      this.form2.spay_neuter = item.spay_neuter;
-      this.form2.distemper_1 = item.distemper_1;
-      this.form2.distemper_2 = item.distemper_2;
-      this.form2.distemper_3 = item.distemper_3;
-      this.form2.lepto_1 = item.lepto_1;
-      this.form2.lepto_2 = item.lepto_2;
-      this.form2.bord = item.bord;
-      this.form2.civ = item.civ;
-      this.form2.civ_booster = item.civ_booster;
-      this.form2.rabies = item.rabies, this.form2.rabies_number = item.rabies_number;
-      this.form2.vet = item.vet;
-      this.form2.microchip = item.microchip;
-      this.form2.heartworm = item.heartworm;
-      this.form2.flea_tick = item.flea_tick;
+      this.dogId = item.id;
+      this.form3.name = item.name;
+      this.form3.species = item.species;
+      this.form3.weight = item.weight;
+      this.form3.status = item.status;
+      this.form3.date_of_birth = item.date_of_birth;
+      this.form4.exam = item.exam;
+      this.form4.deworming_1 = item.deworming_1;
+      this.form4.deworming_2 = item.deworming_2;
+      this.form4.fecal_test = item.fecal_test;
+      this.form4.heartworm_test = item.heartworm_test;
+      this.form4.heartworm_result = item.heartworm_result;
+      this.form4.spay_neuter = item.spay_neuter;
+      this.form4.distemper_1 = item.distemper_1;
+      this.form4.distemper_2 = item.distemper_2;
+      this.form4.distemper_3 = item.distemper_3;
+      this.form4.lepto_1 = item.lepto_1;
+      this.form4.lepto_2 = item.lepto_2;
+      this.form4.bord = item.bord;
+      this.form4.civ = item.civ;
+      this.form4.civ_booster = item.civ_booster;
+      this.form4.rabies = item.rabies, this.form4.rabies_number = item.rabies_number;
+      this.form4.vet = item.vet;
+      this.form4.microchip = item.microchip;
+      this.form4.heartworm = item.heartworm;
+      this.form4.flea_tick = item.flea_tick;
       this.selectedAnimal = item;
       this.$refs.selectedAnimalModal.show();
     },
@@ -2047,13 +1993,52 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     showAll: function showAll() {
       this.$router.push('animals');
     },
-    deleteAnimal: function deleteAnimal() {}
+    updateAnimal: function updateAnimal() {
+      var _this = this;
+
+      this.$v.form3.$touch();
+
+      if (this.$v.form3.$anyError) {
+        return;
+      }
+
+      var formData = new FormData();
+      Object.keys(this.form3).forEach(function (key) {
+        formData.append(key, _this.form3[key]);
+      });
+      Object.keys(this.form4).forEach(function (key) {
+        formData.append(key, _this.form4[key]);
+      });
+      formData.append('_method', 'PATCH');
+      console.log("FORM DATA UPDATE ----->  ");
+      console.log(formData);
+      axios.post("/api/dogs/" + this.dogId, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      }).then(function (_ref) {
+        var data = _ref.data;
+
+        _this.$notify({
+          group: 'notifications',
+          title: 'Success',
+          text: "Success",
+          duration: '6000',
+          width: '100%'
+        });
+
+        console.log("CreateAnimalComponent -- createAnimal -- createAnimal()" + data.toString());
+      })["catch"](function (error) {
+        console.log(error);
+      });
+      this.$router.go(0); // this.$router.push('/animals');
+    }
   },
   created: function created() {
-    var _this = this;
+    var _this2 = this;
 
     axios.get('/api/dogs').then(function (dogs) {
-      _this.dogs = dogs.data.data;
+      _this2.dogs = dogs.data.data;
     });
   }
 });
@@ -51614,15 +51599,15 @@ var render = function() {
                       _c("b-form-input", {
                         attrs: {
                           type: "text",
-                          state: !_vm.$v.form1.name.$invalid,
+                          state: !_vm.$v.form3.name.$invalid,
                           "aria-describedby": "name-live-feedback"
                         },
                         model: {
-                          value: _vm.$v.form1.name.$model,
+                          value: _vm.$v.form3.name.$model,
                           callback: function($$v) {
-                            _vm.$set(_vm.$v.form1.name, "$model", $$v)
+                            _vm.$set(_vm.$v.form3.name, "$model", $$v)
                           },
-                          expression: "$v.form1.name.$model"
+                          expression: "$v.form3.name.$model"
                         }
                       })
                     ],
@@ -51646,15 +51631,15 @@ var render = function() {
                       _c("b-form-input", {
                         attrs: {
                           type: "text",
-                          state: !_vm.$v.form1.species.$invalid,
+                          state: !_vm.$v.form3.species.$invalid,
                           "aria-describedby": "species-live-feedback"
                         },
                         model: {
-                          value: _vm.$v.form1.species.$model,
+                          value: _vm.$v.form3.species.$model,
                           callback: function($$v) {
-                            _vm.$set(_vm.$v.form1.species, "$model", $$v)
+                            _vm.$set(_vm.$v.form3.species, "$model", $$v)
                           },
-                          expression: "$v.form1.species.$model"
+                          expression: "$v.form3.species.$model"
                         }
                       })
                     ],
@@ -51677,15 +51662,15 @@ var render = function() {
                     [
                       _c("b-form-select", {
                         attrs: {
-                          state: !_vm.$v.form1.status.$invalid,
+                          state: !_vm.$v.form3.status.$invalid,
                           options: _vm.statusOptions
                         },
                         model: {
-                          value: _vm.form1.status,
+                          value: _vm.form3.status,
                           callback: function($$v) {
-                            _vm.$set(_vm.form1, "status", $$v)
+                            _vm.$set(_vm.form3, "status", $$v)
                           },
-                          expression: "form1.status"
+                          expression: "form3.status"
                         }
                       })
                     ],
@@ -51709,15 +51694,15 @@ var render = function() {
                       _c("b-form-input", {
                         attrs: {
                           type: "number",
-                          state: !_vm.$v.form1.weight.$invalid,
+                          state: !_vm.$v.form3.weight.$invalid,
                           "aria-describedby": "species-live-feedback"
                         },
                         model: {
-                          value: _vm.$v.form1.weight.$model,
+                          value: _vm.$v.form3.weight.$model,
                           callback: function($$v) {
-                            _vm.$set(_vm.$v.form1.weight, "$model", $$v)
+                            _vm.$set(_vm.$v.form3.weight, "$model", $$v)
                           },
-                          expression: "$v.form1.weight.$model"
+                          expression: "$v.form3.weight.$model"
                         }
                       })
                     ],
@@ -51741,15 +51726,15 @@ var render = function() {
                       _c("b-form-input", {
                         attrs: {
                           type: "date",
-                          state: !_vm.$v.form1.date_of_birth.$invalid,
+                          state: !_vm.$v.form3.date_of_birth.$invalid,
                           "aria-describedby": "species-live-feedback"
                         },
                         model: {
-                          value: _vm.$v.form1.date_of_birth.$model,
+                          value: _vm.$v.form3.date_of_birth.$model,
                           callback: function($$v) {
-                            _vm.$set(_vm.$v.form1.date_of_birth, "$model", $$v)
+                            _vm.$set(_vm.$v.form3.date_of_birth, "$model", $$v)
                           },
-                          expression: "$v.form1.date_of_birth.$model"
+                          expression: "$v.form3.date_of_birth.$model"
                         }
                       })
                     ],
@@ -51759,7 +51744,7 @@ var render = function() {
                 1
               ),
               _vm._v(" "),
-              _vm._l(_vm.form2, function(value, key) {
+              _vm._l(_vm.form4, function(value, key) {
                 return _c(
                   "b-row",
                   { key: key, staticClass: "my-1" },
@@ -51775,11 +51760,11 @@ var render = function() {
                         _c("b-form-input", {
                           attrs: { type: "text" },
                           model: {
-                            value: _vm.form2[key],
+                            value: _vm.form4[key],
                             callback: function($$v) {
-                              _vm.$set(_vm.form2, key, $$v)
+                              _vm.$set(_vm.form4, key, $$v)
                             },
-                            expression: "form2[key]"
+                            expression: "form4[key]"
                           }
                         })
                       ],
@@ -51788,70 +51773,13 @@ var render = function() {
                   ],
                   1
                 )
-              })
-            ],
-            2
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        [
-          _c(
-            "b-modal",
-            {
-              ref: "updateAnimalModal",
-              attrs: {
-                animal: "animal",
-                "ok-only": "",
-                "ok-title": "Close",
-                "ok-variant": "dark"
-              }
-            },
-            [
-              _c("h1", [_vm._v("this is the UPDATE modal")]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.selectedAnimal.name,
-                    expression: "selectedAnimal.name"
-                  }
-                ],
-                attrs: { type: "text" },
-                domProps: { value: _vm.selectedAnimal.name },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.selectedAnimal, "name", $event.target.value)
-                  }
-                }
               }),
               _vm._v(" "),
-              _c("li", { staticClass: "my-4" }, [
-                _vm._v(
-                  "From " +
-                    _vm._s(_vm.selectedAnimal.source) +
-                    " on " +
-                    _vm._s(
-                      _vm._f("moment")(
-                        _vm.selectedAnimal.created_at,
-                        "dddd, MMMM Do YYYY"
-                      )
-                    )
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "my-4" }, [
-                _vm._v(_vm._s(_vm.selectedAnimal.description))
+              _c("b-button", { on: { click: _vm.updateAnimal } }, [
+                _vm._v("Save")
               ])
-            ]
+            ],
+            2
           )
         ],
         1
@@ -52076,7 +52004,7 @@ var render = function() {
         )
       }),
       _vm._v(" "),
-      _c("b-button", { on: { click: _vm.createAnimal } }, [_vm._v("Submit")])
+      _c("b-button", { on: { click: _vm.createAnimal } }, [_vm._v("Save")])
     ],
     2
   )
