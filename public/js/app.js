@@ -1842,6 +1842,26 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -1901,6 +1921,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       selectedAnimal: '',
       filterDogs: false,
       filterCats: false,
+      filterAC: false,
+      filterFoster: false,
+      filterVet: false,
+      filterOther: false,
       dogs: [],
       dogId: ''
     };
@@ -1943,6 +1967,30 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       if (this.filterCats) {
         allDogs = this.dogs.filter(function (animal) {
           return animal.species.toLowerCase() === 'cat';
+        });
+      }
+
+      if (this.filterAC) {
+        allDogs = this.dogs.filter(function (animal) {
+          return animal.status.toLowerCase() === 'adoption_center';
+        });
+      }
+
+      if (this.filterFoster) {
+        allDogs = this.dogs.filter(function (animal) {
+          return animal.status.toLowerCase() === 'foster';
+        });
+      }
+
+      if (this.filterVet) {
+        allDogs = this.dogs.filter(function (animal) {
+          return animal.status.toLowerCase() === 'vet';
+        });
+      }
+
+      if (this.filterOther) {
+        allDogs = this.dogs.filter(function (animal) {
+          return animal.status.toLowerCase() === 'other';
         });
       }
 
@@ -2010,9 +2058,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         formData.append(key, _this.form4[key]);
       }); // allow for PUT/PATCH call
 
-      formData.append('_method', 'PATCH');
-      console.log("FORM DATA UPDATE ----->  ");
-      console.log(formData); // this is actually a PUT call
+      formData.append('_method', 'PATCH'); // this is actually a PUT call
 
       axios.post("/api/dogs/" + this.dogId, formData, {
         headers: {
@@ -2029,8 +2075,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           type: 'success',
           width: '100%'
         });
-
-        console.log("CreateAnimalComponent -- createAnimal -- createAnimal()" + data.toString());
       })["catch"](function (error) {
         console.log(error);
       }); // get refreshed list of dogs
@@ -2039,13 +2083,49 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         _this.dogs = dogs.data.data;
       });
       this.hideModal();
+    },
+    deleteAnimal: function deleteAnimal() {
+      var _this2 = this;
+
+      var conf = confirm('THIS WILL DELETE THIS RESOURCE! ARE YOU SURE?');
+
+      if (!conf) {
+        return;
+      }
+
+      var formData = new FormData();
+      formData.append('id', this.dogId);
+      formData.append('_method', 'DELETE');
+      axios.post("/api/dogs/" + this.dogId, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      }).then(function (_ref2) {
+        var data = _ref2.data;
+
+        _this2.$notify({
+          group: 'notifications',
+          title: 'Success',
+          text: "Success",
+          duration: '6000',
+          type: 'success',
+          width: '100%'
+        });
+      })["catch"](function (error) {
+        console.log(error);
+      }); // get refreshed list of dogs
+
+      axios.get('/api/dogs').then(function (dogs) {
+        _this2.dogs = dogs.data.data;
+      });
+      this.hideModal();
     }
   },
   created: function created() {
-    var _this2 = this;
+    var _this3 = this;
 
     axios.get('/api/dogs').then(function (dogs) {
-      _this2.dogs = dogs.data.data;
+      _this3.dogs = dogs.data.data;
     });
   }
 });
@@ -29645,7 +29725,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.body[data-v-6cd9df9e] {\n    padding: 20px;\n}\n.btn[data-v-6cd9df9e] {\n    text-align: center;\n    /* width: 24%; */\n}\n.center[data-v-6cd9df9e] {\n    text-align: center;\n}\n.search-bar[data-v-6cd9df9e] {\n    width: 100%;\n    text-align: center;\n}\n.select-button[data-v-6cd9df9e] {\n    width: 100%;\n    margin-bottom: 20px;\n    font-size: 10%;\n}\n.filter-button[data-v-6cd9df9e] {\n    width: 24%;\n}\n.animal-card[data-v-6cd9df9e] {\n    margin-bottom: 20px;\n    padding: .6rem;\n}\n.card-img[data-v-6cd9df9e] {\n    height: 12rem;\n}\n", ""]);
+exports.push([module.i, "\n.body[data-v-6cd9df9e] {\n    padding: 20px;\n}\n.btn[data-v-6cd9df9e] {\n    text-align: center;\n    width: 100%;\n}\n.center[data-v-6cd9df9e] {\n    text-align: center;\n}\n.search-bar[data-v-6cd9df9e] {\n    width: 100%;\n    text-align: center;\n}\n.select-button[data-v-6cd9df9e] {\n    width: 100%;\n    margin-bottom: 20px;\n    font-size: 10%;\n}\n.filter-button[data-v-6cd9df9e] {\n    width: 24%;\n}\n.animal-card[data-v-6cd9df9e] {\n    margin-bottom: 20px;\n    padding: .6rem;\n}\n.card-img[data-v-6cd9df9e] {\n    height: 12rem;\n}\n", ""]);
 
 // exports
 
@@ -51442,31 +51522,39 @@ var render = function() {
             { attrs: { cols: "12", md: "4" } },
             [
               _c(
-                "b-form-checkbox",
-                {
-                  model: {
-                    value: _vm.filterDogs,
-                    callback: function($$v) {
-                      _vm.filterDogs = $$v
+                "b-row",
+                [
+                  _c(
+                    "b-form-checkbox",
+                    {
+                      staticClass: "ml-auto mr-auto",
+                      model: {
+                        value: _vm.filterDogs,
+                        callback: function($$v) {
+                          _vm.filterDogs = $$v
+                        },
+                        expression: "filterDogs"
+                      }
                     },
-                    expression: "filterDogs"
-                  }
-                },
-                [_vm._v("Dogs")]
-              ),
-              _vm._v(" "),
-              _c(
-                "b-form-checkbox",
-                {
-                  model: {
-                    value: _vm.filterCats,
-                    callback: function($$v) {
-                      _vm.filterCats = $$v
+                    [_vm._v("Dogs")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "b-form-checkbox",
+                    {
+                      staticClass: "ml-auto mr-auto",
+                      model: {
+                        value: _vm.filterCats,
+                        callback: function($$v) {
+                          _vm.filterCats = $$v
+                        },
+                        expression: "filterCats"
+                      }
                     },
-                    expression: "filterCats"
-                  }
-                },
-                [_vm._v("Cats")]
+                    [_vm._v("Cats")]
+                  )
+                ],
+                1
               )
             ],
             1
@@ -51496,7 +51584,80 @@ var render = function() {
                 }
               })
             ])
-          ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "b-col",
+            { attrs: { cols: "12", md: "4" } },
+            [
+              _c(
+                "b-row",
+                [
+                  _c(
+                    "b-form-checkbox",
+                    {
+                      staticClass: "ml-auto mr-auto",
+                      model: {
+                        value: _vm.filterAC,
+                        callback: function($$v) {
+                          _vm.filterAC = $$v
+                        },
+                        expression: "filterAC"
+                      }
+                    },
+                    [_vm._v("AC")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "b-form-checkbox",
+                    {
+                      staticClass: "ml-auto mr-auto",
+                      model: {
+                        value: _vm.filterFoster,
+                        callback: function($$v) {
+                          _vm.filterFoster = $$v
+                        },
+                        expression: "filterFoster"
+                      }
+                    },
+                    [_vm._v("Foster")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "b-form-checkbox",
+                    {
+                      staticClass: "ml-auto mr-auto",
+                      model: {
+                        value: _vm.filterVet,
+                        callback: function($$v) {
+                          _vm.filterVet = $$v
+                        },
+                        expression: "filterVet"
+                      }
+                    },
+                    [_vm._v("Vet/Hospital")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "b-form-checkbox",
+                    {
+                      staticClass: "ml-auto mr-auto",
+                      model: {
+                        value: _vm.filterOther,
+                        callback: function($$v) {
+                          _vm.filterOther = $$v
+                        },
+                        expression: "filterOther"
+                      }
+                    },
+                    [_vm._v("Other")]
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
         ],
         1
       ),
@@ -51581,21 +51742,20 @@ var render = function() {
               }
             },
             [
-              _c("h4", { staticClass: "my-2" }, [
-                _vm._v(
-                  _vm._s(_vm.selectedAnimal.name) +
-                    ", " +
-                    _vm._s(_vm.selectedAnimal.species) +
-                    ", " +
-                    _vm._s(_vm.selectedAnimal.weight) +
-                    " pounds"
-                )
+              _c("b-row", [
+                _c("h4", { staticClass: "my-2" }, [
+                  _vm._v(
+                    _vm._s(_vm.selectedAnimal.name) +
+                      ", " +
+                      _vm._s(_vm.selectedAnimal.species)
+                  )
+                ])
               ]),
               _vm._v(" "),
               _c(
                 "b-row",
                 [
-                  _c("b-col", { attrs: { sm: "2", offset: "1" } }, [
+                  _c("b-col", { attrs: { sm: "3" } }, [
                     _c("label", [_vm._v("Name:")])
                   ]),
                   _vm._v(" "),
@@ -51627,7 +51787,7 @@ var render = function() {
               _c(
                 "b-row",
                 [
-                  _c("b-col", { attrs: { sm: "2", offset: "1" } }, [
+                  _c("b-col", { attrs: { sm: "3" } }, [
                     _c("label", [_vm._v("Species:")])
                   ]),
                   _vm._v(" "),
@@ -51659,7 +51819,7 @@ var render = function() {
               _c(
                 "b-row",
                 [
-                  _c("b-col", { attrs: { sm: "2", offset: "1" } }, [
+                  _c("b-col", { attrs: { sm: "3" } }, [
                     _c("label", [_vm._v("Status:")])
                   ]),
                   _vm._v(" "),
@@ -51690,7 +51850,7 @@ var render = function() {
               _c(
                 "b-row",
                 [
-                  _c("b-col", { attrs: { sm: "2", offset: "1" } }, [
+                  _c("b-col", { attrs: { sm: "3" } }, [
                     _c("label", [_vm._v("Weight:")])
                   ]),
                   _vm._v(" "),
@@ -51722,7 +51882,7 @@ var render = function() {
               _c(
                 "b-row",
                 [
-                  _c("b-col", { attrs: { sm: "2", offset: "1" } }, [
+                  _c("b-col", { attrs: { sm: "3" } }, [
                     _c("label", [_vm._v("Date of Birth:")])
                   ]),
                   _vm._v(" "),
@@ -51756,13 +51916,13 @@ var render = function() {
                   "b-row",
                   { key: key, staticClass: "my-1" },
                   [
-                    _c("b-col", { attrs: { sm: "2" } }, [
+                    _c("b-col", { attrs: { sm: "4" } }, [
                       _c("label", [_vm._v(_vm._s(key) + ":")])
                     ]),
                     _vm._v(" "),
                     _c(
                       "b-col",
-                      { attrs: { sm: "10" } },
+                      { attrs: { sm: "8" } },
                       [
                         _c("b-form-input", {
                           attrs: { type: "text" },
@@ -51782,9 +51942,44 @@ var render = function() {
                 )
               }),
               _vm._v(" "),
-              _c("b-button", { on: { click: _vm.updateAnimal } }, [
-                _vm._v("Save")
-              ])
+              _c(
+                "b-row",
+                { staticStyle: { "text-align": "center" } },
+                [
+                  _c(
+                    "b-col",
+                    [
+                      _c(
+                        "b-button",
+                        {
+                          staticClass: "btn",
+                          attrs: { variant: "success" },
+                          on: { click: _vm.updateAnimal }
+                        },
+                        [_vm._v("Save")]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "b-col",
+                    [
+                      _c(
+                        "b-button",
+                        {
+                          staticClass: "btn",
+                          attrs: { variant: "danger" },
+                          on: { click: _vm.deleteAnimal }
+                        },
+                        [_vm._v("DELETE")]
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
             ],
             2
           )

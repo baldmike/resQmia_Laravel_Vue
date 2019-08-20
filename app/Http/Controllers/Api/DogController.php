@@ -22,7 +22,7 @@ class DogController extends Controller
      */
     public function index()
     {
-        return DogResource::collection(Dog::orderBy('created_at', 'asc')->get());
+        return DogResource::collection(Dog::orderBy('name', 'asc')->get());
     }
 
     /**
@@ -182,6 +182,8 @@ class DogController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Dog::where('id', $id)->delete();
+        return response()->json(null, Response::HTTP_OK);
+
     }
 }

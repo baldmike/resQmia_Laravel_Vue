@@ -2,13 +2,23 @@
     <div class="body">
         <b-row>
             <b-col cols="12" md="4">
-                <b-form-checkbox v-model="filterDogs">Dogs</b-form-checkbox>
-                <b-form-checkbox v-model="filterCats">Cats</b-form-checkbox>
+                <b-row>
+                    <b-form-checkbox class="ml-auto mr-auto" v-model="filterDogs">Dogs</b-form-checkbox>
+                    <b-form-checkbox class="ml-auto mr-auto" v-model="filterCats">Cats</b-form-checkbox>
+                </b-row>
             </b-col>
             <b-col cols="12" md="4">
                 <div class="my-3">
                     <input class="search-bar" type="text" v-model="search" placeholder="Search By Name">
                 </div>
+            </b-col>
+            <b-col cols="12" md="4">
+                <b-row>
+                    <b-form-checkbox class="ml-auto mr-auto" v-model="filterAC">AC</b-form-checkbox>
+                    <b-form-checkbox class="ml-auto mr-auto" v-model="filterFoster">Foster</b-form-checkbox>
+                    <b-form-checkbox class="ml-auto mr-auto" v-model="filterVet">Vet/Hospital</b-form-checkbox>
+                    <b-form-checkbox class="ml-auto mr-auto" v-model="filterOther">Other</b-form-checkbox>
+                </b-row>
             </b-col>
         </b-row>
         <b-row>
@@ -16,11 +26,9 @@
                     :key="index" cols="6" md="4" lg="2">
                 <b-card v-if="animal.profile" :img-src="'http://localhost:8000/storage/' + animal.image"  @click="showSelectedAnimalModal(animal)" animal="'animal.id'" img-alt="Selected animal image" class="animal-card">
                     <b-btn class="select-button" >{{ animal.name }}</b-btn>
-                    <!-- <b-btn class="select-button" @click="showUpdateAnimalModal(animal)" animal="'animal.id'">Update</b-btn> -->
                 </b-card>
                 <b-card v-else :img-src="'https://source.unsplash.com/random'" fluid-grow img-alt="No Selected animal image" class="animal-card">
                     <b-btn class="select-button" @click="showSelectedAnimalModal(animal)" animal="'animal.id'">{{ animal.name }}</b-btn>
-                    <!-- <b-btn class="select-button" @click="showUpdateAnimalModal(animal)" animal="'animal.id'">Update</b-btn> -->
                 </b-card>
                 
             </b-col>
@@ -29,11 +37,14 @@
         <div>
             <!-- Show Animal Modal Component -->
             <b-modal ref="selectedAnimalModal" :animal="'animal'" ok-only ok-title="Close" ok-variant="dark">
-                <h4 class="my-2">{{ selectedAnimal.name }}, {{ selectedAnimal.species }}, {{ selectedAnimal.weight }} pounds</h4>
+                <b-row>
+                    <h4 class="my-2">{{ selectedAnimal.name }}, {{ selectedAnimal.species }}</h4>
+                </b-row>
+                
                 
 
                 <b-row>
-                    <b-col sm="2" offset="1">
+                    <b-col sm="3">
                         <label>Name:</label>
                     </b-col>
                     <b-col sm="9">
@@ -46,7 +57,7 @@
                 </b-row>
 
                 <b-row>
-                    <b-col sm="2" offset="1">
+                    <b-col sm="3">
                         <label>Species:</label>
                     </b-col>
                     <b-col sm="9">
@@ -59,7 +70,7 @@
                 </b-row>
 
                 <b-row>
-                    <b-col sm="2" offset="1">
+                    <b-col sm="3">
                         <label>Status:</label>
                     </b-col>
                     <b-col sm="9">
@@ -69,7 +80,7 @@
                 </b-row>
 
                 <b-row>
-                    <b-col sm="2" offset="1">
+                    <b-col sm="3">
                         <label>Weight:</label>
                     </b-col>
                     <b-col sm="9">
@@ -82,7 +93,7 @@
                 </b-row>
 
                 <b-row>
-                    <b-col sm="2" offset="1">
+                    <b-col sm="3">
                         <label>Date of Birth:</label>
                     </b-col>
                     <b-col sm="9">
@@ -94,15 +105,24 @@
                     </b-col>
                 </b-row>
                 <b-row class="my-1" v-for="(value, key) in form4" :key="key">
-                    <b-col sm="2">
+                    <b-col sm="4">
                         <label>{{ key }}:</label>
                     </b-col>
-                    <b-col sm="10">
+                    <b-col sm="8">
                         <b-form-input type="text" v-model="form4[key]"></b-form-input>
                     </b-col> 
                 </b-row>
 
-                <b-button @click='updateAnimal'>Save</b-button>
+                <b-row style="text-align: center;">
+                    <b-col>
+                        <b-button class="btn" @click='updateAnimal' variant="success">Save</b-button>
+                    </b-col>
+                    <b-col>
+                        <b-button class="btn" @click='deleteAnimal' variant="danger">DELETE</b-button>
+                    </b-col>
+                    
+                </b-row>
+                
             </b-modal>
 
             
@@ -167,6 +187,10 @@
                 selectedAnimal: '',
                 filterDogs: false,
                 filterCats: false,
+                filterAC: false,
+                filterFoster: false,
+                filterVet: false,
+                filterOther: false,
                 dogs: [],
                 dogId: ''
 
@@ -215,6 +239,22 @@
 
                 if (this.filterCats) {
                     allDogs = this.dogs.filter(animal => animal.species.toLowerCase() === 'cat')
+                }
+
+                if (this.filterAC) {
+                    allDogs = this.dogs.filter(animal => animal.status.toLowerCase() === 'adoption_center')
+                }
+
+                if (this.filterFoster) {
+                    allDogs = this.dogs.filter(animal => animal.status.toLowerCase() === 'foster')
+                }
+
+                if (this.filterVet) {
+                    allDogs = this.dogs.filter(animal => animal.status.toLowerCase() === 'vet')
+                }
+
+                if (this.filterOther) {
+                    allDogs = this.dogs.filter(animal => animal.status.toLowerCase() === 'other')
                 }
 
                 if (this.search) {
@@ -290,9 +330,6 @@
                 // allow for PUT/PATCH call
                 formData.append('_method', 'PATCH');
 
-                console.log("FORM DATA UPDATE ----->  ");
-                console.log(formData);
-
                 // this is actually a PUT call
                 axios.post("/api/dogs/" + this.dogId, formData, {headers: {'Content-Type': 'multipart/form-data'}}).then(({data}) => {
                     
@@ -305,7 +342,6 @@
                         width: '100%'
                     });
                         
-                        console.log("CreateAnimalComponent -- createAnimal -- createAnimal()" + data.toString());
                 }).catch((error) => {
                         console.log(error);
                 })
@@ -318,6 +354,43 @@
                 this.hideModal();
                     
             },
+            deleteAnimal() {
+                let conf = confirm('THIS WILL DELETE THIS RESOURCE! ARE YOU SURE?')
+                if (!conf) {
+                    return;
+                }
+
+                let formData = new FormData();
+
+                formData.append('id', this.dogId)
+                formData.append('_method', 'DELETE');
+
+                axios.post("/api/dogs/" + this.dogId, formData, {headers: {'Content-Type': 'multipart/form-data'}}).then(({data}) => {
+                    
+                    this.$notify({
+                        group: 'notifications',
+                        title: 'Success',
+                        text: "Success",
+                        duration: '6000',
+                        type: 'success',
+                        width: '100%'
+                    });
+                        
+                }).catch((error) => {
+                        console.log(error);
+                })
+
+
+                // get refreshed list of dogs
+                axios.get('/api/dogs').then((dogs) => {
+                    this.dogs = dogs.data.data;
+                })
+
+                this.hideModal();
+
+
+                
+            }
         },
 
         created() {
@@ -335,7 +408,7 @@
     }
     .btn {
         text-align: center;
-        /* width: 24%; */
+        width: 100%;
     }
     .center {
         text-align: center;
