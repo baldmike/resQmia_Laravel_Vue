@@ -40,7 +40,7 @@
 
         <div>
             <!-- Show Animal Modal Component -->
-            <b-modal ref="selectedAnimalModal" :animal="'animal'" ok-only ok-title="Close" ok-variant="dark">
+            <b-modal ref="selectedAnimalModal" :animal="'animal'" ok-only ok-title="Close" ok-variant="dark" hide-footer no-close-on-backdrop>
                 <b-row>
                     <b-col>
                         <h4 class="headline">{{ selectedAnimal.name }} - {{ selectedAnimal.species }} - {{ selectedAnimal.status }}</h4>
@@ -496,6 +496,7 @@
         width: 100%;
         margin-bottom: 20px;
         font-size: 10%;
+        color: white;
     }
     .filter-button {
         width: 24%;
