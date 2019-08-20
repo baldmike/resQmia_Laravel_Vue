@@ -36,15 +36,19 @@
 
 
 
+
+
         <div>
             <!-- Show Animal Modal Component -->
             <b-modal ref="selectedAnimalModal" :animal="'animal'" ok-only ok-title="Close" ok-variant="dark">
                 <b-row>
-                    <h4 class="my-2">{{ selectedAnimal.name }}, {{ selectedAnimal.species }}</h4>
+                    <b-col>
+                        <h4 class="headline">{{ selectedAnimal.name }} - {{ selectedAnimal.species }} - {{ selectedAnimal.status }}</h4>
+                    </b-col>
                 </b-row>
                 
                 
-                <b-form-group id="imageGroup" label-for="animalImage">
+                <b-row class="input">
                     <b-form-file
                         id="animalImage"
                         accept="image/*"
@@ -55,8 +59,8 @@
                     <b-col cols="6" offset="3" style="margin-top: 1rem;">
                         <img v-if="url" :src="url" width="100" alt="uploaded image">
                     </b-col>
-                </b-form-group>
-                <b-row>
+                </b-row>
+                <b-row class="input">
                     <b-col sm="3">
                         <label>Name:</label>
                     </b-col>
@@ -69,7 +73,7 @@
                     </b-col>
                 </b-row>
 
-                <b-row>
+                <b-row class="input">
                     <b-col sm="3">
                         <label>Species:</label>
                     </b-col>
@@ -82,7 +86,7 @@
                     </b-col>
                 </b-row>
 
-                <b-row>
+                <b-row class="input">
                     <b-col sm="3">
                         <label>Status:</label>
                     </b-col>
@@ -92,7 +96,7 @@
                     </b-col>
                 </b-row>
 
-                <b-row>
+                <b-row class="input">
                     <b-col sm="3">
                         <label>Weight:</label>
                     </b-col>
@@ -105,7 +109,7 @@
                     </b-col>
                 </b-row>
 
-                <b-row>
+                <b-row class="input">
                     <b-col sm="3">
                         <label>Date of Birth:</label>
                     </b-col>
@@ -118,7 +122,7 @@
                     </b-col>
                 </b-row>
 
-                <b-row class="my-1" v-for="(value, key) in form4" :key="key">
+                <b-row class="input" v-for="(value, key) in form4" :key="key">
                     <b-col sm="4">
                         <label>{{ key }}:</label>
                     </b-col>
@@ -136,11 +140,10 @@
                     </b-col>
 
                     <b-col>
-                        <b-button class="btn" @click='printRecord' variant="success">Print</b-button>
+                        <b-button class="btn" @click='printRecord' variant="primary">Print</b-button>
                     </b-col>
                     
                 </b-row>
-                
             </b-modal>
         </div>
 
@@ -178,8 +181,9 @@
                     <li>Flea/Tick Prev: {{ selectedAnimal.flea_tick }}</li>
                 </b-col>
             </b-row>
-            
         </div>
+
+
     </div>
 </template>
 
@@ -507,6 +511,10 @@
         display: none;
     }
 
+    .headline {
+        text-align: center;
+    }
+
     li {
         padding: 10px;
         border: 1px solid black;
@@ -515,5 +523,9 @@
     .button-row {
         margin-top: 100px;
         text-align: center;
+    }
+
+    .input {
+        margin: 10px;
     }
 </style>

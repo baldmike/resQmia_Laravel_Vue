@@ -1915,6 +1915,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -29811,7 +29815,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.body[data-v-6cd9df9e] {\n    padding: 20px;\n}\n.btn[data-v-6cd9df9e] {\n    text-align: center;\n    width: 100%;\n}\n.center[data-v-6cd9df9e] {\n    text-align: center;\n}\n.search-bar[data-v-6cd9df9e] {\n    width: 100%;\n    text-align: center;\n}\n.select-button[data-v-6cd9df9e] {\n    width: 100%;\n    margin-bottom: 20px;\n    font-size: 10%;\n}\n.filter-button[data-v-6cd9df9e] {\n    width: 24%;\n}\n.animal-card[data-v-6cd9df9e] {\n    margin-bottom: 20px;\n    padding: .6rem;\n}\n.card-img[data-v-6cd9df9e] {\n    height: 12rem;\n}\n#printout[data-v-6cd9df9e] {\n    display: none;\n}\nli[data-v-6cd9df9e] {\n    padding: 10px;\n    border: 1px solid black;\n}\n.button-row[data-v-6cd9df9e] {\n    margin-top: 100px;\n    text-align: center;\n}\n", ""]);
+exports.push([module.i, "\n.body[data-v-6cd9df9e] {\n    padding: 20px;\n}\n.btn[data-v-6cd9df9e] {\n    text-align: center;\n    width: 100%;\n}\n.center[data-v-6cd9df9e] {\n    text-align: center;\n}\n.search-bar[data-v-6cd9df9e] {\n    width: 100%;\n    text-align: center;\n}\n.select-button[data-v-6cd9df9e] {\n    width: 100%;\n    margin-bottom: 20px;\n    font-size: 10%;\n}\n.filter-button[data-v-6cd9df9e] {\n    width: 24%;\n}\n.animal-card[data-v-6cd9df9e] {\n    margin-bottom: 20px;\n    padding: .6rem;\n}\n.card-img[data-v-6cd9df9e] {\n    height: 12rem;\n}\n#printout[data-v-6cd9df9e] {\n    display: none;\n}\n.headline[data-v-6cd9df9e] {\n    text-align: center;\n}\nli[data-v-6cd9df9e] {\n    padding: 10px;\n    border: 1px solid black;\n}\n.button-row[data-v-6cd9df9e] {\n    margin-top: 100px;\n    text-align: center;\n}\n.input[data-v-6cd9df9e] {\n    margin: 10px;\n}\n", ""]);
 
 // exports
 
@@ -51850,19 +51854,27 @@ var render = function() {
               }
             },
             [
-              _c("b-row", [
-                _c("h4", { staticClass: "my-2" }, [
-                  _vm._v(
-                    _vm._s(_vm.selectedAnimal.name) +
-                      ", " +
-                      _vm._s(_vm.selectedAnimal.species)
-                  )
-                ])
-              ]),
+              _c(
+                "b-row",
+                [
+                  _c("b-col", [
+                    _c("h4", { staticClass: "headline" }, [
+                      _vm._v(
+                        _vm._s(_vm.selectedAnimal.name) +
+                          " - " +
+                          _vm._s(_vm.selectedAnimal.species) +
+                          " - " +
+                          _vm._s(_vm.selectedAnimal.status)
+                      )
+                    ])
+                  ])
+                ],
+                1
+              ),
               _vm._v(" "),
               _c(
-                "b-form-group",
-                { attrs: { id: "imageGroup", "label-for": "animalImage" } },
+                "b-row",
+                { staticClass: "input" },
                 [
                   _c("b-form-file", {
                     attrs: {
@@ -51904,6 +51916,7 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "b-row",
+                { staticClass: "input" },
                 [
                   _c("b-col", { attrs: { sm: "3" } }, [
                     _c("label", [_vm._v("Name:")])
@@ -51936,6 +51949,7 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "b-row",
+                { staticClass: "input" },
                 [
                   _c("b-col", { attrs: { sm: "3" } }, [
                     _c("label", [_vm._v("Species:")])
@@ -51968,6 +51982,7 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "b-row",
+                { staticClass: "input" },
                 [
                   _c("b-col", { attrs: { sm: "3" } }, [
                     _c("label", [_vm._v("Status:")])
@@ -51999,6 +52014,7 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "b-row",
+                { staticClass: "input" },
                 [
                   _c("b-col", { attrs: { sm: "3" } }, [
                     _c("label", [_vm._v("Weight:")])
@@ -52031,6 +52047,7 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "b-row",
+                { staticClass: "input" },
                 [
                   _c("b-col", { attrs: { sm: "3" } }, [
                     _c("label", [_vm._v("Date of Birth:")])
@@ -52064,7 +52081,7 @@ var render = function() {
               _vm._l(_vm.form4, function(value, key) {
                 return _c(
                   "b-row",
-                  { key: key, staticClass: "my-1" },
+                  { key: key, staticClass: "input" },
                   [
                     _c("b-col", { attrs: { sm: "4" } }, [
                       _c("label", [_vm._v(_vm._s(key) + ":")])
@@ -52138,7 +52155,7 @@ var render = function() {
                         "b-button",
                         {
                           staticClass: "btn",
-                          attrs: { variant: "success" },
+                          attrs: { variant: "primary" },
                           on: { click: _vm.printRecord }
                         },
                         [_vm._v("Print")]
@@ -52615,7 +52632,7 @@ var render = function() {
     [
       _c(
         "b-col",
-        { attrs: { cols: "12" } },
+        { attrs: { cols: "12", md: "4", "offset-md": "4" } },
         [
           _c(
             "b-form",
