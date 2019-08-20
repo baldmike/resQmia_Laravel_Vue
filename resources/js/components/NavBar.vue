@@ -3,7 +3,7 @@
         <b-navbar toggleable="md" type="light" variant="light" fixed="top">
             <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
 
-            <b-navbar-brand to="/animals">Home</b-navbar-brand>
+            <b-navbar-brand to="/animals">resQmia</b-navbar-brand>
             <b-collapse is-nav id="nav_collapse">
 
                 <b-navbar-nav>

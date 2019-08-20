@@ -52539,7 +52539,9 @@ var render = function() {
         [
           _c("b-navbar-toggle", { attrs: { target: "nav_collapse" } }),
           _vm._v(" "),
-          _c("b-navbar-brand", { attrs: { to: "/animals" } }, [_vm._v("Home")]),
+          _c("b-navbar-brand", { attrs: { to: "/animals" } }, [
+            _vm._v("resQmia")
+          ]),
           _vm._v(" "),
           _c(
             "b-collapse",
