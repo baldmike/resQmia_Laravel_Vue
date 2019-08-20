@@ -117,6 +117,7 @@
                                 aria-describedby="species-live-feedback"></b-form-input>
                     </b-col>
                 </b-row>
+
                 <b-row class="my-1" v-for="(value, key) in form4" :key="key">
                     <b-col sm="4">
                         <label>{{ key }}:</label>
@@ -126,17 +127,58 @@
                     </b-col> 
                 </b-row>
 
-                <b-row style="text-align: center;">
+                <b-row style="text-align: center;" class="button-row">
                     <b-col>
                         <b-button class="btn" @click='updateAnimal' variant="success">Save</b-button>
                     </b-col>
                     <b-col>
                         <b-button class="btn" @click='deleteAnimal' variant="danger">DELETE</b-button>
                     </b-col>
+
+                    <b-col>
+                        <b-button class="btn" @click='printRecord' variant="success">Print</b-button>
+                    </b-col>
                     
                 </b-row>
                 
             </b-modal>
+        </div>
+
+
+
+        <div id="printout">
+            <b-row>
+                <b-col cols="4" offset="4">
+                    <li>Name: {{ selectedAnimal.name }}</li>
+                    <li>Species: {{ selectedAnimal.species }}</li>
+                    <li>Weight: {{ selectedAnimal.weight }}</li>
+                    <li>Status: {{ selectedAnimal.status }}</li>
+                    <li>DOB: {{ selectedAnimal.date_of_birth }}</li>
+
+                    <li>Vet Exam info: {{ selectedAnimal.exam }}</li>
+                    <li>Deworming 1: {{ selectedAnimal.deworming_1 }}</li>
+                    <li>Deworming 2: {{ selectedAnimal.deworming_2 }}</li>
+                    <li>Fecal Test: {{ selectedAnimal.fecal_test }}</li>
+                    <li>Heartworm Test: {{ selectedAnimal.heartworm_test }}</li>
+                    <li>HW Result: {{ selectedAnimal.heartworm_result }}</li>
+                    <li>Spayed/Neutered: {{ selectedAnimal.spay_neuter }}</li>
+                    <li>Distemper 1: {{ selectedAnimal.distemper_1 }}</li>
+                    <li>Distemper 2: {{ selectedAnimal.distemper_2 }}</li>
+                    <li>Distemper 3: {{ selectedAnimal.distemper_3 }}</li>
+                    <li>Lepto 1: {{ selectedAnimal.lepto_1 }}</li>
+                    <li>Lepto 2: {{ selectedAnimal.lepto_2 }}</li>
+                    <li>Bordatella: {{ selectedAnimal.bord }}</li>
+                    <li>Canine Influenza: {{ selectedAnimal.civ }}</li>
+                    <li>CIV Booster: {{ selectedAnimal.civ_booster }}</li>
+                    <li>Rabies: {{ selectedAnimal.rabies }}</li>
+                    <li>Rabies Number: {{ selectedAnimal.rabies_number }}</li>
+                    <li>Vet: {{ selectedAnimal.vet }}</li>
+                    <li>Microchip: {{ selectedAnimal.microchip }}</li>
+                    <li>Heartworm Prev: {{ selectedAnimal.heartworm }}</li>
+                    <li>Flea/Tick Prev: {{ selectedAnimal.flea_tick }}</li>
+                </b-col>
+            </b-row>
+            
         </div>
     </div>
 </template>
@@ -205,7 +247,8 @@
                 filterVet: false,
                 filterOther: false,
                 dogs: [],
-                dogId: ''
+                dogId: '',
+                output: null,
 
 
                 
@@ -412,6 +455,12 @@
                 
                 this.form3.image = file;
             },
+
+            printRecord() {
+                this.$htmlToPaper('printout', () => {
+                    console.log("printing done");
+                })
+            }
         },
 
         created() {
@@ -452,5 +501,19 @@
     }
     .card-img {
         height: 12rem;
+    }
+
+    #printout {
+        display: none;
+    }
+
+    li {
+        padding: 10px;
+        border: 1px solid black;
+    }
+
+    .button-row {
+        margin-top: 100px;
+        text-align: center;
     }
 </style>

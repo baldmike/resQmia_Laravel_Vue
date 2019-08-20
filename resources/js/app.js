@@ -12,9 +12,24 @@ import Vuelidate from "vuelidate";
 import 'bootstrap/dist/css/bootstrap.css'
 
 
+import VueHtmlToPaper from 'vue-html-to-paper';
+ 
+const options = {
+  name: '_blank',
+  specs: [
+    'fullscreen=yes',
+    'titlebar=yes',
+    'scrollbars=yes'
+  ],
+  styles: [
+    'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css',
+    'https://unpkg.com/kidlat-css/css/kidlat.css'
+  ]
+}
 
 require('./bootstrap')
 
+Vue.use(VueHtmlToPaper, options);
 Vue.use(VueRouter)
 Vue.use(BootstrapVue)
 Vue.use(VueCookie)

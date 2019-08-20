@@ -1873,6 +1873,48 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -1939,7 +1981,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       filterVet: false,
       filterOther: false,
       dogs: [],
-      dogId: ''
+      dogId: '',
+      output: null
     };
   },
   mixins: [vuelidate__WEBPACK_IMPORTED_MODULE_1__["validationMixin"]],
@@ -2136,6 +2179,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var file = e.target.files[0];
       this.url = URL.createObjectURL(file);
       this.form3.image = file;
+    },
+    printRecord: function printRecord() {
+      this.$htmlToPaper('printout', function () {
+        console.log("printing done");
+      });
     }
   },
   created: function created() {
@@ -29763,7 +29811,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.body[data-v-6cd9df9e] {\n    padding: 20px;\n}\n.btn[data-v-6cd9df9e] {\n    text-align: center;\n    width: 100%;\n}\n.center[data-v-6cd9df9e] {\n    text-align: center;\n}\n.search-bar[data-v-6cd9df9e] {\n    width: 100%;\n    text-align: center;\n}\n.select-button[data-v-6cd9df9e] {\n    width: 100%;\n    margin-bottom: 20px;\n    font-size: 10%;\n}\n.filter-button[data-v-6cd9df9e] {\n    width: 24%;\n}\n.animal-card[data-v-6cd9df9e] {\n    margin-bottom: 20px;\n    padding: .6rem;\n}\n.card-img[data-v-6cd9df9e] {\n    height: 12rem;\n}\n", ""]);
+exports.push([module.i, "\n.body[data-v-6cd9df9e] {\n    padding: 20px;\n}\n.btn[data-v-6cd9df9e] {\n    text-align: center;\n    width: 100%;\n}\n.center[data-v-6cd9df9e] {\n    text-align: center;\n}\n.search-bar[data-v-6cd9df9e] {\n    width: 100%;\n    text-align: center;\n}\n.select-button[data-v-6cd9df9e] {\n    width: 100%;\n    margin-bottom: 20px;\n    font-size: 10%;\n}\n.filter-button[data-v-6cd9df9e] {\n    width: 24%;\n}\n.animal-card[data-v-6cd9df9e] {\n    margin-bottom: 20px;\n    padding: .6rem;\n}\n.card-img[data-v-6cd9df9e] {\n    height: 12rem;\n}\n#printout[data-v-6cd9df9e] {\n    display: none;\n}\nli[data-v-6cd9df9e] {\n    padding: 10px;\n    border: 1px solid black;\n}\n.button-row[data-v-6cd9df9e] {\n    margin-top: 100px;\n    text-align: center;\n}\n", ""]);
 
 // exports
 
@@ -51533,6 +51581,29 @@ var e=function(){return(e=Object.assign||function(e){for(var t,r=1,s=arguments.l
 
 /***/ }),
 
+/***/ "./node_modules/vue-html-to-paper/dist/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/vue-html-to-paper/dist/index.js ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports=function(e){function t(r){if(n[r])return n[r].exports;var o=n[r]={i:r,l:!1,exports:{}};return e[r].call(o.exports,o,o.exports,t),o.l=!0,o.exports}var n={};return t.m=e,t.c=n,t.d=function(e,n,r){t.o(e,n)||Object.defineProperty(e,n,{configurable:!1,enumerable:!0,get:r})},t.n=function(e){var n=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(n,"a",n),n},t.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},t.p="",t(t.s=0)}([function(e,t,n){"use strict";function r(e,t){t.forEach(function(t){var n=e.document.createElement("link");n.setAttribute("rel","stylesheet"),n.setAttribute("type","text/css"),n.setAttribute("href",t),e.document.getElementsByTagName("head")[0].appendChild(n)})}Object.defineProperty(t,"__esModule",{value:!0}),t.default={install:function(e,t){e.mixin({methods:{$htmlToPaper:function(e,n){var o=t.name,u=t.specs,i=t.replace,l=t.styles;u=u.length?u.join(","):"";var c=document.getElementById(e);if(!c)return void alert("Element to print #"+e+" not found!");var s=window.open("",o,u,i);return s.document.write("\n            <html>\n              <head>\n                <title>"+document.title+"</title>\n              </head>\n              <body>\n                "+c.innerHTML+"\n              </body>\n            </html>\n          "),r(s,l),setTimeout(function(){s.document.close(),s.focus(),s.print(),s.close(),n()},1e3),!0}}})}}}]);
+
+/***/ }),
+
+/***/ "./node_modules/vue-html-to-paper/index.js":
+/*!*************************************************!*\
+  !*** ./node_modules/vue-html-to-paper/index.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! ./dist */ "./node_modules/vue-html-to-paper/dist/index.js");
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AnimalsComponent.vue?vue&type=template&id=6cd9df9e&scoped=true&":
 /*!*******************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/AnimalsComponent.vue?vue&type=template&id=6cd9df9e&scoped=true& ***!
@@ -52024,7 +52095,10 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "b-row",
-                { staticStyle: { "text-align": "center" } },
+                {
+                  staticClass: "button-row",
+                  staticStyle: { "text-align": "center" }
+                },
                 [
                   _c(
                     "b-col",
@@ -52056,12 +52130,168 @@ var render = function() {
                       )
                     ],
                     1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "b-col",
+                    [
+                      _c(
+                        "b-button",
+                        {
+                          staticClass: "btn",
+                          attrs: { variant: "success" },
+                          on: { click: _vm.printRecord }
+                        },
+                        [_vm._v("Print")]
+                      )
+                    ],
+                    1
                   )
                 ],
                 1
               )
             ],
             2
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { attrs: { id: "printout" } },
+        [
+          _c(
+            "b-row",
+            [
+              _c("b-col", { attrs: { cols: "4", offset: "4" } }, [
+                _c("li", [_vm._v("Name: " + _vm._s(_vm.selectedAnimal.name))]),
+                _vm._v(" "),
+                _c("li", [
+                  _vm._v("Species: " + _vm._s(_vm.selectedAnimal.species))
+                ]),
+                _vm._v(" "),
+                _c("li", [
+                  _vm._v("Weight: " + _vm._s(_vm.selectedAnimal.weight))
+                ]),
+                _vm._v(" "),
+                _c("li", [
+                  _vm._v("Status: " + _vm._s(_vm.selectedAnimal.status))
+                ]),
+                _vm._v(" "),
+                _c("li", [
+                  _vm._v("DOB: " + _vm._s(_vm.selectedAnimal.date_of_birth))
+                ]),
+                _vm._v(" "),
+                _c("li", [
+                  _vm._v("Vet Exam info: " + _vm._s(_vm.selectedAnimal.exam))
+                ]),
+                _vm._v(" "),
+                _c("li", [
+                  _vm._v(
+                    "Deworming 1: " + _vm._s(_vm.selectedAnimal.deworming_1)
+                  )
+                ]),
+                _vm._v(" "),
+                _c("li", [
+                  _vm._v(
+                    "Deworming 2: " + _vm._s(_vm.selectedAnimal.deworming_2)
+                  )
+                ]),
+                _vm._v(" "),
+                _c("li", [
+                  _vm._v("Fecal Test: " + _vm._s(_vm.selectedAnimal.fecal_test))
+                ]),
+                _vm._v(" "),
+                _c("li", [
+                  _vm._v(
+                    "Heartworm Test: " +
+                      _vm._s(_vm.selectedAnimal.heartworm_test)
+                  )
+                ]),
+                _vm._v(" "),
+                _c("li", [
+                  _vm._v(
+                    "HW Result: " + _vm._s(_vm.selectedAnimal.heartworm_result)
+                  )
+                ]),
+                _vm._v(" "),
+                _c("li", [
+                  _vm._v(
+                    "Spayed/Neutered: " + _vm._s(_vm.selectedAnimal.spay_neuter)
+                  )
+                ]),
+                _vm._v(" "),
+                _c("li", [
+                  _vm._v(
+                    "Distemper 1: " + _vm._s(_vm.selectedAnimal.distemper_1)
+                  )
+                ]),
+                _vm._v(" "),
+                _c("li", [
+                  _vm._v(
+                    "Distemper 2: " + _vm._s(_vm.selectedAnimal.distemper_2)
+                  )
+                ]),
+                _vm._v(" "),
+                _c("li", [
+                  _vm._v(
+                    "Distemper 3: " + _vm._s(_vm.selectedAnimal.distemper_3)
+                  )
+                ]),
+                _vm._v(" "),
+                _c("li", [
+                  _vm._v("Lepto 1: " + _vm._s(_vm.selectedAnimal.lepto_1))
+                ]),
+                _vm._v(" "),
+                _c("li", [
+                  _vm._v("Lepto 2: " + _vm._s(_vm.selectedAnimal.lepto_2))
+                ]),
+                _vm._v(" "),
+                _c("li", [
+                  _vm._v("Bordatella: " + _vm._s(_vm.selectedAnimal.bord))
+                ]),
+                _vm._v(" "),
+                _c("li", [
+                  _vm._v("Canine Influenza: " + _vm._s(_vm.selectedAnimal.civ))
+                ]),
+                _vm._v(" "),
+                _c("li", [
+                  _vm._v(
+                    "CIV Booster: " + _vm._s(_vm.selectedAnimal.civ_booster)
+                  )
+                ]),
+                _vm._v(" "),
+                _c("li", [
+                  _vm._v("Rabies: " + _vm._s(_vm.selectedAnimal.rabies))
+                ]),
+                _vm._v(" "),
+                _c("li", [
+                  _vm._v(
+                    "Rabies Number: " + _vm._s(_vm.selectedAnimal.rabies_number)
+                  )
+                ]),
+                _vm._v(" "),
+                _c("li", [_vm._v("Vet: " + _vm._s(_vm.selectedAnimal.vet))]),
+                _vm._v(" "),
+                _c("li", [
+                  _vm._v("Microchip: " + _vm._s(_vm.selectedAnimal.microchip))
+                ]),
+                _vm._v(" "),
+                _c("li", [
+                  _vm._v(
+                    "Heartworm Prev: " + _vm._s(_vm.selectedAnimal.heartworm)
+                  )
+                ]),
+                _vm._v(" "),
+                _c("li", [
+                  _vm._v(
+                    "Flea/Tick Prev: " + _vm._s(_vm.selectedAnimal.flea_tick)
+                  )
+                ])
+              ])
+            ],
+            1
           )
         ],
         1
@@ -76314,6 +76544,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuelidate__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(vuelidate__WEBPACK_IMPORTED_MODULE_8__);
 /* harmony import */ var bootstrap_dist_css_bootstrap_css__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! bootstrap/dist/css/bootstrap.css */ "./node_modules/bootstrap/dist/css/bootstrap.css");
 /* harmony import */ var bootstrap_dist_css_bootstrap_css__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(bootstrap_dist_css_bootstrap_css__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var vue_html_to_paper__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! vue-html-to-paper */ "./node_modules/vue-html-to-paper/index.js");
+/* harmony import */ var vue_html_to_paper__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(vue_html_to_paper__WEBPACK_IMPORTED_MODULE_10__);
 
 
 
@@ -76324,9 +76556,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+var options = {
+  name: '_blank',
+  specs: ['fullscreen=yes', 'titlebar=yes', 'scrollbars=yes'],
+  styles: ['https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css', 'https://unpkg.com/kidlat-css/css/kidlat.css']
+};
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_html_to_paper__WEBPACK_IMPORTED_MODULE_10___default.a, options);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_3__["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_cookie__WEBPACK_IMPORTED_MODULE_6___default.a);
