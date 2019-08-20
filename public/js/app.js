@@ -1720,6 +1720,10 @@ module.exports = function isBuffer (obj) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var vuelidate__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuelidate */ "./node_modules/vuelidate/lib/index.js");
+/* harmony import */ var vuelidate__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vuelidate__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__);
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -1824,20 +1828,160 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'animal',
   data: function data() {
     return {
+      form1: {
+        name: '',
+        species: '',
+        weight: '',
+        status: '',
+        date_of_birth: ''
+      },
+      form2: {
+        exam: '',
+        deworming_1: '',
+        deworming_2: '',
+        fecal_test: '',
+        heartworm_test: '',
+        heartworm_result: '',
+        spay_neuter: '',
+        distemper_1: '',
+        distemper_2: '',
+        distemper_3: '',
+        lepto_1: '',
+        lepto_2: '',
+        bord: '',
+        civ: '',
+        civ_booster: '',
+        rabies: '',
+        rabies_number: '',
+        vet: '',
+        microchip: '',
+        heartworm: '',
+        flea_tick: ''
+      },
+      statusOptions: [{
+        value: null,
+        text: 'Please select an option'
+      }, {
+        value: 'foster',
+        text: 'In foster'
+      }, {
+        value: 'adoption_center',
+        text: 'Adoption center'
+      }, {
+        value: 'vet',
+        text: 'Hospitalized'
+      }, {
+        value: 'other',
+        text: 'Somewhere else?'
+      }],
       name: '',
       animal: '',
       search: '',
       selectedAnimal: '',
       filterDogs: false,
       filterCats: false,
-      filterRabbits: false,
       dogs: []
     };
+  },
+  mixins: [vuelidate__WEBPACK_IMPORTED_MODULE_1__["validationMixin"]],
+  validations: {
+    form1: {
+      name: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["required"],
+        minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["minLength"])(3)
+      },
+      species: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["required"],
+        minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["minLength"])(3)
+      },
+      status: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["required"],
+        minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["minLength"])(3)
+      },
+      date_of_birth: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["required"]
+      },
+      weight: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["required"]
+      }
+    }
   },
   computed: _objectSpread({
     filteredAnimals: function filteredAnimals() {
@@ -1847,18 +1991,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       if (this.filterDogs) {
         allDogs = this.dogs.filter(function (animal) {
-          return animal.species === 'dog';
+          return animal.species.toLowerCase() === 'dog';
         });
       }
 
       if (this.filterCats) {
         allDogs = this.dogs.filter(function (animal) {
-          return animal.species === 'cat';
+          return animal.species.toLowerCase() === 'cat';
         });
-      } // if (this.filterRabbits) {
-      //     allAnimals = this.$store.state.animals.filter(animal => animal.species === 'rab')
-      // }
-
+      }
 
       if (this.search) {
         return this.dogs.filter(function (animal) {
@@ -1868,22 +2009,43 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       return allDogs;
     }
-  }, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['isAuthenticated', 'currentUser', 'getAnimals'])),
+  }, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['isAuthenticated', 'currentUser'])),
   methods: {
     showSelectedAnimalModal: function showSelectedAnimalModal(item) {
+      this.form1.name = item.name;
+      this.form1.species = item.species;
+      this.form1.weight = item.weight;
+      this.form1.status = item.status;
+      this.form1.date_of_birth = item.date_of_birth;
+      this.form2.exam = item.exam;
+      this.form2.deworming_1 = item.deworming_1;
+      this.form2.deworming_2 = item.deworming_2;
+      this.form2.fecal_test = item.fecal_test;
+      this.form2.heartworm_test = item.heartworm_test;
+      this.form2.heartworm_result = item.heartworm_result;
+      this.form2.spay_neuter = item.spay_neuter;
+      this.form2.distemper_1 = item.distemper_1;
+      this.form2.distemper_2 = item.distemper_2;
+      this.form2.distemper_3 = item.distemper_3;
+      this.form2.lepto_1 = item.lepto_1;
+      this.form2.lepto_2 = item.lepto_2;
+      this.form2.bord = item.bord;
+      this.form2.civ = item.civ;
+      this.form2.civ_booster = item.civ_booster;
+      this.form2.rabies = item.rabies, this.form2.rabies_number = item.rabies_number;
+      this.form2.vet = item.vet;
+      this.form2.microchip = item.microchip;
+      this.form2.heartworm = item.heartworm;
+      this.form2.flea_tick = item.flea_tick;
       this.selectedAnimal = item;
       this.$refs.selectedAnimalModal.show();
-    },
-    showUpdateAnimalModal: function showUpdateAnimalModal(item) {
-      this.selectedAnimal = item;
-      this.$refs.updateAnimalModal.show();
     },
     hideModal: function hideModal() {
       this.$refs.selectedAnimalModal.hide();
       this.$refs.updateAnimalModal.hide();
     },
     showAll: function showAll() {
-      this.$router.push('dashboard');
+      this.$router.push('animals');
     },
     deleteAnimal: function deleteAnimal() {}
   },
@@ -1892,7 +2054,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
     axios.get('/api/dogs').then(function (dogs) {
       _this.dogs = dogs.data.data;
-      console.log(dogs.data.data);
     });
   }
 });
@@ -51375,21 +51536,7 @@ var render = function() {
                     [
                       _c("b-btn", { staticClass: "select-button" }, [
                         _vm._v(_vm._s(animal.name))
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "b-btn",
-                        {
-                          staticClass: "select-button",
-                          attrs: { animal: "'animal.id'" },
-                          on: {
-                            click: function($event) {
-                              return _vm.showUpdateAnimalModal(animal)
-                            }
-                          }
-                        },
-                        [_vm._v("Update")]
-                      )
+                      ])
                     ],
                     1
                   )
@@ -51453,128 +51600,197 @@ var render = function() {
                 )
               ]),
               _vm._v(" "),
-              _c("li", { staticClass: "my-4" }, [
-                _vm._v(
-                  "Added to Alive!: " +
-                    _vm._s(
-                      _vm._f("moment")(
-                        _vm.selectedAnimal.created_at,
-                        "dddd, MMMM Do YYYY"
-                      )
+              _c(
+                "b-row",
+                [
+                  _c("b-col", { attrs: { sm: "2", offset: "1" } }, [
+                    _c("label", [_vm._v("Name:")])
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "b-col",
+                    { attrs: { sm: "9" } },
+                    [
+                      _c("b-form-input", {
+                        attrs: {
+                          type: "text",
+                          state: !_vm.$v.form1.name.$invalid,
+                          "aria-describedby": "name-live-feedback"
+                        },
+                        model: {
+                          value: _vm.$v.form1.name.$model,
+                          callback: function($$v) {
+                            _vm.$set(_vm.$v.form1.name, "$model", $$v)
+                          },
+                          expression: "$v.form1.name.$model"
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "b-row",
+                [
+                  _c("b-col", { attrs: { sm: "2", offset: "1" } }, [
+                    _c("label", [_vm._v("Species:")])
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "b-col",
+                    { attrs: { sm: "9" } },
+                    [
+                      _c("b-form-input", {
+                        attrs: {
+                          type: "text",
+                          state: !_vm.$v.form1.species.$invalid,
+                          "aria-describedby": "species-live-feedback"
+                        },
+                        model: {
+                          value: _vm.$v.form1.species.$model,
+                          callback: function($$v) {
+                            _vm.$set(_vm.$v.form1.species, "$model", $$v)
+                          },
+                          expression: "$v.form1.species.$model"
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "b-row",
+                [
+                  _c("b-col", { attrs: { sm: "2", offset: "1" } }, [
+                    _c("label", [_vm._v("Status:")])
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "b-col",
+                    { attrs: { sm: "9" } },
+                    [
+                      _c("b-form-select", {
+                        attrs: {
+                          state: !_vm.$v.form1.status.$invalid,
+                          options: _vm.statusOptions
+                        },
+                        model: {
+                          value: _vm.form1.status,
+                          callback: function($$v) {
+                            _vm.$set(_vm.form1, "status", $$v)
+                          },
+                          expression: "form1.status"
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "b-row",
+                [
+                  _c("b-col", { attrs: { sm: "2", offset: "1" } }, [
+                    _c("label", [_vm._v("Weight:")])
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "b-col",
+                    { attrs: { sm: "9" } },
+                    [
+                      _c("b-form-input", {
+                        attrs: {
+                          type: "number",
+                          state: !_vm.$v.form1.weight.$invalid,
+                          "aria-describedby": "species-live-feedback"
+                        },
+                        model: {
+                          value: _vm.$v.form1.weight.$model,
+                          callback: function($$v) {
+                            _vm.$set(_vm.$v.form1.weight, "$model", $$v)
+                          },
+                          expression: "$v.form1.weight.$model"
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "b-row",
+                [
+                  _c("b-col", { attrs: { sm: "2", offset: "1" } }, [
+                    _c("label", [_vm._v("Date of Birth:")])
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "b-col",
+                    { attrs: { sm: "9" } },
+                    [
+                      _c("b-form-input", {
+                        attrs: {
+                          type: "date",
+                          state: !_vm.$v.form1.date_of_birth.$invalid,
+                          "aria-describedby": "species-live-feedback"
+                        },
+                        model: {
+                          value: _vm.$v.form1.date_of_birth.$model,
+                          callback: function($$v) {
+                            _vm.$set(_vm.$v.form1.date_of_birth, "$model", $$v)
+                          },
+                          expression: "$v.form1.date_of_birth.$model"
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _vm._l(_vm.form2, function(value, key) {
+                return _c(
+                  "b-row",
+                  { key: key, staticClass: "my-1" },
+                  [
+                    _c("b-col", { attrs: { sm: "2" } }, [
+                      _c("label", [_vm._v(_vm._s(key) + ":")])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "b-col",
+                      { attrs: { sm: "10" } },
+                      [
+                        _c("b-form-input", {
+                          attrs: { type: "text" },
+                          model: {
+                            value: _vm.form2[key],
+                            callback: function($$v) {
+                              _vm.$set(_vm.form2, key, $$v)
+                            },
+                            expression: "form2[key]"
+                          }
+                        })
+                      ],
+                      1
                     )
+                  ],
+                  1
                 )
-              ]),
-              _vm._v(" "),
-              _c("li", { staticClass: "my-4" }, [
-                _vm._v("Status: " + _vm._s(_vm.selectedAnimal.status))
-              ]),
-              _vm._v(" "),
-              _c("li", { staticClass: "my-4" }, [
-                _vm._v(
-                  "Date of Birth: " + _vm._s(_vm.selectedAnimal.date_of_birth)
-                )
-              ]),
-              _vm._v(" "),
-              _c("li", { staticClass: "my-4" }, [
-                _vm._v("Vet Exam Info: " + _vm._s(_vm.selectedAnimal.exam))
-              ]),
-              _vm._v(" "),
-              _c("li", { staticClass: "my-4" }, [
-                _vm._v("Deworming 1: " + _vm._s(_vm.selectedAnimal.deworming_1))
-              ]),
-              _vm._v(" "),
-              _c("li", { staticClass: "my-4" }, [
-                _vm._v("Deworming 2: " + _vm._s(_vm.selectedAnimal.deworming_2))
-              ]),
-              _vm._v(" "),
-              _c("li", { staticClass: "my-4" }, [
-                _vm._v("Fecal Test: " + _vm._s(_vm.selectedAnimal.fecal_test))
-              ]),
-              _vm._v(" "),
-              _c("li", { staticClass: "my-4" }, [
-                _vm._v(
-                  "Heartworm Test: " + _vm._s(_vm.selectedAnimal.heartworm_test)
-                )
-              ]),
-              _vm._v(" "),
-              _c("li", { staticClass: "my-4" }, [
-                _vm._v(
-                  "Heartworm Result: " +
-                    _vm._s(_vm.selectedAnimal.heartworm_result)
-                )
-              ]),
-              _vm._v(" "),
-              _c("li", { staticClass: "my-4" }, [
-                _vm._v("Spay/Neuter: " + _vm._s(_vm.selectedAnimal.spay_neuter))
-              ]),
-              _vm._v(" "),
-              _c("li", { staticClass: "my-4" }, [
-                _vm._v("Distemper 1: " + _vm._s(_vm.selectedAnimal.distemper_1))
-              ]),
-              _vm._v(" "),
-              _c("li", { staticClass: "my-4" }, [
-                _vm._v("Distemper 2: " + _vm._s(_vm.selectedAnimal.distemper_2))
-              ]),
-              _vm._v(" "),
-              _c("li", { staticClass: "my-4" }, [
-                _vm._v("Distemper 3: " + _vm._s(_vm.selectedAnimal.distemper_3))
-              ]),
-              _vm._v(" "),
-              _c("li", { staticClass: "my-4" }, [
-                _vm._v("Lepto 1: " + _vm._s(_vm.selectedAnimal.lepto_1))
-              ]),
-              _vm._v(" "),
-              _c("li", { staticClass: "my-4" }, [
-                _vm._v("Lepto 2: " + _vm._s(_vm.selectedAnimal.lepto_2))
-              ]),
-              _vm._v(" "),
-              _c("li", { staticClass: "my-4" }, [
-                _vm._v("Bordatella: " + _vm._s(_vm.selectedAnimal.bord))
-              ]),
-              _vm._v(" "),
-              _c("li", { staticClass: "my-4" }, [
-                _vm._v("Canine Flu: " + _vm._s(_vm.selectedAnimal.civ))
-              ]),
-              _vm._v(" "),
-              _c("li", { staticClass: "my-4" }, [
-                _vm._v(
-                  "Canine Flu Booster: " +
-                    _vm._s(_vm.selectedAnimal.civ_booster)
-                )
-              ]),
-              _vm._v(" "),
-              _c("li", { staticClass: "my-4" }, [
-                _vm._v("Rabies: " + _vm._s(_vm.selectedAnimal.rabies))
-              ]),
-              _vm._v(" "),
-              _c("li", { staticClass: "my-4" }, [
-                _vm._v(
-                  "Rabies Number: " + _vm._s(_vm.selectedAnimal.rabies_number)
-                )
-              ]),
-              _vm._v(" "),
-              _c("li", { staticClass: "my-4" }, [
-                _vm._v("Vet Info: " + _vm._s(_vm.selectedAnimal.vet))
-              ]),
-              _vm._v(" "),
-              _c("li", { staticClass: "my-4" }, [
-                _vm._v("Microchip: " + _vm._s(_vm.selectedAnimal.microchip))
-              ]),
-              _vm._v(" "),
-              _c("li", { staticClass: "my-4" }, [
-                _vm._v(
-                  "Heartworm Prevention: " +
-                    _vm._s(_vm.selectedAnimal.heartworm)
-                )
-              ]),
-              _vm._v(" "),
-              _c("li", { staticClass: "my-4" }, [
-                _vm._v(
-                  "Flea & Tick Prevention: " +
-                    _vm._s(_vm.selectedAnimal.flea_tick)
-                )
-              ])
-            ]
+              })
+            ],
+            2
           )
         ],
         1
@@ -51748,7 +51964,7 @@ var render = function() {
               _c("b-form-select", {
                 attrs: {
                   state: !_vm.$v.form1.status.$invalid,
-                  options: _vm.options
+                  options: _vm.statusOptions
                 },
                 model: {
                   value: _vm.form1.status,

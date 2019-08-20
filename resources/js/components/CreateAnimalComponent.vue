@@ -32,7 +32,7 @@
                 <label>Status:</label>
             </b-col>
             <b-col sm="9">
-                <b-form-select :state="!$v.form1.status.$invalid" v-model="form1.status" :options="options"></b-form-select>
+                <b-form-select :state="!$v.form1.status.$invalid" v-model="form1.status" :options="statusOptions"></b-form-select>
             
             </b-col>
         </b-row>
