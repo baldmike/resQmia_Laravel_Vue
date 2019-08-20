@@ -1963,13 +1963,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         text: 'Please select an option'
       }, {
         value: 'foster',
-        text: 'In foster'
+        text: 'Foster'
       }, {
         value: 'adoption_center',
         text: 'Adoption center'
       }, {
         value: 'vet',
-        text: 'Hospitalized'
+        text: 'Vet/Hospital'
+      }, {
+        value: 'adopted',
+        text: 'Adopted'
       }, {
         value: 'other',
         text: 'Somewhere else?'

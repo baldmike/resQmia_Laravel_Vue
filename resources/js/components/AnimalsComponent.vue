@@ -234,9 +234,10 @@
 
                 statusOptions: [
                     { value: null, text: 'Please select an option' },
-                    { value: 'foster', text: 'In foster' },
+                    { value: 'foster', text: 'Foster' },
                     { value: 'adoption_center', text: 'Adoption center' },
-                    { value: 'vet', text: 'Hospitalized' },
+                    { value: 'vet', text: 'Vet/Hospital' },
+                    { value: 'adopted', text: 'Adopted' },
                     { value: 'other', text: 'Somewhere else?' }
                 ],
                 
