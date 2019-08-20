@@ -2008,10 +2008,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       });
       Object.keys(this.form4).forEach(function (key) {
         formData.append(key, _this.form4[key]);
-      });
+      }); // allow for PUT/PATCH call
+
       formData.append('_method', 'PATCH');
       console.log("FORM DATA UPDATE ----->  ");
-      console.log(formData);
+      console.log(formData); // this is actually a PUT call
+
       axios.post("/api/dogs/" + this.dogId, formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
@@ -2024,14 +2026,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           title: 'Success',
           text: "Success",
           duration: '6000',
+          type: 'success',
           width: '100%'
         });
 
         console.log("CreateAnimalComponent -- createAnimal -- createAnimal()" + data.toString());
       })["catch"](function (error) {
         console.log(error);
+      }); // get refreshed list of dogs
+
+      axios.get('/api/dogs').then(function (dogs) {
+        _this.dogs = dogs.data.data;
       });
-      this.$router.go(0); // this.$router.push('/animals');
+      this.hideModal();
     }
   },
   created: function created() {

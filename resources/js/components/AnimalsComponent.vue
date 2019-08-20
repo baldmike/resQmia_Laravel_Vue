@@ -286,11 +286,14 @@
                 Object.keys(this.form4).forEach(key => {
                     formData.append(key, this.form4[key]);
                 })
+
+                // allow for PUT/PATCH call
                 formData.append('_method', 'PATCH');
 
                 console.log("FORM DATA UPDATE ----->  ");
                 console.log(formData);
 
+                // this is actually a PUT call
                 axios.post("/api/dogs/" + this.dogId, formData, {headers: {'Content-Type': 'multipart/form-data'}}).then(({data}) => {
                     
                     this.$notify({
@@ -298,6 +301,7 @@
                         title: 'Success',
                         text: "Success",
                         duration: '6000',
+                        type: 'success',
                         width: '100%'
                     });
                         
@@ -306,8 +310,12 @@
                         console.log(error);
                 })
 
-                this.$router.go(0);
-                // this.$router.push('/animals');
+                // get refreshed list of dogs
+                axios.get('/api/dogs').then((dogs) => {
+                    this.dogs = dogs.data.data;
+                })
+
+                this.hideModal();
                     
             },
         },
