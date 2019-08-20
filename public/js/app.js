@@ -1959,43 +1959,43 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var allDogs = this.dogs;
 
       if (this.filterDogs) {
-        allDogs = this.dogs.filter(function (animal) {
+        allDogs = allDogs.filter(function (animal) {
           return animal.species.toLowerCase() === 'dog';
         });
       }
 
       if (this.filterCats) {
-        allDogs = this.dogs.filter(function (animal) {
+        allDogs = allDogs.filter(function (animal) {
           return animal.species.toLowerCase() === 'cat';
         });
       }
 
       if (this.filterAC) {
-        allDogs = this.dogs.filter(function (animal) {
+        allDogs = allDogs.filter(function (animal) {
           return animal.status.toLowerCase() === 'adoption_center';
         });
       }
 
       if (this.filterFoster) {
-        allDogs = this.dogs.filter(function (animal) {
+        allDogs = allDogs.filter(function (animal) {
           return animal.status.toLowerCase() === 'foster';
         });
       }
 
       if (this.filterVet) {
-        allDogs = this.dogs.filter(function (animal) {
+        allDogs = allDogs.filter(function (animal) {
           return animal.status.toLowerCase() === 'vet';
         });
       }
 
       if (this.filterOther) {
-        allDogs = this.dogs.filter(function (animal) {
+        allDogs = allDogs.filter(function (animal) {
           return animal.status.toLowerCase() === 'other';
         });
       }
 
       if (this.search) {
-        return this.dogs.filter(function (animal) {
+        return allDogs.filter(function (animal) {
           return animal.name.toLowerCase().indexOf(self.search.toLowerCase()) >= 0;
         });
       }

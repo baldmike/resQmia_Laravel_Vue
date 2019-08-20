@@ -234,33 +234,34 @@
                 let allDogs = this.dogs;
 
                 if (this.filterDogs) {
-                    allDogs = this.dogs.filter(animal => animal.species.toLowerCase() === 'dog')
+                    allDogs = allDogs.filter(animal => animal.species.toLowerCase() === 'dog')
                 }
 
                 if (this.filterCats) {
-                    allDogs = this.dogs.filter(animal => animal.species.toLowerCase() === 'cat')
+                    allDogs = allDogs.filter(animal => animal.species.toLowerCase() === 'cat')
                 }
 
                 if (this.filterAC) {
-                    allDogs = this.dogs.filter(animal => animal.status.toLowerCase() === 'adoption_center')
+                    allDogs = allDogs.filter(animal => animal.status.toLowerCase() === 'adoption_center')
                 }
 
                 if (this.filterFoster) {
-                    allDogs = this.dogs.filter(animal => animal.status.toLowerCase() === 'foster')
+                    allDogs = allDogs.filter(animal => animal.status.toLowerCase() === 'foster')
                 }
 
                 if (this.filterVet) {
-                    allDogs = this.dogs.filter(animal => animal.status.toLowerCase() === 'vet')
+                    allDogs = allDogs.filter(animal => animal.status.toLowerCase() === 'vet')
                 }
 
                 if (this.filterOther) {
-                    allDogs = this.dogs.filter(animal => animal.status.toLowerCase() === 'other')
+                    allDogs = allDogs.filter(animal => animal.status.toLowerCase() === 'other')
                 }
 
                 if (this.search) {
-                    return this.dogs.filter(animal => animal.name.toLowerCase().indexOf(self.search.toLowerCase())>=0);
+                    return allDogs.filter(animal => animal.name.toLowerCase().indexOf(self.search.toLowerCase())>=0);
                 }
                 
+
                 return allDogs;
                 
             },
