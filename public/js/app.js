@@ -51784,7 +51784,7 @@ var render = function() {
                     {
                       staticClass: "animal-card",
                       attrs: {
-                        "img-src": "images/" + animal.image,
+                        "img-src": "storage/" + animal.image,
                         animal: "'animal.id'",
                         "img-alt": "Selected animal image"
                       },
