@@ -29,16 +29,16 @@ const options = {
 
 require('./bootstrap')
 
-Vue.use(VueHtmlToPaper, options);
+Vue.use(VueHtmlToPaper, options)
 Vue.use(VueRouter)
 Vue.use(BootstrapVue)
 Vue.use(VueCookie)
 Vue.use(Notifications)
-Vue.use(require('vue-moment'));
-Vue.use(Vuelidate);
+Vue.use(require('vue-moment'))
+Vue.use(Vuelidate)
 
 window.Vue = require('vue')
-window.auth = new Auth();
+window.auth = new Auth()
 
 Vue.component('main-app', require('./mainApp.vue'))
 Vue.component('login-component', require('./components/LoginComponent.vue'))

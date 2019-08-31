@@ -1,5 +1,5 @@
 <template>
-    <b-container fluid>
+    <b-container>
         
         <b-form-group id="imageGroup" label-for="animalImage">
             <b-form-file
@@ -221,5 +221,7 @@
 </script>
 
 <style>
-   
+   .input {
+        margin: 10px;
+    }
 </style>

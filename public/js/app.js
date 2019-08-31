@@ -1919,6 +1919,227 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2120,7 +2341,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         formData.append(key, _this.form4[key]);
       }); // allow for PUT/PATCH call
 
-      formData.append('_method', 'PATCH'); // this is actually a PUT call
+      formData.append('_method', 'PUT'); // this is actually a PUT call
 
       axios.post("/api/dogs/" + this.dogId, formData, {
         headers: {
@@ -29818,7 +30039,26 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.body[data-v-6cd9df9e] {\n    padding: 20px;\n}\n.btn[data-v-6cd9df9e] {\n    text-align: center;\n    width: 100%;\n}\n.center[data-v-6cd9df9e] {\n    text-align: center;\n}\n.search-bar[data-v-6cd9df9e] {\n    width: 100%;\n    text-align: center;\n}\n.select-button[data-v-6cd9df9e] {\n    width: 100%;\n    margin-bottom: 20px;\n    font-size: 10%;\n}\n.filter-button[data-v-6cd9df9e] {\n    width: 24%;\n}\n.animal-card[data-v-6cd9df9e] {\n    margin-bottom: 20px;\n    padding: .6rem;\n}\n.card-img[data-v-6cd9df9e] {\n    height: 12rem;\n}\n#printout[data-v-6cd9df9e] {\n    display: none;\n}\n.headline[data-v-6cd9df9e] {\n    text-align: center;\n}\nli[data-v-6cd9df9e] {\n    padding: 10px;\n    border: 1px solid black;\n}\n.button-row[data-v-6cd9df9e] {\n    margin-top: 100px;\n    text-align: center;\n}\n.input[data-v-6cd9df9e] {\n    margin: 10px;\n}\n", ""]);
+exports.push([module.i, "\n.body[data-v-6cd9df9e] {\n    padding: 20px;\n}\n.btn[data-v-6cd9df9e] {\n    text-align: center;\n    width: 100%;\n}\n.center[data-v-6cd9df9e] {\n    text-align: center;\n}\n.search-bar[data-v-6cd9df9e] {\n    width: 100%;\n    text-align: center;\n}\n.select-button[data-v-6cd9df9e] {\n    width: 100%;\n    margin-bottom: 20px;\n    font-size: 10%;\n    color: white;\n}\n.filter-button[data-v-6cd9df9e] {\n    width: 24%;\n}\n.animal-card[data-v-6cd9df9e] {\n    margin-bottom: 20px;\n    padding: .6rem;\n}\n.card-img[data-v-6cd9df9e] {\n    height: 12rem;\n}\n#printout[data-v-6cd9df9e] {\n    display: none;\n}\n.headline[data-v-6cd9df9e] {\n    text-align: center;\n}\nli[data-v-6cd9df9e] {\n    padding: 10px;\n    border: 1px solid black;\n}\n.button-row[data-v-6cd9df9e] {\n    margin-top: 100px;\n    text-align: center;\n}\n.input[data-v-6cd9df9e] {\n    margin: 10px;\n}\n@media print {\n.box[data-v-6cd9df9e] {\n       border: 5px solid black;\n}\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CreateAnimalComponent.vue?vue&type=style&index=0&lang=css&":
+/*!***************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CreateAnimalComponent.vue?vue&type=style&index=0&lang=css& ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.input {\n     margin: 10px;\n}\n", ""]);
 
 // exports
 
@@ -50746,6 +50986,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CreateAnimalComponent.vue?vue&type=style&index=0&lang=css&":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CreateAnimalComponent.vue?vue&type=style&index=0&lang=css& ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./CreateAnimalComponent.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CreateAnimalComponent.vue?vue&type=style&index=0&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/NavBar.vue?vue&type=style&index=0&lang=css&":
 /*!****************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/NavBar.vue?vue&type=style&index=0&lang=css& ***!
@@ -51853,7 +52123,8 @@ var render = function() {
                 animal: "animal",
                 "ok-only": "",
                 "ok-title": "Close",
-                "ok-variant": "dark"
+                "ok-variant": "dark",
+                "no-close-on-backdrop": ""
               }
             },
             [
@@ -51861,14 +52132,8 @@ var render = function() {
                 "b-row",
                 [
                   _c("b-col", [
-                    _c("h4", { staticClass: "headline" }, [
-                      _vm._v(
-                        _vm._s(_vm.selectedAnimal.name) +
-                          " - " +
-                          _vm._s(_vm.selectedAnimal.species) +
-                          " - " +
-                          _vm._s(_vm.selectedAnimal.status)
-                      )
+                    _c("h3", { staticClass: "headline" }, [
+                      _vm._v(_vm._s(_vm.selectedAnimal.name))
                     ])
                   ])
                 ],
@@ -51893,26 +52158,7 @@ var render = function() {
                       },
                       expression: "form3.image"
                     }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "b-col",
-                    {
-                      staticStyle: { "margin-top": "1rem" },
-                      attrs: { cols: "6", offset: "3" }
-                    },
-                    [
-                      _vm.url
-                        ? _c("img", {
-                            attrs: {
-                              src: _vm.url,
-                              width: "100",
-                              alt: "uploaded image"
-                            }
-                          })
-                        : _vm._e()
-                    ]
-                  )
+                  })
                 ],
                 1
               ),
@@ -52177,137 +52423,986 @@ var render = function() {
       ),
       _vm._v(" "),
       _c(
-        "div",
+        "b-container",
         { attrs: { id: "printout" } },
         [
           _c(
             "b-row",
             [
-              _c("b-col", { attrs: { cols: "4", offset: "4" } }, [
-                _c("li", [_vm._v("Name: " + _vm._s(_vm.selectedAnimal.name))]),
-                _vm._v(" "),
-                _c("li", [
-                  _vm._v("Species: " + _vm._s(_vm.selectedAnimal.species))
-                ]),
-                _vm._v(" "),
-                _c("li", [
-                  _vm._v("Weight: " + _vm._s(_vm.selectedAnimal.weight))
-                ]),
-                _vm._v(" "),
-                _c("li", [
-                  _vm._v("Status: " + _vm._s(_vm.selectedAnimal.status))
-                ]),
-                _vm._v(" "),
-                _c("li", [
-                  _vm._v("DOB: " + _vm._s(_vm.selectedAnimal.date_of_birth))
-                ]),
-                _vm._v(" "),
-                _c("li", [
-                  _vm._v("Vet Exam info: " + _vm._s(_vm.selectedAnimal.exam))
-                ]),
-                _vm._v(" "),
-                _c("li", [
-                  _vm._v(
-                    "Deworming 1: " + _vm._s(_vm.selectedAnimal.deworming_1)
-                  )
-                ]),
-                _vm._v(" "),
-                _c("li", [
-                  _vm._v(
-                    "Deworming 2: " + _vm._s(_vm.selectedAnimal.deworming_2)
-                  )
-                ]),
-                _vm._v(" "),
-                _c("li", [
-                  _vm._v("Fecal Test: " + _vm._s(_vm.selectedAnimal.fecal_test))
-                ]),
-                _vm._v(" "),
-                _c("li", [
-                  _vm._v(
-                    "Heartworm Test: " +
-                      _vm._s(_vm.selectedAnimal.heartworm_test)
-                  )
-                ]),
-                _vm._v(" "),
-                _c("li", [
-                  _vm._v(
-                    "HW Result: " + _vm._s(_vm.selectedAnimal.heartworm_result)
-                  )
-                ]),
-                _vm._v(" "),
-                _c("li", [
-                  _vm._v(
-                    "Spayed/Neutered: " + _vm._s(_vm.selectedAnimal.spay_neuter)
-                  )
-                ]),
-                _vm._v(" "),
-                _c("li", [
-                  _vm._v(
-                    "Distemper 1: " + _vm._s(_vm.selectedAnimal.distemper_1)
-                  )
-                ]),
-                _vm._v(" "),
-                _c("li", [
-                  _vm._v(
-                    "Distemper 2: " + _vm._s(_vm.selectedAnimal.distemper_2)
-                  )
-                ]),
-                _vm._v(" "),
-                _c("li", [
-                  _vm._v(
-                    "Distemper 3: " + _vm._s(_vm.selectedAnimal.distemper_3)
-                  )
-                ]),
-                _vm._v(" "),
-                _c("li", [
-                  _vm._v("Lepto 1: " + _vm._s(_vm.selectedAnimal.lepto_1))
-                ]),
-                _vm._v(" "),
-                _c("li", [
-                  _vm._v("Lepto 2: " + _vm._s(_vm.selectedAnimal.lepto_2))
-                ]),
-                _vm._v(" "),
-                _c("li", [
-                  _vm._v("Bordatella: " + _vm._s(_vm.selectedAnimal.bord))
-                ]),
-                _vm._v(" "),
-                _c("li", [
-                  _vm._v("Canine Influenza: " + _vm._s(_vm.selectedAnimal.civ))
-                ]),
-                _vm._v(" "),
-                _c("li", [
-                  _vm._v(
-                    "CIV Booster: " + _vm._s(_vm.selectedAnimal.civ_booster)
-                  )
-                ]),
-                _vm._v(" "),
-                _c("li", [
-                  _vm._v("Rabies: " + _vm._s(_vm.selectedAnimal.rabies))
-                ]),
-                _vm._v(" "),
-                _c("li", [
-                  _vm._v(
-                    "Rabies Number: " + _vm._s(_vm.selectedAnimal.rabies_number)
-                  )
-                ]),
-                _vm._v(" "),
-                _c("li", [_vm._v("Vet: " + _vm._s(_vm.selectedAnimal.vet))]),
-                _vm._v(" "),
-                _c("li", [
-                  _vm._v("Microchip: " + _vm._s(_vm.selectedAnimal.microchip))
-                ]),
-                _vm._v(" "),
-                _c("li", [
-                  _vm._v(
-                    "Heartworm Prev: " + _vm._s(_vm.selectedAnimal.heartworm)
-                  )
-                ]),
-                _vm._v(" "),
-                _c("li", [
-                  _vm._v(
-                    "Flea/Tick Prev: " + _vm._s(_vm.selectedAnimal.flea_tick)
-                  )
+              _c("b-col", [
+                _c("h1", [
+                  _vm._v(_vm._s(_vm.selectedAnimal.name) + "'s Checklist")
                 ])
+              ])
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("br"),
+          _c("br"),
+          _c("br"),
+          _c("br"),
+          _vm._v(" "),
+          _c(
+            "b-row",
+            [
+              _c(
+                "b-col",
+                { attrs: { cols: "4", offset: "4" } },
+                [_c("b-img", { attrs: { src: "/alive_logo.jpg", fluid: "" } })],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "b-row",
+            [
+              _c(
+                "b-col",
+                {
+                  staticStyle: {
+                    border: "1px solid black",
+                    width: "100%",
+                    "text-align": "center",
+                    "font-size": "1.3rem"
+                  },
+                  attrs: { cols: "4" }
+                },
+                [_c("div", [_vm._v("Name: ")])]
+              ),
+              _vm._v(" "),
+              _c("b-col", { attrs: { cols: "8" } }, [
+                _c(
+                  "div",
+                  {
+                    staticStyle: {
+                      border: "1px solid black",
+                      width: "100%",
+                      "text-align": "left",
+                      "font-size": "1.3rem"
+                    }
+                  },
+                  [_vm._v(_vm._s(_vm.selectedAnimal.name))]
+                )
+              ])
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "b-row",
+            [
+              _c(
+                "b-col",
+                {
+                  staticStyle: {
+                    border: "1px solid black",
+                    width: "100%",
+                    "text-align": "center",
+                    "font-size": "1.3rem"
+                  },
+                  attrs: { cols: "4" }
+                },
+                [_c("div", [_vm._v("Species: ")])]
+              ),
+              _vm._v(" "),
+              _c("b-col", { attrs: { cols: "8" } }, [
+                _c(
+                  "div",
+                  {
+                    staticStyle: {
+                      border: "1px solid black",
+                      width: "100%",
+                      "text-align": "left",
+                      "font-size": "1.3rem"
+                    }
+                  },
+                  [_vm._v(_vm._s(_vm.selectedAnimal.species))]
+                )
+              ])
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "b-row",
+            [
+              _c(
+                "b-col",
+                {
+                  staticStyle: {
+                    border: "1px solid black",
+                    width: "100%",
+                    "text-align": "center",
+                    "font-size": "1.3rem"
+                  },
+                  attrs: { cols: "4" }
+                },
+                [_c("div", [_vm._v("Weight: ")])]
+              ),
+              _vm._v(" "),
+              _c("b-col", { attrs: { cols: "8" } }, [
+                _c(
+                  "div",
+                  {
+                    staticStyle: {
+                      border: "1px solid black",
+                      width: "100%",
+                      "text-align": "left",
+                      "font-size": "1.3rem"
+                    }
+                  },
+                  [_vm._v(_vm._s(_vm.selectedAnimal.weight))]
+                )
+              ])
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "b-row",
+            [
+              _c(
+                "b-col",
+                {
+                  staticStyle: {
+                    border: "1px solid black",
+                    width: "100%",
+                    "text-align": "center",
+                    "font-size": "1.3rem"
+                  },
+                  attrs: { cols: "4" }
+                },
+                [_c("div", [_vm._v("Status: ")])]
+              ),
+              _vm._v(" "),
+              _c("b-col", { attrs: { cols: "8" } }, [
+                _c(
+                  "div",
+                  {
+                    staticStyle: {
+                      border: "1px solid black",
+                      width: "100%",
+                      "text-align": "left",
+                      "font-size": "1.3rem"
+                    }
+                  },
+                  [_vm._v(_vm._s(_vm.selectedAnimal.status))]
+                )
+              ])
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "b-row",
+            [
+              _c(
+                "b-col",
+                {
+                  staticStyle: {
+                    border: "1px solid black",
+                    width: "100%",
+                    "text-align": "center",
+                    "font-size": "1.3rem"
+                  },
+                  attrs: { cols: "4" }
+                },
+                [_c("div", [_vm._v("Date of Birth: ")])]
+              ),
+              _vm._v(" "),
+              _c("b-col", { attrs: { cols: "8" } }, [
+                _c(
+                  "div",
+                  {
+                    staticStyle: {
+                      border: "1px solid black",
+                      width: "100%",
+                      "text-align": "left",
+                      "font-size": "1.3rem"
+                    }
+                  },
+                  [_vm._v(_vm._s(_vm.selectedAnimal.date_of_birth))]
+                )
+              ])
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "b-row",
+            [
+              _c(
+                "b-col",
+                {
+                  staticStyle: {
+                    border: "1px solid black",
+                    width: "100%",
+                    "text-align": "center",
+                    "font-size": "1.3rem"
+                  },
+                  attrs: { cols: "4" }
+                },
+                [_c("div", [_vm._v("Vet Exam: ")])]
+              ),
+              _vm._v(" "),
+              _c("b-col", { attrs: { cols: "8" } }, [
+                _vm.selectedAnimal.exam != "null"
+                  ? _c(
+                      "div",
+                      {
+                        staticStyle: {
+                          border: "1px solid black",
+                          width: "100%",
+                          "text-align": "left",
+                          "font-size": "1.3rem"
+                        }
+                      },
+                      [_vm._v(_vm._s(_vm.selectedAnimal.exam))]
+                    )
+                  : _vm._e()
+              ])
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "b-row",
+            [
+              _c(
+                "b-col",
+                {
+                  staticStyle: {
+                    border: "1px solid black",
+                    width: "100%",
+                    "text-align": "center",
+                    "font-size": "1.3rem"
+                  },
+                  attrs: { cols: "4" }
+                },
+                [_c("div", [_vm._v("Deworming 1: ")])]
+              ),
+              _vm._v(" "),
+              _c("b-col", { attrs: { cols: "8" } }, [
+                _vm.selectedAnimal.deworming_1 != "null"
+                  ? _c(
+                      "div",
+                      {
+                        staticStyle: {
+                          border: "1px solid black",
+                          width: "100%",
+                          "text-align": "left",
+                          "font-size": "1.3rem"
+                        }
+                      },
+                      [_vm._v(_vm._s(_vm.selectedAnimal.deworming_1))]
+                    )
+                  : _vm._e()
+              ])
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "b-row",
+            [
+              _c(
+                "b-col",
+                {
+                  staticStyle: {
+                    border: "1px solid black",
+                    width: "100%",
+                    "text-align": "center",
+                    "font-size": "1.3rem"
+                  },
+                  attrs: { cols: "4" }
+                },
+                [_c("div", [_vm._v("Deworming 2: ")])]
+              ),
+              _vm._v(" "),
+              _c("b-col", { attrs: { cols: "8" } }, [
+                _vm.selectedAnimal.deworming_2 != "null"
+                  ? _c(
+                      "div",
+                      {
+                        staticStyle: {
+                          border: "1px solid black",
+                          width: "100%",
+                          "text-align": "left",
+                          "font-size": "1.3rem"
+                        }
+                      },
+                      [_vm._v(_vm._s(_vm.selectedAnimal.deworming_2))]
+                    )
+                  : _vm._e()
+              ])
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "b-row",
+            [
+              _c(
+                "b-col",
+                {
+                  staticStyle: {
+                    border: "1px solid black",
+                    width: "100%",
+                    "text-align": "center",
+                    "font-size": "1.3rem"
+                  },
+                  attrs: { cols: "4" }
+                },
+                [_c("div", [_vm._v("Fecal Test: ")])]
+              ),
+              _vm._v(" "),
+              _c("b-col", { attrs: { cols: "8" } }, [
+                _vm.selectedAnimal.fecal_test != "null"
+                  ? _c(
+                      "div",
+                      {
+                        staticStyle: {
+                          border: "1px solid black",
+                          width: "100%",
+                          "text-align": "left",
+                          "font-size": "1.3rem"
+                        }
+                      },
+                      [_vm._v(_vm._s(_vm.selectedAnimal.fecal_test))]
+                    )
+                  : _vm._e()
+              ])
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "b-row",
+            [
+              _c(
+                "b-col",
+                {
+                  staticStyle: {
+                    border: "1px solid black",
+                    width: "100%",
+                    "text-align": "center",
+                    "font-size": "1.3rem"
+                  },
+                  attrs: { cols: "4" }
+                },
+                [_c("div", [_vm._v("Heartworm Test: ")])]
+              ),
+              _vm._v(" "),
+              _c("b-col", { attrs: { cols: "8" } }, [
+                _vm.selectedAnimal.heartworm_test != "null"
+                  ? _c(
+                      "div",
+                      {
+                        staticStyle: {
+                          border: "1px solid black",
+                          width: "100%",
+                          "text-align": "left",
+                          "font-size": "1.3rem"
+                        }
+                      },
+                      [_vm._v(_vm._s(_vm.selectedAnimal.heartworm_test))]
+                    )
+                  : _vm._e()
+              ])
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "b-row",
+            [
+              _c(
+                "b-col",
+                {
+                  staticStyle: {
+                    border: "1px solid black",
+                    width: "100%",
+                    "text-align": "center",
+                    "font-size": "1.3rem"
+                  },
+                  attrs: { cols: "4" }
+                },
+                [_c("div", [_vm._v("Heartworm Result: ")])]
+              ),
+              _vm._v(" "),
+              _c("b-col", { attrs: { cols: "8" } }, [
+                _vm.selectedAnimal.heartworm_result != "null"
+                  ? _c(
+                      "div",
+                      {
+                        staticStyle: {
+                          border: "1px solid black",
+                          width: "100%",
+                          "text-align": "left",
+                          "font-size": "1.3rem"
+                        }
+                      },
+                      [_vm._v(_vm._s(_vm.selectedAnimal.heartworm_result))]
+                    )
+                  : _vm._e()
+              ])
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "b-row",
+            [
+              _c(
+                "b-col",
+                {
+                  staticStyle: {
+                    border: "1px solid black",
+                    width: "100%",
+                    "text-align": "center",
+                    "font-size": "1.3rem"
+                  },
+                  attrs: { cols: "4" }
+                },
+                [_c("div", [_vm._v("Spay/Neuter: ")])]
+              ),
+              _vm._v(" "),
+              _c("b-col", { attrs: { cols: "8" } }, [
+                _vm.selectedAnimal.spay_neuter != "null"
+                  ? _c(
+                      "div",
+                      {
+                        staticStyle: {
+                          border: "1px solid black",
+                          width: "100%",
+                          "text-align": "left",
+                          "font-size": "1.3rem"
+                        }
+                      },
+                      [_vm._v(_vm._s(_vm.selectedAnimal.spay_neuter))]
+                    )
+                  : _vm._e()
+              ])
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "b-row",
+            [
+              _c(
+                "b-col",
+                {
+                  staticStyle: {
+                    border: "1px solid black",
+                    width: "100%",
+                    "text-align": "center",
+                    "font-size": "1.3rem"
+                  },
+                  attrs: { cols: "4" }
+                },
+                [_c("div", [_vm._v("Distemper ")])]
+              ),
+              _vm._v(" "),
+              _c("b-col", { attrs: { cols: "8" } }, [
+                _vm.selectedAnimal.distemper_1 != "null"
+                  ? _c(
+                      "div",
+                      {
+                        staticStyle: {
+                          border: "1px solid black",
+                          width: "100%",
+                          "text-align": "left",
+                          "font-size": "1.3rem"
+                        }
+                      },
+                      [_vm._v(_vm._s(_vm.selectedAnimal.distemper_1))]
+                    )
+                  : _vm._e()
+              ])
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "b-row",
+            [
+              _c(
+                "b-col",
+                {
+                  staticStyle: {
+                    border: "1px solid black",
+                    width: "100%",
+                    "text-align": "center",
+                    "font-size": "1.3rem"
+                  },
+                  attrs: { cols: "4" }
+                },
+                [_c("div", [_vm._v("Distemper 2")])]
+              ),
+              _vm._v(" "),
+              _c("b-col", { attrs: { cols: "8" } }, [
+                _vm.selectedAnimal.distemper_2 != "null"
+                  ? _c(
+                      "div",
+                      {
+                        staticStyle: {
+                          border: "1px solid black",
+                          width: "100%",
+                          "text-align": "left",
+                          "font-size": "1.3rem"
+                        }
+                      },
+                      [_vm._v(_vm._s(_vm.selectedAnimal.distemper_2))]
+                    )
+                  : _vm._e()
+              ])
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "b-row",
+            [
+              _c(
+                "b-col",
+                {
+                  staticStyle: {
+                    border: "1px solid black",
+                    width: "100%",
+                    "text-align": "center",
+                    "font-size": "1.3rem"
+                  },
+                  attrs: { cols: "4" }
+                },
+                [_c("div", [_vm._v("Distemper 3")])]
+              ),
+              _vm._v(" "),
+              _c("b-col", { attrs: { cols: "8" } }, [
+                _vm.selectedAnimal.distemper_3 != "null"
+                  ? _c(
+                      "div",
+                      {
+                        staticStyle: {
+                          border: "1px solid black",
+                          width: "100%",
+                          "text-align": "left",
+                          "font-size": "1.3rem"
+                        }
+                      },
+                      [_vm._v(_vm._s(_vm.selectedAnimal.distemper_3))]
+                    )
+                  : _vm._e()
+              ])
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "b-row",
+            [
+              _c(
+                "b-col",
+                {
+                  staticStyle: {
+                    border: "1px solid black",
+                    width: "100%",
+                    "text-align": "center",
+                    "font-size": "1.3rem"
+                  },
+                  attrs: { cols: "4" }
+                },
+                [_c("div", [_vm._v("Lepto 1")])]
+              ),
+              _vm._v(" "),
+              _c("b-col", { attrs: { cols: "8" } }, [
+                _vm.selectedAnimal.lepto_1 != "null"
+                  ? _c(
+                      "div",
+                      {
+                        staticStyle: {
+                          border: "1px solid black",
+                          width: "100%",
+                          "text-align": "left",
+                          "font-size": "1.3rem"
+                        }
+                      },
+                      [_vm._v(_vm._s(_vm.selectedAnimal.lepto_1))]
+                    )
+                  : _vm._e()
+              ])
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "b-row",
+            [
+              _c(
+                "b-col",
+                {
+                  staticStyle: {
+                    border: "1px solid black",
+                    width: "100%",
+                    "text-align": "center",
+                    "font-size": "1.3rem"
+                  },
+                  attrs: { cols: "4" }
+                },
+                [_c("div", [_vm._v("Lepto 2")])]
+              ),
+              _vm._v(" "),
+              _c("b-col", { attrs: { cols: "8" } }, [
+                _vm.selectedAnimal.lepto_2 != "null"
+                  ? _c(
+                      "div",
+                      {
+                        staticStyle: {
+                          border: "1px solid black",
+                          width: "100%",
+                          "text-align": "left",
+                          "font-size": "1.3rem"
+                        }
+                      },
+                      [_vm._v(_vm._s(_vm.selectedAnimal.lepto_2))]
+                    )
+                  : _vm._e()
+              ])
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "b-row",
+            [
+              _c(
+                "b-col",
+                {
+                  staticStyle: {
+                    border: "1px solid black",
+                    width: "100%",
+                    "text-align": "center",
+                    "font-size": "1.3rem"
+                  },
+                  attrs: { cols: "4" }
+                },
+                [_c("div", [_vm._v("Bordatella")])]
+              ),
+              _vm._v(" "),
+              _c("b-col", { attrs: { cols: "8" } }, [
+                _vm.selectedAnimal.bord != "null"
+                  ? _c(
+                      "div",
+                      {
+                        staticStyle: {
+                          border: "1px solid black",
+                          width: "100%",
+                          "text-align": "left",
+                          "font-size": "1.3rem"
+                        }
+                      },
+                      [_vm._v(_vm._s(_vm.selectedAnimal.bord))]
+                    )
+                  : _vm._e()
+              ])
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "b-row",
+            [
+              _c(
+                "b-col",
+                {
+                  staticStyle: {
+                    border: "1px solid black",
+                    width: "100%",
+                    "text-align": "center",
+                    "font-size": "1.3rem"
+                  },
+                  attrs: { cols: "4" }
+                },
+                [_c("div", [_vm._v("Canine Influenza")])]
+              ),
+              _vm._v(" "),
+              _c("b-col", { attrs: { cols: "8" } }, [
+                _vm.selectedAnimal.civ != "null"
+                  ? _c(
+                      "div",
+                      {
+                        staticStyle: {
+                          border: "1px solid black",
+                          width: "100%",
+                          "text-align": "left",
+                          "font-size": "1.3rem"
+                        }
+                      },
+                      [_vm._v(_vm._s(_vm.selectedAnimal.civ))]
+                    )
+                  : _vm._e()
+              ])
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "b-row",
+            [
+              _c(
+                "b-col",
+                {
+                  staticStyle: {
+                    border: "1px solid black",
+                    width: "100%",
+                    "text-align": "center",
+                    "font-size": "1.3rem"
+                  },
+                  attrs: { cols: "4" }
+                },
+                [_c("div", [_vm._v("CIV Booster")])]
+              ),
+              _vm._v(" "),
+              _c("b-col", { attrs: { cols: "8" } }, [
+                _vm.selectedAnimal.civ_booster != "null"
+                  ? _c(
+                      "div",
+                      {
+                        staticStyle: {
+                          border: "1px solid black",
+                          width: "100%",
+                          "text-align": "left",
+                          "font-size": "1.3rem"
+                        }
+                      },
+                      [_vm._v(_vm._s(_vm.selectedAnimal.civ_booster))]
+                    )
+                  : _vm._e()
+              ])
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "b-row",
+            [
+              _c(
+                "b-col",
+                {
+                  staticStyle: {
+                    border: "1px solid black",
+                    width: "100%",
+                    "text-align": "center",
+                    "font-size": "1.3rem"
+                  },
+                  attrs: { cols: "4" }
+                },
+                [_c("div", [_vm._v("Rabies")])]
+              ),
+              _vm._v(" "),
+              _c("b-col", { attrs: { cols: "8" } }, [
+                _vm.selectedAnimal.rabies != "null"
+                  ? _c(
+                      "div",
+                      {
+                        staticStyle: {
+                          border: "1px solid black",
+                          width: "100%",
+                          "text-align": "left",
+                          "font-size": "1.3rem"
+                        }
+                      },
+                      [_vm._v(_vm._s(_vm.selectedAnimal.rabies))]
+                    )
+                  : _vm._e()
+              ])
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "b-row",
+            [
+              _c(
+                "b-col",
+                {
+                  staticStyle: {
+                    border: "1px solid black",
+                    width: "100%",
+                    "text-align": "center",
+                    "font-size": "1.3rem"
+                  },
+                  attrs: { cols: "4" }
+                },
+                [_c("div", [_vm._v("Rabies Number")])]
+              ),
+              _vm._v(" "),
+              _c("b-col", { attrs: { cols: "8" } }, [
+                _vm.selectedAnimal.rabies_number != "null"
+                  ? _c(
+                      "div",
+                      {
+                        staticStyle: {
+                          border: "1px solid black",
+                          width: "100%",
+                          "text-align": "left",
+                          "font-size": "1.3rem"
+                        }
+                      },
+                      [_vm._v(_vm._s(_vm.selectedAnimal.rabies_number))]
+                    )
+                  : _vm._e()
+              ])
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "b-row",
+            [
+              _c(
+                "b-col",
+                {
+                  staticStyle: {
+                    border: "1px solid black",
+                    width: "100%",
+                    "text-align": "center",
+                    "font-size": "1.3rem"
+                  },
+                  attrs: { cols: "4" }
+                },
+                [_c("div", [_vm._v("Vet: ")])]
+              ),
+              _vm._v(" "),
+              _c("b-col", { attrs: { cols: "8" } }, [
+                _vm.selectedAnimal.vet != "null"
+                  ? _c(
+                      "div",
+                      {
+                        staticStyle: {
+                          border: "1px solid black",
+                          width: "100%",
+                          "text-align": "left",
+                          "font-size": "1.3rem"
+                        }
+                      },
+                      [_vm._v(_vm._s(_vm.selectedAnimal.vet))]
+                    )
+                  : _vm._e()
+              ])
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "b-row",
+            [
+              _c(
+                "b-col",
+                {
+                  staticStyle: {
+                    border: "1px solid black",
+                    width: "100%",
+                    "text-align": "center",
+                    "font-size": "1.3rem"
+                  },
+                  attrs: { cols: "4" }
+                },
+                [_c("div", [_vm._v("Microchip:  ")])]
+              ),
+              _vm._v(" "),
+              _c("b-col", { attrs: { cols: "8" } }, [
+                _vm.selectedAnimal.microchip != "null"
+                  ? _c(
+                      "div",
+                      {
+                        staticStyle: {
+                          border: "1px solid black",
+                          width: "100%",
+                          "text-align": "left",
+                          "font-size": "1.3rem"
+                        }
+                      },
+                      [_vm._v(_vm._s(_vm.selectedAnimal.microchip))]
+                    )
+                  : _vm._e()
+              ])
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "b-row",
+            [
+              _c(
+                "b-col",
+                {
+                  staticStyle: {
+                    border: "1px solid black",
+                    width: "100%",
+                    "text-align": "center",
+                    "font-size": "1.3rem"
+                  },
+                  attrs: { cols: "4" }
+                },
+                [_c("div", [_vm._v("Heartworm Prev:  ")])]
+              ),
+              _vm._v(" "),
+              _c("b-col", { attrs: { cols: "8" } }, [
+                _vm.selectedAnimal.heartworm != "null"
+                  ? _c(
+                      "div",
+                      {
+                        staticStyle: {
+                          border: "1px solid black",
+                          width: "100%",
+                          "text-align": "left",
+                          "font-size": "1.3rem"
+                        }
+                      },
+                      [_vm._v(_vm._s(_vm.selectedAnimal.heartworm))]
+                    )
+                  : _vm._e()
+              ])
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "b-row",
+            [
+              _c(
+                "b-col",
+                {
+                  staticStyle: {
+                    border: "1px solid black",
+                    width: "100%",
+                    "text-align": "center",
+                    "font-size": "1.3rem"
+                  },
+                  attrs: { cols: "4" }
+                },
+                [_c("div", [_vm._v("Flea/Tick Prev:  ")])]
+              ),
+              _vm._v(" "),
+              _c("b-col", { attrs: { cols: "8" } }, [
+                _vm.selectedAnimal.flea_tick != "null"
+                  ? _c(
+                      "div",
+                      {
+                        staticStyle: {
+                          border: "1px solid black",
+                          width: "100%",
+                          "text-align": "left",
+                          "font-size": "1.3rem"
+                        }
+                      },
+                      [_vm._v(_vm._s(_vm.selectedAnimal.flea_tick))]
+                    )
+                  : _vm._e()
               ])
             ],
             1
@@ -52343,7 +53438,6 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "b-container",
-    { attrs: { fluid: "" } },
     [
       _c(
         "b-form-group",
@@ -76830,7 +77924,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _CreateAnimalComponent_vue_vue_type_template_id_07337dea___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CreateAnimalComponent.vue?vue&type=template&id=07337dea& */ "./resources/js/components/CreateAnimalComponent.vue?vue&type=template&id=07337dea&");
 /* harmony import */ var _CreateAnimalComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CreateAnimalComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/CreateAnimalComponent.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _CreateAnimalComponent_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CreateAnimalComponent.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/CreateAnimalComponent.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
 
 
 
@@ -76838,7 +77934,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
   _CreateAnimalComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _CreateAnimalComponent_vue_vue_type_template_id_07337dea___WEBPACK_IMPORTED_MODULE_0__["render"],
   _CreateAnimalComponent_vue_vue_type_template_id_07337dea___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
@@ -76867,6 +77963,22 @@ component.options.__file = "resources/js/components/CreateAnimalComponent.vue"
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateAnimalComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./CreateAnimalComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CreateAnimalComponent.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateAnimalComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/CreateAnimalComponent.vue?vue&type=style&index=0&lang=css&":
+/*!********************************************************************************************!*\
+  !*** ./resources/js/components/CreateAnimalComponent.vue?vue&type=style&index=0&lang=css& ***!
+  \********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateAnimalComponent_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./CreateAnimalComponent.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CreateAnimalComponent.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateAnimalComponent_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateAnimalComponent_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateAnimalComponent_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateAnimalComponent_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateAnimalComponent_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
@@ -77432,8 +78544,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_cookie__WEBPACK_IMPORTED_MODU
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/baldmike/Documents/projects_laravel/ramboFlatbed/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/baldmike/Documents/projects_laravel/ramboFlatbed/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/baldmike/Documents/projects_laravel/resQmia_laravel_vue/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/baldmike/Documents/projects_laravel/resQmia_laravel_vue/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

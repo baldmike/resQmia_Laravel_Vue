@@ -40,10 +40,10 @@
 
         <div>
             <!-- Show Animal Modal Component -->
-            <b-modal ref="selectedAnimalModal" :animal="'animal'" ok-only ok-title="Close" ok-variant="dark" hide-footer no-close-on-backdrop>
+            <b-modal ref="selectedAnimalModal" :animal="'animal'" ok-only ok-title="Close" ok-variant="dark" no-close-on-backdrop>
                 <b-row>
                     <b-col>
-                        <h4 class="headline">{{ selectedAnimal.name }} - {{ selectedAnimal.species }} - {{ selectedAnimal.status }}</h4>
+                        <h3 class="headline">{{ selectedAnimal.name }}</h3>
                     </b-col>
                 </b-row>
                 
@@ -56,9 +56,6 @@
                         placeholder="Choose an image..."
                         @change="onImageChange"/>
 
-                    <b-col cols="6" offset="3" style="margin-top: 1rem;">
-                        <img v-if="url" :src="url" width="100" alt="uploaded image">
-                    </b-col>
                 </b-row>
                 <b-row class="input">
                     <b-col sm="3">
@@ -149,39 +146,263 @@
 
 
 
-        <div id="printout">
+        <b-container id="printout">
             <b-row>
-                <b-col cols="4" offset="4">
-                    <li>Name: {{ selectedAnimal.name }}</li>
-                    <li>Species: {{ selectedAnimal.species }}</li>
-                    <li>Weight: {{ selectedAnimal.weight }}</li>
-                    <li>Status: {{ selectedAnimal.status }}</li>
-                    <li>DOB: {{ selectedAnimal.date_of_birth }}</li>
-
-                    <li>Vet Exam info: {{ selectedAnimal.exam }}</li>
-                    <li>Deworming 1: {{ selectedAnimal.deworming_1 }}</li>
-                    <li>Deworming 2: {{ selectedAnimal.deworming_2 }}</li>
-                    <li>Fecal Test: {{ selectedAnimal.fecal_test }}</li>
-                    <li>Heartworm Test: {{ selectedAnimal.heartworm_test }}</li>
-                    <li>HW Result: {{ selectedAnimal.heartworm_result }}</li>
-                    <li>Spayed/Neutered: {{ selectedAnimal.spay_neuter }}</li>
-                    <li>Distemper 1: {{ selectedAnimal.distemper_1 }}</li>
-                    <li>Distemper 2: {{ selectedAnimal.distemper_2 }}</li>
-                    <li>Distemper 3: {{ selectedAnimal.distemper_3 }}</li>
-                    <li>Lepto 1: {{ selectedAnimal.lepto_1 }}</li>
-                    <li>Lepto 2: {{ selectedAnimal.lepto_2 }}</li>
-                    <li>Bordatella: {{ selectedAnimal.bord }}</li>
-                    <li>Canine Influenza: {{ selectedAnimal.civ }}</li>
-                    <li>CIV Booster: {{ selectedAnimal.civ_booster }}</li>
-                    <li>Rabies: {{ selectedAnimal.rabies }}</li>
-                    <li>Rabies Number: {{ selectedAnimal.rabies_number }}</li>
-                    <li>Vet: {{ selectedAnimal.vet }}</li>
-                    <li>Microchip: {{ selectedAnimal.microchip }}</li>
-                    <li>Heartworm Prev: {{ selectedAnimal.heartworm }}</li>
-                    <li>Flea/Tick Prev: {{ selectedAnimal.flea_tick }}</li>
+                <b-col>
+                    <h1>{{ selectedAnimal.name}}'s Checklist</h1>
                 </b-col>
             </b-row>
-        </div>
+
+            <br><br><br><br>
+
+            <b-row>
+                <b-col cols="4" offset="4">
+                    <b-img src="/alive_logo.jpg" fluid></b-img>
+                </b-col>
+                
+            </b-row>
+            
+
+
+
+            <b-row>
+                <b-col cols="4"  style="border: 1px solid black; width: 100%; text-align: center; font-size: 1.3rem;">
+                    <div>Name: </div>
+                </b-col>
+                <b-col cols="8">
+                    <div style="border: 1px solid black; width: 100%; text-align: left; font-size: 1.3rem;">{{ selectedAnimal.name }}</div>
+                </b-col>
+            </b-row>
+
+            <b-row>
+                <b-col cols="4"  style="border: 1px solid black; width: 100%; text-align: center; font-size: 1.3rem;">
+                    <div >Species: </div>
+                </b-col>
+                <b-col cols="8">
+                    <div style="border: 1px solid black; width: 100%; text-align: left; font-size: 1.3rem;">{{ selectedAnimal.species }}</div>
+                </b-col>
+            </b-row> 
+
+            <b-row>
+                <b-col cols="4"  style="border: 1px solid black; width: 100%; text-align: center; font-size: 1.3rem;">
+                    <div>Weight: </div>
+                </b-col>
+                <b-col cols="8">
+                    <div style="border: 1px solid black; width: 100%; text-align: left; font-size: 1.3rem;">{{ selectedAnimal.weight }}</div>
+                </b-col>
+            </b-row> 
+
+            <b-row>
+                <b-col cols="4"  style="border: 1px solid black; width: 100%; text-align: center; font-size: 1.3rem;">
+                    <div>Status: </div>
+                </b-col>
+                <b-col cols="8">
+                    <div style="border: 1px solid black; width: 100%; text-align: left; font-size: 1.3rem;">{{ selectedAnimal.status }}</div>
+                </b-col>
+            </b-row> 
+
+            <b-row>
+                <b-col cols="4"  style="border: 1px solid black; width: 100%; text-align: center; font-size: 1.3rem;">
+                    <div>Date of Birth: </div>
+                </b-col>
+                <b-col cols="8">
+                    <div style="border: 1px solid black; width: 100%; text-align: left; font-size: 1.3rem;">{{ selectedAnimal.date_of_birth }}</div>
+                </b-col>
+            </b-row>
+
+            <b-row>
+                <b-col cols="4"  style="border: 1px solid black; width: 100%; text-align: center; font-size: 1.3rem;">
+                    <div>Vet Exam: </div>
+                </b-col>
+                <b-col cols="8">
+                    <div style="border: 1px solid black; width: 100%; text-align: left; font-size: 1.3rem;" v-if="selectedAnimal.exam !='null'">{{ selectedAnimal.exam }}</div>
+                </b-col>
+            </b-row>
+
+            <b-row>
+                <b-col cols="4"  style="border: 1px solid black; width: 100%; text-align: center; font-size: 1.3rem;">
+                    <div>Deworming 1: </div>
+                </b-col>
+                <b-col cols="8">
+                    <div style="border: 1px solid black; width: 100%; text-align: left; font-size: 1.3rem;" v-if="selectedAnimal.deworming_1 !='null'">{{ selectedAnimal.deworming_1 }}</div>
+                </b-col>
+            </b-row>
+
+            <b-row>
+                <b-col cols="4"  style="border: 1px solid black; width: 100%; text-align: center; font-size: 1.3rem;">
+                    <div>Deworming 2: </div>
+                </b-col>
+                <b-col cols="8">
+                    <div style="border: 1px solid black; width: 100%; text-align: left; font-size: 1.3rem;" v-if="selectedAnimal.deworming_2 !='null'">{{ selectedAnimal.deworming_2 }}</div>
+                </b-col>
+            </b-row>
+
+            <b-row>
+                <b-col cols="4"  style="border: 1px solid black; width: 100%; text-align: center; font-size: 1.3rem;">
+                    <div>Fecal Test: </div>
+                </b-col>
+                <b-col cols="8">
+                    <div style="border: 1px solid black; width: 100%; text-align: left; font-size: 1.3rem;" v-if="selectedAnimal.fecal_test !='null'">{{ selectedAnimal.fecal_test }}</div>
+                </b-col>
+            </b-row>
+
+            <b-row>
+                <b-col cols="4"  style="border: 1px solid black; width: 100%; text-align: center; font-size: 1.3rem;">
+                    <div>Heartworm Test: </div>
+                </b-col>
+                <b-col cols="8">
+                    <div style="border: 1px solid black; width: 100%; text-align: left; font-size: 1.3rem;" v-if="selectedAnimal.heartworm_test !='null'">{{ selectedAnimal.heartworm_test }}</div>
+                </b-col>
+            </b-row>
+
+            <b-row>
+                <b-col cols="4"  style="border: 1px solid black; width: 100%; text-align: center; font-size: 1.3rem;">
+                    <div>Heartworm Result: </div>
+                </b-col>
+                <b-col cols="8">
+                    <div style="border: 1px solid black; width: 100%; text-align: left; font-size: 1.3rem;" v-if="selectedAnimal.heartworm_result !='null'">{{ selectedAnimal.heartworm_result }}</div>
+                </b-col>
+            </b-row>
+
+            <b-row>
+                <b-col cols="4"  style="border: 1px solid black; width: 100%; text-align: center; font-size: 1.3rem;">
+                    <div>Spay/Neuter: </div>
+                </b-col>
+                <b-col cols="8">
+                    <div style="border: 1px solid black; width: 100%; text-align: left; font-size: 1.3rem;" v-if="selectedAnimal.spay_neuter !='null'">{{ selectedAnimal.spay_neuter }}</div>
+                </b-col>
+            </b-row>
+
+            <b-row>
+                <b-col cols="4"  style="border: 1px solid black; width: 100%; text-align: center; font-size: 1.3rem;">
+                    <div>Distemper </div>
+                </b-col>
+                <b-col cols="8">
+                    <div style="border: 1px solid black; width: 100%; text-align: left; font-size: 1.3rem;" v-if="selectedAnimal.distemper_1 !='null'">{{ selectedAnimal.distemper_1 }}</div>
+                </b-col>
+            </b-row>
+
+            <b-row>
+                <b-col cols="4"  style="border: 1px solid black; width: 100%; text-align: center; font-size: 1.3rem;">
+                    <div>Distemper 2</div>
+                </b-col>
+                <b-col cols="8">
+                    <div style="border: 1px solid black; width: 100%; text-align: left; font-size: 1.3rem;" v-if="selectedAnimal.distemper_2 !='null'">{{ selectedAnimal.distemper_2 }}</div>
+                </b-col>
+            </b-row>
+
+            <b-row>
+                <b-col cols="4"  style="border: 1px solid black; width: 100%; text-align: center; font-size: 1.3rem;">
+                    <div>Distemper 3</div>
+                </b-col>
+                <b-col cols="8">
+                    <div style="border: 1px solid black; width: 100%; text-align: left; font-size: 1.3rem;" v-if="selectedAnimal.distemper_3 !='null'">{{ selectedAnimal.distemper_3 }}</div>
+                </b-col>
+            </b-row>
+
+            <b-row>
+                <b-col cols="4"  style="border: 1px solid black; width: 100%; text-align: center; font-size: 1.3rem;">
+                    <div>Lepto 1</div>
+                </b-col>
+                <b-col cols="8">
+                    <div style="border: 1px solid black; width: 100%; text-align: left; font-size: 1.3rem;" v-if="selectedAnimal.lepto_1 !='null'">{{ selectedAnimal.lepto_1 }}</div>
+                </b-col>
+            </b-row>
+
+            <b-row>
+                <b-col cols="4"  style="border: 1px solid black; width: 100%; text-align: center; font-size: 1.3rem;">
+                    <div>Lepto 2</div>
+                </b-col>
+                <b-col cols="8">
+                    <div style="border: 1px solid black; width: 100%; text-align: left; font-size: 1.3rem;" v-if="selectedAnimal.lepto_2 !='null'">{{ selectedAnimal.lepto_2 }}</div>
+                </b-col>
+            </b-row>
+
+            <b-row>
+                <b-col cols="4"  style="border: 1px solid black; width: 100%; text-align: center; font-size: 1.3rem;">
+                    <div>Bordatella</div>
+                </b-col>
+                <b-col cols="8">
+                    <div style="border: 1px solid black; width: 100%; text-align: left; font-size: 1.3rem;" v-if="selectedAnimal.bord !='null'">{{ selectedAnimal.bord }}</div>
+                </b-col>
+            </b-row>
+
+            <b-row>
+                <b-col cols="4"  style="border: 1px solid black; width: 100%; text-align: center; font-size: 1.3rem;">
+                    <div>Canine Influenza</div>
+                </b-col>
+                <b-col cols="8">
+                    <div style="border: 1px solid black; width: 100%; text-align: left; font-size: 1.3rem;" v-if="selectedAnimal.civ !='null'">{{ selectedAnimal.civ }}</div>
+                </b-col>
+            </b-row>
+
+            <b-row>
+                <b-col cols="4"  style="border: 1px solid black; width: 100%; text-align: center; font-size: 1.3rem;">
+                    <div>CIV Booster</div>
+                </b-col>
+                <b-col cols="8">
+                    <div style="border: 1px solid black; width: 100%; text-align: left; font-size: 1.3rem;" v-if="selectedAnimal.civ_booster !='null'">{{ selectedAnimal.civ_booster }}</div>
+                </b-col>
+            </b-row>
+
+            <b-row>
+                <b-col cols="4"  style="border: 1px solid black; width: 100%; text-align: center; font-size: 1.3rem;">
+                    <div>Rabies</div>
+                </b-col>
+                <b-col cols="8">
+                    <div style="border: 1px solid black; width: 100%; text-align: left; font-size: 1.3rem;" v-if="selectedAnimal.rabies !='null'">{{ selectedAnimal.rabies }}</div>
+                </b-col>
+            </b-row>
+
+            <b-row>
+                <b-col cols="4"  style="border: 1px solid black; width: 100%; text-align: center; font-size: 1.3rem;">
+                    <div>Rabies Number</div>
+                </b-col>
+                <b-col cols="8">
+                    <div style="border: 1px solid black; width: 100%; text-align: left; font-size: 1.3rem;" v-if="selectedAnimal.rabies_number !='null'">{{ selectedAnimal.rabies_number }}</div>
+                </b-col>
+            </b-row>
+            
+            <b-row>
+                <b-col cols="4"  style="border: 1px solid black; width: 100%; text-align: center; font-size: 1.3rem;">
+                    <div>Vet: </div>
+                </b-col>
+                <b-col cols="8">
+                    <div style="border: 1px solid black; width: 100%; text-align: left; font-size: 1.3rem;" v-if="selectedAnimal.vet !='null'">{{ selectedAnimal.vet }}</div>
+                </b-col>
+            </b-row>
+
+            <b-row>
+                <b-col cols="4"  style="border: 1px solid black; width: 100%; text-align: center; font-size: 1.3rem;">
+                    <div>Microchip:  </div>
+                </b-col>
+                <b-col cols="8">
+                    <div style="border: 1px solid black; width: 100%; text-align: left; font-size: 1.3rem;" v-if="selectedAnimal.microchip !='null'">{{ selectedAnimal.microchip }}</div>
+                </b-col>
+            </b-row>
+
+            <b-row>
+                <b-col cols="4"  style="border: 1px solid black; width: 100%; text-align: center; font-size: 1.3rem;">
+                    <div>Heartworm Prev:  </div>
+                </b-col>
+                <b-col cols="8">
+                    <div style="border: 1px solid black; width: 100%; text-align: left; font-size: 1.3rem;" v-if="selectedAnimal.heartworm !='null'">{{ selectedAnimal.heartworm }}</div>
+                </b-col>
+            </b-row>
+
+            <b-row>
+                <b-col cols="4"  style="border: 1px solid black; width: 100%; text-align: center; font-size: 1.3rem;">
+                    <div>Flea/Tick Prev:  </div>
+                </b-col>
+                <b-col cols="8">
+                    <div style="border: 1px solid black; width: 100%; text-align: left; font-size: 1.3rem;" v-if="selectedAnimal.flea_tick !='null'">{{ selectedAnimal.flea_tick }}</div>
+                </b-col>
+            </b-row>
+                    
+                
+
+        
+        </b-container>
 
 
     </div>
@@ -389,7 +610,7 @@
                 })
 
                 // allow for PUT/PATCH call
-                formData.append('_method', 'PATCH');
+                formData.append('_method', 'PUT');
 
                 // this is actually a PUT call
                 axios.post("/api/dogs/" + this.dogId, formData, {headers: {'Content-Type': 'multipart/form-data'}}).then(({data}) => {
@@ -529,5 +750,13 @@
 
     .input {
         margin: 10px;
+    }
+
+    
+
+    @media print {
+        .box {
+           border: 5px solid black;
+        }
     }
 </style>
