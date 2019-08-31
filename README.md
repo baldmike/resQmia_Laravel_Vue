@@ -1,4 +1,4 @@
-# Laravel Vue Auth Boilerplate 
+# ResQmia 
 
 Run the following commands to install dependencies. **php artisan key:generate needs to be run after cloning the repo.
 
@@ -8,6 +8,7 @@ npm install
 php artisan key:generate
 
 ``` 
+Create .ENV file
 
 set up your database and update the following lines in .ENV file (this assumes a mysql db):
 ```
