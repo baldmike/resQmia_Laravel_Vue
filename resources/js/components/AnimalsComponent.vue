@@ -717,7 +717,7 @@
         width: 100%;
         height: 3rem;
         margin-bottom: 20px;
-        font-size: 1vw;
+        font-size: 1.4rem;
         color: white;
     }
     .filter-button {
