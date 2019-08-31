@@ -715,8 +715,9 @@
     }
     .select-button {
         width: 100%;
+        height: 3rem;
         margin-bottom: 20px;
-        font-size: 10%;
+        font-size: 1vw;
         color: white;
     }
     .filter-button {
