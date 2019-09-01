@@ -2389,7 +2389,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         });
       })["catch"](function (error) {
         console.log(error);
-      }); // get refreshed list of dogs
+      });
+      $vm.$forceUpdate(); // get refreshed list of dogs
 
       axios.get('/api/dogs').then(function (dogs) {
         _this.dogs = dogs.data.data;
@@ -2425,7 +2426,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         });
       })["catch"](function (error) {
         console.log(error);
-      }); // get refreshed list of dogs
+      });
+      this.$forceUpdate(); // get refreshed list of dogs
 
       axios.get('/api/dogs').then(function (dogs) {
         _this2.dogs = dogs.data.data;

@@ -652,6 +652,8 @@
                         console.log(error);
                 })
 
+                $vm.$forceUpdate();
+
                 // get refreshed list of dogs
                 axios.get('/api/dogs').then((dogs) => {
                     this.dogs = dogs.data.data;
@@ -686,6 +688,7 @@
                         console.log(error);
                 })
 
+                this.$forceUpdate();
 
                 // get refreshed list of dogs
                 axios.get('/api/dogs').then((dogs) => {
