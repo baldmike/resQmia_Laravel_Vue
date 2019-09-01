@@ -2390,7 +2390,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       })["catch"](function (error) {
         console.log(error);
       });
-      $vm.$forceUpdate(); // get refreshed list of dogs
+      this.$forceUpdate(); // get refreshed list of dogs
 
       axios.get('/api/dogs').then(function (dogs) {
         _this.dogs = dogs.data.data;

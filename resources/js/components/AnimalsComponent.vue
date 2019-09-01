@@ -652,7 +652,7 @@
                         console.log(error);
                 })
 
-                $vm.$forceUpdate();
+                this.$forceUpdate();
 
                 // get refreshed list of dogs
                 axios.get('/api/dogs').then((dogs) => {
