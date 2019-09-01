@@ -109,7 +109,7 @@ export default {
         
       },
       register() {
-        console.log("[LoginComponent]->register")
+        
       }
     },
     computed: mapGetters(['isAuthenticated']),

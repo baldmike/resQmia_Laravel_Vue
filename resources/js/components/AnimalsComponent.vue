@@ -148,19 +148,23 @@
 
         <b-container id="printout">
             <b-row>
-                <b-col>
-                    <h1>{{ selectedAnimal.name}}'s Healthcare Checklist</h1>
-                </b-col>
-            </b-row>
-
-            <br><br><br><br>
-
-            <b-row>
                 <b-col cols="4" offset="4">
                     <b-img src="/alive_logo.jpg" fluid></b-img>
                 </b-col>
                 
             </b-row>
+            
+            <br><br><br>
+
+            <b-row>
+                <b-col style="text-align:center;">
+                    <h1>{{ selectedAnimal.name}}'s Healthcare Checklist</h1>
+                </b-col>
+            </b-row>
+
+            
+
+            
             
 
 
@@ -730,7 +734,7 @@
 
             printRecord() {
                 this.$htmlToPaper('printout', () => {
-                    console.log("printing done");
+                    console.log("printing complete");
                 })
             }
         },

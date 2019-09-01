@@ -2168,6 +2168,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -2457,7 +2461,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     printRecord: function printRecord() {
       this.$htmlToPaper('printout', function () {
-        console.log("printing done");
+        console.log("printing complete");
       });
     }
   },
@@ -2689,25 +2693,27 @@ __webpack_require__.r(__webpack_exports__);
           duration: '6000',
           width: '100%'
         });
-
-        console.log("CreateAnimalComponent -- createAnimal -- createAnimal()" + data.toString());
       })["catch"](function (error) {
         console.log(error);
       });
       this.$router.push('/animals');
     },
     onImageChange: function onImageChange(e) {
-      var imageFile = e.target.files[0];
+      // first, get the image
+      var imageFile = e.target.files[0]; // compression options
+
       var options = {
         maxSizeMB: 1,
         maxWidthOrHeight: 1920,
         useWebWorker: true
       };
-      var self = this;
+      var self = this; // compress the image
+
       Object(browser_image_compression__WEBPACK_IMPORTED_MODULE_2__["default"])(imageFile, options).then(function (compressedFile) {
         console.log('compressedFile instanceof Blob', compressedFile instanceof Blob); // true
 
         console.log("compressedFile size ".concat(compressedFile.size / 1024 / 1024, " MB")); // smaller than maxSizeMB
+        // this allows browser preview
 
         self.url = URL.createObjectURL(compressedFile);
         self.form1.image = compressedFile;
@@ -2876,9 +2882,7 @@ __webpack_require__.r(__webpack_exports__);
         });
       });
     },
-    register: function register() {
-      console.log("[LoginComponent]->register");
-    }
+    register: function register() {}
   },
   computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['isAuthenticated']),
   mounted: function mounted() {}
@@ -52514,13 +52518,12 @@ var render = function() {
           _c(
             "b-row",
             [
-              _c("b-col", [
-                _c("h1", [
-                  _vm._v(
-                    _vm._s(_vm.selectedAnimal.name) + "'s Healthcare Checklist"
-                  )
-                ])
-              ])
+              _c(
+                "b-col",
+                { attrs: { cols: "4", offset: "4" } },
+                [_c("b-img", { attrs: { src: "/alive_logo.jpg", fluid: "" } })],
+                1
+              )
             ],
             1
           ),
@@ -52528,17 +52531,17 @@ var render = function() {
           _c("br"),
           _c("br"),
           _c("br"),
-          _c("br"),
           _vm._v(" "),
           _c(
             "b-row",
             [
-              _c(
-                "b-col",
-                { attrs: { cols: "4", offset: "4" } },
-                [_c("b-img", { attrs: { src: "/alive_logo.jpg", fluid: "" } })],
-                1
-              )
+              _c("b-col", { staticStyle: { "text-align": "center" } }, [
+                _c("h1", [
+                  _vm._v(
+                    _vm._s(_vm.selectedAnimal.name) + "'s Healthcare Checklist"
+                  )
+                ])
+              ])
             ],
             1
           ),
@@ -78601,8 +78604,6 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_cookie__WEBPACK_IMPORTED_MODU
     var userToken = vue__WEBPACK_IMPORTED_MODULE_0___default.a.cookie.get('token');
     var user = vue__WEBPACK_IMPORTED_MODULE_0___default.a.cookie.get('user');
     var currentUser = JSON.stringify(user);
-    console.log("[STORE.STATE] --> user: " + currentUser);
-    console.log("[STORE.STATE] --> token: " + userToken);
     return {
       token: userToken ? userToken : null,
       user: user ? user : null
@@ -78645,7 +78646,6 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_cookie__WEBPACK_IMPORTED_MODU
     refreshUserData: function refreshUserData(context) {
       axios__WEBPACK_IMPORTED_MODULE_4___default.a.call("get", "/api/user").then(function (userData) {
         var user = userData.data.data;
-        console.log("USER ----> " + user);
         context.commit('setUser', user);
       });
     },

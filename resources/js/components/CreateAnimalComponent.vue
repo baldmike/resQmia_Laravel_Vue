@@ -201,7 +201,6 @@
                         width: '100%'
                     });
                         
-                        console.log("CreateAnimalComponent -- createAnimal -- createAnimal()" + data.toString());
                 }).catch((error) => {
                         console.log(error);
                 })
@@ -211,27 +210,34 @@
             },
 
             onImageChange(e) {
+                // first, get the image
                 const imageFile = e.target.files[0];
                 
-
+                // compression options
                 let options = {
                     maxSizeMB: 1,
                     maxWidthOrHeight: 1920,
                     useWebWorker: true
                 }
 
+                
                 let self = this;
-                imageCompression(imageFile, options)
-                .then(compressedFile => {
+                
+                // compress the image
+                imageCompression(imageFile, options).then(compressedFile => {
                     console.log('compressedFile instanceof Blob', compressedFile instanceof Blob); // true
                     console.log(`compressedFile size ${compressedFile.size / 1024 / 1024} MB`); // smaller than maxSizeMB
             
+                    // this allows browser preview
                     self.url = URL.createObjectURL(compressedFile);
                 
+
                     self.form1.image = compressedFile;
                 })
                 .catch(function (error) {
-                console.log(error.message);
+
+                    console.log(error.message);
+
                 });
 
             },
