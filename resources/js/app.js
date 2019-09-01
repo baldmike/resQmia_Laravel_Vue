@@ -18,7 +18,7 @@ const options = {
   name: '_blank',
   specs: [
     'fullscreen=yes',
-    'titlebar=yes',
+    'titlebar=no',
     'scrollbars=yes'
   ],
   styles: [

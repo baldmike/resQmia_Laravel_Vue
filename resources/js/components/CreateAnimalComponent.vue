@@ -94,6 +94,7 @@
 
     import { validationMixin } from "vuelidate";
     import { helpers, required, minLength, maxLength, minValue, maxValue, email, between, sameAs } from "vuelidate/lib/validators";
+    import imageCompression from 'browser-image-compression';
 
     export default {
         data() {
@@ -210,11 +211,29 @@
             },
 
             onImageChange(e) {
-                const file = e.target.files[0];
+                const imageFile = e.target.files[0];
                 
-                this.url = URL.createObjectURL(file);
+
+                let options = {
+                    maxSizeMB: 1,
+                    maxWidthOrHeight: 1920,
+                    useWebWorker: true
+                }
+
+                let self = this;
+                imageCompression(imageFile, options)
+                .then(compressedFile => {
+                    console.log('compressedFile instanceof Blob', compressedFile instanceof Blob); // true
+                    console.log(`compressedFile size ${compressedFile.size / 1024 / 1024} MB`); // smaller than maxSizeMB
+            
+                    self.url = URL.createObjectURL(compressedFile);
                 
-                this.image = file;
+                    self.form1.image = compressedFile;
+                })
+                .catch(function (error) {
+                console.log(error.message);
+                });
+
             },
         }
     }
