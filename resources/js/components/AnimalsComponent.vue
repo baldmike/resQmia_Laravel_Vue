@@ -17,7 +17,7 @@
                     <b-form-checkbox class="ml-auto mr-auto" v-model="filterAC">AC</b-form-checkbox>
                     <b-form-checkbox class="ml-auto mr-auto" v-model="filterFoster">Foster</b-form-checkbox>
                     <b-form-checkbox class="ml-auto mr-auto" v-model="filterVet">Vet/Hospital</b-form-checkbox>
-                    <b-form-checkbox class="ml-auto mr-auto" v-model="filterOther">Other</b-form-checkbox>
+                    <b-form-checkbox class="ml-auto mr-auto" v-model="filterOther">Adopted</b-form-checkbox>
                 </b-row>
             </b-col>
         </b-row>
@@ -538,7 +538,7 @@
                 let self=this;
                 let results = [];
 
-                let allDogs = this.dogs;
+                let allDogs = this.dogs.filter(animal => animal.status.toLowerCase() != 'adopted');
 
                 if (this.filterDogs) {
                     allDogs = allDogs.filter(animal => animal.species.toLowerCase() === 'dog')
@@ -561,7 +561,7 @@
                 }
 
                 if (this.filterOther) {
-                    allDogs = allDogs.filter(animal => animal.status.toLowerCase() === 'other')
+                    allDogs = this.dogs.filter(animal => animal.status.toLowerCase() === 'adopted')
                 }
 
                 if (this.search) {

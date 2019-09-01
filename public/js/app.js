@@ -2269,7 +2269,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     filteredAnimals: function filteredAnimals() {
       var self = this;
       var results = [];
-      var allDogs = this.dogs;
+      var allDogs = this.dogs.filter(function (animal) {
+        return animal.status.toLowerCase() != 'adopted';
+      });
 
       if (this.filterDogs) {
         allDogs = allDogs.filter(function (animal) {
@@ -2302,8 +2304,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
 
       if (this.filterOther) {
-        allDogs = allDogs.filter(function (animal) {
-          return animal.status.toLowerCase() === 'other';
+        allDogs = this.dogs.filter(function (animal) {
+          return animal.status.toLowerCase() === 'adopted';
         });
       }
 
@@ -52119,7 +52121,7 @@ var render = function() {
                         expression: "filterOther"
                       }
                     },
-                    [_vm._v("Other")]
+                    [_vm._v("Adopted")]
                   )
                 ],
                 1
