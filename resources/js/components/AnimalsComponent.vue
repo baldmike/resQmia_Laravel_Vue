@@ -88,7 +88,11 @@
                         <label>Status:</label>
                     </b-col>
                     <b-col sm="9">
-                        <b-form-select :state="!$v.form3.status.$invalid" v-model="form3.status" :options="statusOptions"></b-form-select>
+                        <b-form-select :state="!$v.form3.status.$invalid" v-model="form3.status" :options="statusOptions">
+                            <template slot="first">
+                                <option :value="null" disabled>-- Please select an option --</option>
+                            </template>
+                        </b-form-select>
                     
                     </b-col>
                 </b-row>
@@ -486,7 +490,6 @@
                 url: '',
 
                 statusOptions: [
-                    { value: null, text: 'Please select an option' },
                     { value: 'foster', text: 'Foster' },
                     { value: 'adoption_center', text: 'Adoption center' },
                     { value: 'vet', text: 'Vet/Hospital' },

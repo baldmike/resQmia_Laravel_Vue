@@ -32,11 +32,16 @@
                 <label>Species:</label>
             </b-col>
             <b-col sm="9">
-                <b-form-input 
+                <b-form-select :state="!$v.form1.species.$invalid" v-model="form1.species" :options="speciesOptions">
+                    <template slot="first">
+                        <option :value="null" disabled>-- Please select an option --</option>
+                    </template>
+                </b-form-select>
+                <!-- <b-form-input 
                         type="text" 
                         v-model="$v.form1.species.$model"
                         :state="!$v.form1.species.$invalid"
-                        aria-describedby="species-live-feedback"></b-form-input>
+                        aria-describedby="species-live-feedback"></b-form-input> -->
             </b-col>
         </b-row>
 
@@ -45,7 +50,12 @@
                 <label>Status:</label>
             </b-col>
             <b-col sm="9">
-                <b-form-select :state="!$v.form1.status.$invalid" v-model="form1.status" :options="statusOptions"></b-form-select>
+                <b-form-select :state="!$v.form1.status.$invalid" v-model="form1.status" :options="statusOptions">
+                    <template slot="first">
+                        <option :value="null" disabled>-- Please select an option --</option>
+                    </template>
+                </b-form-select>
+                
             
             </b-col>
         </b-row>
@@ -102,9 +112,9 @@
 
                 form1: {
                     name: '',
-                    species: '',
+                    species: null,
                     weight: '',
-                    status: '',
+                    status: null,
                     date_of_birth: '',
                     image: '',
                 },
@@ -137,12 +147,17 @@
                 url: '',
 
                 statusOptions: [
-                    { value: null, text: 'Please select an option' },
-                    { value: 'foster', text: 'In foster' },
+                    { value: 'foster', text: 'Foster' },
                     { value: 'adoption_center', text: 'Adoption center' },
-                    { value: 'vet', text: 'Hospitalized' },
+                    { value: 'vet', text: 'Vet/Hospital' },
+                    { value: 'adopted', text: 'Adopted' },
                     { value: 'other', text: 'Somewhere else?' }
-                ]
+                ],
+
+                speciesOptions: [
+                    { value: 'dog', text: 'Dog' },
+                    { value: 'cat', text: 'Cat' },
+                ],
             }
         },
         mixins: [

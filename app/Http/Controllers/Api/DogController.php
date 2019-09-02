@@ -124,12 +124,31 @@ class DogController extends Controller
             $dog->status = request('status');
             $dog->date_of_birth = request('date_of_birth');
             $dog->weight = request('weight');
-            $dog->exam = request('exam');
-            $dog->deworming_1 = request('deworming_1');
-            $dog->deworming_2 = request('deworming_2');
-            $dog->fecal_test = request('fecal_test');
-            $dog->heartworm_test = request('heartworm_test');
-            $dog->heartworm_result = request('heartworm_result');
+            if(request('exam')) 
+            {
+                $dog->exam = request('exam');
+            };
+            if(request('deworming_1')) 
+            {
+                $dog->deworming_1 = request('deworming_1');
+            }
+            if(request('deworming_2'))
+            {
+                $dog->deworming_2 = request('deworming_2');
+            }
+            if(request('fecal_test'))
+            {
+                $dog->fecal_test = request('fecal_test');
+            }
+            if(request('heartworm_test'))
+            {
+                $dog->heartworm_test = request('heartworm_test');
+            }
+            if(request('heartworm_result'))
+            {
+                $dog->heartworm_result = request('heartworm_result');
+            }
+            if(request('spay_neuter'))
             $dog->spay_neuter = request('spay_neuter');
             $dog->distemper_1 = request('distemper_1');
             $dog->distemper_2 = request('distemper_2');
