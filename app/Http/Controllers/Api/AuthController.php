@@ -20,9 +20,9 @@ class AuthController extends Controller
         if ($user) 
         {
             return response()->json([
-                'status' => Response::HTTP_INTERNAL_SERVER_ERROR,
+                'status' => Response::HTTP_UNPROCESSABLE_ENTITY,
                 'message' => 'This email is already registered, please login.'
-            ], Response::HTTP_INTERNAL_SERVER_ERROR);
+            ], Response::HTTP_UNPROCESSABLE_ENTITY);
         }
 
         $request->validate([
