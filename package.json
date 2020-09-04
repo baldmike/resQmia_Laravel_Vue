@@ -30,7 +30,7 @@
         "nprogress": "^0.2.0",
         "vue-cookie": "^1.1.4",
         "vue-html-to-paper": "^1.1.0",
-        "vue-moment": "^4.0.0",
+        "vue-moment": "^4.1.0",
         "vue-notification": "^1.3.16",
         "vue-router": "^3.0.7",
         "vuelidate": "^0.7.4",
